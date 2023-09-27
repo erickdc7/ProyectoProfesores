@@ -6,4 +6,16 @@
     <string name="app_sec4">Cursos</string>
     <string name="app_sec5">Directorio</string>
     <string name="app_sec6">Inasistencias</string>
+    <string name="name_course1">TRIGONOMETRÍA</string>
+    <string name="name_course2">GEOGRAFíA</string>
+    <string name="name_course3">BIOLOGÍA</string>
+    <string name="logo_math">logo_math</string>
+    <string name="st_more">more</string>
+    <string name="st_level">Primaria</string>
+    <string name="st_grade">5to</string>
+    <string name="cant_students">20</string>
+    <string name="st_sec">B</string>
+    <string name="st_day">Martes</string>
+
+
 </resources>
