@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ProyectoProfesores</string>
+    <string name="app_sec1">Perfil</string>
+    <string name="app_sec2">Notificaciones</string>
+    <string name="app_sec3">Agenda</string>
+    <string name="app_sec4">Cursos</string>
+    <string name="app_sec5">Directorio</string>
+    <string name="app_sec6">Inasistencias</string>
 </resources>
