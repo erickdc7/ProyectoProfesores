@@ -23,144 +23,19 @@
 
 
     </RelativeLayout>
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="10dp">
-
-        <ImageView
-            android:layout_width="330dp"
-            android:layout_height="140dp"
-            android:background="@drawable/fondo_curso1"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclercurso"
+            android:layout_width="wrap_content"
+            android:layout_height="516dp"
             android:layout_marginTop="10dp"
-            android:contentDescription="@string/app_sec4"
             />
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:background="@drawable/logo_math"
-            android:contentDescription="@string/logo_math"/>
-            
+    </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/name_course1"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="26dp"
-            />
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/icon_mas"
-            android:contentDescription="@string/st_more"
-            android:layout_marginStart="280dp"
-            android:layout_marginTop="26dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nivel:"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="65dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/st_level"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="65dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alumnos:"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginStart="170dp"
-            android:layout_marginTop="65dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cant_students"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginStart="245dp"
-            android:layout_marginTop="65dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Grado:"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="85dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/st_grade"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginStart="75dp"
-            android:layout_marginTop="85dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sección:"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginStart="170dp"
-            android:layout_marginTop="85dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/st_sec"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginStart="240dp"
-            android:layout_marginTop="85dp"
-            />
-        <ImageView
-            android:layout_width="85dp"
-            android:layout_height="26dp"
-            android:background="@drawable/fondo_frecuencia"
-            android:contentDescription="date"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="115dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/st_day"
-            android:textColor="@color/back1"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            android:layout_marginHorizontal="36dp"
-            android:layout_marginTop="116.383dp"
-            />
-
-    </RelativeLayout>
 
 </LinearLayout>
