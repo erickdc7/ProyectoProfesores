@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/justificacion_inicio_verde"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/justificacion_nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/justificacion_nombre"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/aula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/aula"
+        android:textSize="16dp"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/white"
+        android:layout_below="@id/justificacion_nombre"/>
+
+
+    <TextView
+        android:id="@+id/justificacion_aula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/justificacion_nombre"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_toRightOf="@id/aula"
+        android:text="@string/justificacion_aula"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+    <TextView
+        android:id="@+id/espec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/especificaciones"
+        android:layout_marginStart="10dp"
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        android:layout_below="@id/aula"/>
+
+
+    <TextView
+        android:id="@+id/justificacion_especificacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/justificacion_especificaciones"
+        android:textColor="@color/white"
+        android:layout_below="@id/espec"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="16dp" />
+
+
+</RelativeLayout>

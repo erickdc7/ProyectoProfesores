@@ -16,6 +16,23 @@
     <string name="cant_students">20</string>
     <string name="st_sec">B</string>
     <string name="st_day">Martes</string>
-
-
+    <string name="mensaje_bienvenida">Bienvenido, Juan!</string>
+    <string name="descripcion_campana">notificaciones</string>
+    <string name="descripcion_usuario">perfil de usuario</string>
+    <string name="tema_curso">Chapter 3: Animal Kingdom</string>
+    <string name="hora">16:00</string>
+    <string name="ubicación">Aula 14 - 3er piso</string>
+    <string name="curso_mas">Ver más</string>
+    <string name="inicio_cursos">Cursos</string>
+    <string name="inicio_recomendaciones">Recomendaciones para ti</string>
+    <string name="inicio_curso_mas">Ver más</string>
+    <string name="inicio_curso_nombre">CursoTest</string>
+    <string name="inicio_justificaciones">Justificaciones</string>
+    <string name="inicio_justificaciones_mas">Ver más</string>
+    <string name="inicio_justificaciones_reciente">Más recientes</string>
+    <string name="justificacion_nombre">Juan Pereira Nuñes</string>
+    <string name="justificacion_aula">3ro A</string>
+    <string name="justificacion_especificaciones">Tomar examen Bimestral</string>
+    <string name="aula">Aula: </string>
+    <string name="especificaciones">Especificaciones:</string>
 </resources>

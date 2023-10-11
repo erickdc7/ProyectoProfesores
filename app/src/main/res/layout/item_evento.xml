@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/horaAgenda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="10dp">
+        <TextView
+            android:id="@+id/hora_inicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="11:35"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/hora_fin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="13:05"
+            android:layout_below="@id/hora_inicio"
+            android:layout_marginTop="5dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/cuadroAgenda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/horaAgenda"
+        android:layout_marginStart="50dp">
+        <ImageView
+            android:id="@+id/cuadro_horario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/curso_agenda_primero"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/curso_nombre_agenda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Matemática"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="25dp"
+            android:textSize="20dp"
+            android:layout_marginStart="20dp"/>
+        <TextView
+            android:id="@+id/curso_tema_agemda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Capítulo 1: Introducción"
+            android:textColor="@color/white"
+            android:layout_below="@id/curso_nombre_agenda"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"/>
+        <RelativeLayout
+            android:id="@+id/ubicacion_cuadro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/curso_tema_agemda"
+            android:layout_marginTop="15dp">
+            <ImageView
+                android:id="@+id/location_id_agenda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_location"
+                android:layout_marginStart="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aula 6-105"
+                android:textColor="@color/white"
+                android:layout_toRightOf="@id/location_id_agenda"
+                android:layout_marginStart="10dp"/>
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_mas_light"
+            android:layout_toRightOf="@id/curso_nombre_agenda"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="120dp"/>
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+</RelativeLayout>
