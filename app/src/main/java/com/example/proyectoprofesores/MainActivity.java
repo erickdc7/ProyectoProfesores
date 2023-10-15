@@ -11,7 +11,6 @@ import android.widget.RelativeLayout;
 
 import com.example.proyectoprofesores.databinding.ActivityMainBinding;
 
-
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     private int selectedItem = R.id.inicio;

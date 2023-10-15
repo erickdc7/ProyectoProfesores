@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gris_agenda">
+    <ImageView
+        android:id="@+id/curso_image_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/curso_detail"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/curso_image_id"
+        android:background="@drawable/rectangulo_curso_detail">
+        <ImageView
+            android:id="@+id/curso_color_detail_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/curso_color_detail"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="34dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Biología"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/curso_color_detail_id"
+            android:layout_marginStart="15sp"
+            android:layout_marginTop="20dp"
+            android:textSize="35dp"/>
+        <RelativeLayout
+            android:id="@+id/curso_data_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/curso_fecha_detail"
+            android:layout_below="@id/curso_color_detail_id"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="25dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/fecha_curso_detail_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Martes, 4 de Octubre"
+                android:textStyle="bold"
+                android:textColor="@color/gris_letra_curso"/>
+            <ImageView
+                android:id="@+id/dotid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/dot"
+                android:layout_toRightOf="@id/fecha_curso_detail_id"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"/>
+            <TextView
+                android:id="@+id/fecha_hora_detail_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="07:00 - 09:09"
+                android:layout_toRightOf="@id/dotid"
+                android:layout_marginStart="8dp"
+                android:textStyle="bold"
+                android:textColor="@color/gris_letra_curso"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/location_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/curso_data_id"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="35dp">
+            <ImageView
+                android:id="@+id/location_curso_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/location_curso_icon"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salon 5A"
+                android:layout_toRightOf="@id/location_curso_icon"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"/>
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/location_detail"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="25dp">
+            <ImageView
+                android:id="@+id/bookmarket_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bookmark_icon"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pagina 4, etc"
+                android:layout_toRightOf="@id/bookmarket_icon"
+                android:layout_marginStart="15dp"/>
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
