@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    tools:context=".MainActivity">
 
 
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/lineaSeleccion"
 
-</LinearLayout>
+        />
+    <View
+        android:id="@+id/lineaSeleccion"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_above="@id/bottomNavigationView"
+        android:background="@drawable/linea_bordes_redondeados" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:itemIconTint="@color/color_item_bottom_nav"
+        app:itemTextColor="@color/color_item_bottom_nav"
+        android:layout_alignParentBottom="true"
+        app:labelVisibilityMode="labeled"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:menu="@menu/bottom_nav_menu"/>
+
+
+</RelativeLayout>

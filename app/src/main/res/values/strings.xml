@@ -16,6 +16,8 @@
     <string name="cant_students">20</string>
     <string name="st_sec">B</string>
     <string name="st_day">Martes</string>
-
-
+    <string name="home_text">Inicio</string>
+    <string name="schedule_text">Agenda</string>
+    <string name="direct_text">Directorio</string>
+    <string name="course_text">Cursos</string>
 </resources>
