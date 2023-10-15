@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageViewContacto"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_weight="20"
+        android:padding="10dp"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_weight="80"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewNombre"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center|left"
+            android:textStyle="bold"
+            android:text="Add templates" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewPadre"
+                android:layout_width="20dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="To start work with data, please create your first components templates." />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
