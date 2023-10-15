@@ -1,52 +1,51 @@
 package com.example.proyectoprofesores;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.WindowManager;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import java.util.ArrayList;
 
-public class CourseActivity extends AppCompatActivity {
+
+public class CoursesFragment extends Fragment {
     ArrayList<cursodt> listCursos;
 
     RecyclerView recy;
     RecyclerView recyD;
 
-    @SuppressLint("MissingInflatedId")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_cursos);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_courses, container, false);
+    }
 
-        recy = findViewById(R.id.recyclercurso);
-        recy.setLayoutManager(new LinearLayoutManager(this));
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        recyD = findViewById(R.id.recyclerdia);
+        recy = view.findViewById(R.id.recyclercurso);
+        recy.setLayoutManager(new LinearLayoutManager(getContext()));
+        recy.setHasFixedSize(true);
+        recyD = view.findViewById(R.id.recyclerdia);
         listCursos = new ArrayList<>();
-
         llenarCursos();
-        adapterCursos adapter = new adapterCursos(this , listCursos);
+        adapterCursos adapter = new adapterCursos(getContext(),listCursos);
         recy.setAdapter(adapter);
-        // Obtiene una referencia al ViewHolderDatos
         adapterCursos.ViewHolderDatos viewHolder = (adapterCursos.ViewHolderDatos) recy.findViewHolderForAdapterPosition(0);
 
 // Configura el RecyclerView de días
         if (viewHolder != null) {
             viewHolder.setDias(listCursos.get(0).getDias());
         }
-
-
-
-
-
-
     }
-
     private void llenarCursos() {
         ArrayList<String> listDias= new ArrayList<>();
         listDias.add("Lunes");

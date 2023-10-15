@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/inicio"
+        android:icon="@drawable/inicio"
+        android:title="@string/home_text"
+        />
+    <item
+        android:id="@+id/agenda"
+        android:icon="@drawable/agenda"
+        android:title="@string/schedule_text"
+        />
+    <item
+        android:id="@+id/directory"
+        android:icon="@drawable/directorio"
+        android:title="@string/direct_text"
+       />
+    <item
+        android:id="@+id/course"
+        android:icon="@drawable/cursos"
+        android:title="@string/course_text"
+        />
+</menu>

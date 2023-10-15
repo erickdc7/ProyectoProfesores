@@ -1,5 +1,6 @@
 package com.example.proyectoprofesores;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +14,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class adapterCursos extends RecyclerView.Adapter<adapterCursos.ViewHolderDatos> {
+    Context context;
     ArrayList<cursodt> listCursos;
 
-    public adapterCursos(ArrayList<cursodt> listCursos) {
+    public adapterCursos(Context context, ArrayList<cursodt> listCursos) {
+        this.context = context;
         this.listCursos = listCursos;
     }
 
     @NonNull
     @Override
     public adapterCursos.ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_curso, null, false);
+        View view= LayoutInflater.from(context).inflate(R.layout.item_curso, parent, false);
         return new ViewHolderDatos(view);
     }
 

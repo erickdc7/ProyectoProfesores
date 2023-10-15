@@ -7,10 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="whitehumo">#FFF6F6F6</color>
     <color name="back1">#FF333333</color>
+    <color name="gris1">#FF979EA9</color>
+    <color name="azul">#FF1D518F</color>
     <color name="gris_oscuro">#38435D</color>
     <color name="gris_suave">#BCC1CD</color>
     <color name="gris_agenda">#F6F6F5</color>
     <color name="gris_letra_curso">#38435D</color>
-
 </resources>
