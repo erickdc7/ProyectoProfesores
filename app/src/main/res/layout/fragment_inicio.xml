@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/whitehumo"
     tools:context=".InicioFragment">
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,29 +14,40 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginTop="42dp"
+            android:layout_marginStart="25dp"
             android:layout_width="match_parent"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="25dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/usuario_bienvenida"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="start"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="3"
                 android:text="@string/mensaje_bienvenida"
                 android:textStyle="bold"
-                android:textSize="20sp"
-                android:textColor="@color/gris_oscuro"/>
+                android:textSize="24sp"
+                android:textColor="@color/black"/>
+
+            <ImageView
+                android:id="@+id/scan_place"
+                android:layout_width="28dp"
+                android:layout_height="42dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.8"
+                android:contentDescription="@string/descripcion_campana"
+                android:padding="5dp"
+                android:src="@drawable/scanner"
+                tools:ignore="ImageContrastCheck" />
 
             <ImageView
                 android:id="@+id/bell_place"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
+                android:layout_width="32dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="0.4"
                 android:contentDescription="@string/descripcion_campana"
                 android:padding="5dp"
@@ -45,9 +57,9 @@
 
             <ImageView
                 android:id="@+id/user_place"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="end"
+                android:layout_width="32dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="0.1"
                 android:contentDescription="@string/descripcion_usuario"
 
@@ -60,10 +72,10 @@
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="25dp"
 
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="25dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp">
 
@@ -74,7 +86,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="160dp"
+                    android:layout_height="155dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/fondo_curso2" />
 
@@ -85,11 +97,11 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
 
-                    android:layout_marginStart="19dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="17dp"
                     android:text="@string/name_course2"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textView3"
@@ -97,19 +109,20 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="21dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="48dp"
                     android:textColor="@color/white"
                     tools:ignore="TextContrastCheck"
                     tools:text="@string/tema_curso" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="21dp"
-                    android:layout_marginTop="84dp"
+                    android:layout_marginTop="83dp"
+                    android:layout_centerVertical="true"
                     android:src="@drawable/icon_clock"
                     tools:ignore="ContentDescription,ImageContrastCheck" />
 
@@ -120,7 +133,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="45dp"
-                    android:layout_marginTop="83dp"
+                    android:layout_marginTop="80dp"
                     android:text="@string/hora"
                     android:textColor="@color/white"
                     tools:ignore="TextContrastCheck" />
@@ -130,18 +143,18 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginEnd="70dp"
-                    android:layout_marginTop="82dp"
+                    android:layout_marginEnd="74dp"
+                    android:layout_marginTop="80dp"
                     android:text="@string/ubicación"
                     android:textColor="@color/white" />
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="13.37dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginEnd="40dp"
-                    android:layout_marginTop="85dp"
+                    android:layout_marginTop="83dp"
                     android:src="@drawable/icon_location" />
 
                 <ImageView
@@ -159,7 +172,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="123dp"
+                    android:layout_marginTop="118dp"
                     android:layout_marginEnd="0dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/rectangulo_barra" />
@@ -171,7 +184,7 @@
 
                     android:layout_alignParentTop="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginTop="136dp"
+                    android:layout_marginTop="132dp"
                     android:layout_toStartOf="@id/moreoption"
                     android:src="@drawable/icon_calendar" />
 
@@ -181,7 +194,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="134dp"
+                    android:layout_marginTop="128dp"
                     android:layout_centerInParent="true"
 
                     android:text="@string/curso_mas" />
@@ -205,11 +218,11 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="19dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="30dp"
                     android:text="@string/inicio_cursos"
                     android:textColor="@color/black"
-                    android:textSize="28dp"
+                    android:textSize="25dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -217,7 +230,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="19dp"
+                    android:layout_marginStart="25dp"
                     android:layout_marginTop="67dp"
                     android:text="@string/inicio_recomendaciones"
                     android:textColor="@color/gris_suave"/>
@@ -234,8 +247,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="26dp"
-                    android:layout_marginEnd="35dp"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginEnd="25dp"
                     android:text="@string/inicio_curso_mas"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -254,7 +267,9 @@
                 android:id="@+id/recyclerCourseId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
                 android:orientation="horizontal"
                 tools:listitem="@layout/curso_inicio_layout"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
@@ -276,11 +291,11 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="19dp"
+                    android:layout_marginStart="25dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/inicio_justificaciones"
                     android:textColor="@color/black"
-                    android:textSize="28dp"
+                    android:textSize="25dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -288,8 +303,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="19dp"
-                    android:layout_marginTop="67dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="56dp"
                     android:text="@string/inicio_justificaciones_reciente"
                     android:textColor="@color/gris_suave"/>
 
@@ -306,7 +321,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="26dp"
-                    android:layout_marginEnd="35dp"
+                    android:layout_marginEnd="25dp"
                     android:text="@string/inicio_justificaciones_mas"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -325,7 +340,8 @@
                 android:id="@+id/recyclerJustiId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="25dp"
                 android:orientation="horizontal"
                 tools:listitem="@layout/justificacion_inicio_layout"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
@@ -30,6 +31,7 @@ public class CoursesFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ImageButton backButton = view.findViewById(R.id.backButton);
         Bundle args = getArguments();
         if (args != null) {
             String textoSalon = args .getString("textoSalon", "");
@@ -49,6 +51,13 @@ public class CoursesFragment extends Fragment {
         if (viewHolder != null) {
             viewHolder.setDias(listCursos.get(0).getDias());
         }
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Volver al fragment_salon
+                getParentFragmentManager().popBackStack(); // Esto debería volver al fragment_salon si está en el back stack.
+            }
+        });
     }
     private void llenarCursos() {
         ArrayList<String> listDias= new ArrayList<>();

@@ -43,8 +43,9 @@ public class adapterSalon extends RecyclerView.Adapter<adapterSalon.ViewHolderDa
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
         String aulas = listSalones.get(position).getGrado()+listSalones.get(position).getSeccion();
         holder.fondo.setImageResource(listSalones.get(position).getFondo());
-        holder.aula.setText(aulas);
-
+        if (holder.aula != null) {
+            holder.aula.setText(aulas);
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
