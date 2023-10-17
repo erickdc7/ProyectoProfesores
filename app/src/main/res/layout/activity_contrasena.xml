@@ -1,29 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_contra"
         android:layout_width="300dp"
         android:layout_height="48dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="268dp"
-        android:text="Iniciar Sesion"
+        android:background="@drawable/bordes_boton_azul"
+        android:backgroundTint="@color/azul"
+        android:text="@string/iniciar_sesion"
         android:textAllCaps="false"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText5" />
 
     <EditText
         android:id="@+id/editTextText5"
         android:layout_width="297dp"
         android:layout_height="48dp"
         android:layout_marginTop="48dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/input_personalizado"
         android:ems="10"
-        android:hint="Contraseña"
+        android:hint="@string/contrasena"
         android:inputType="text"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_contra"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
@@ -33,8 +44,25 @@
         android:layout_width="137dp"
         android:layout_height="26dp"
         android:layout_marginTop="200dp"
+        android:layout_marginBottom="38dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextText5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/libro_logo" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="11dp"
+        android:clickable="true"
+        android:text="@string/recuperar_contra"
+        app:layout_constraintBottom_toTopOf="@+id/button_contra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.772"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText5" />
 </androidx.constraintlayout.widget.ConstraintLayout>
