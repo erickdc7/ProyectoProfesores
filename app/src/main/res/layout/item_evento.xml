@@ -28,13 +28,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/horaAgenda"
-        android:layout_marginStart="50dp">
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="10dp">
+
         <ImageView
             android:id="@+id/cuadro_horario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/curso_agenda_primero"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:src="@drawable/curso_agenda_primero" />
+
         <TextView
             android:id="@+id/curso_nombre_agenda"
             android:layout_width="wrap_content"
@@ -67,6 +70,7 @@
                 android:src="@drawable/icon_location"
                 android:layout_marginStart="20dp"/>
             <TextView
+                android:id="@+id/lugar_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Aula 6-105"
@@ -75,12 +79,15 @@
                 android:layout_marginStart="10dp"/>
         </RelativeLayout>
         <ImageView
+            android:id="@+id/mas_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/icon_mas_light"
-            android:layout_toRightOf="@id/curso_nombre_agenda"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
             android:layout_marginTop="25dp"
-            android:layout_marginStart="120dp"/>
+
+            />
 
     </RelativeLayout>
 
