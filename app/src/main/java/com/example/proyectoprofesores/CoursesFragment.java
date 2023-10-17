@@ -30,7 +30,11 @@ public class CoursesFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        Bundle args = getArguments();
+        if (args != null) {
+            String textoSalon = args .getString("textoSalon", "");
+            // Usa textoSalon como desees
+        }
         recy = view.findViewById(R.id.recyclercurso);
         recy.setLayoutManager(new LinearLayoutManager(getContext()));
         recy.setHasFixedSize(true);
