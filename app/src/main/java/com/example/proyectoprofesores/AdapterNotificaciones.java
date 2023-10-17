@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class AdapterNotificaciones extends RecyclerView.Adapter<AdapterNotificaciones.ViewHolderDatos> {
 
-    ArrayList<Notificaciones> listNotificaciones;
+    private ArrayList<Notificaciones> listNotificaciones;
 
     public AdapterNotificaciones(ArrayList<Notificaciones> listNotificaciones) {
         this.listNotificaciones = listNotificaciones;
@@ -23,7 +23,7 @@ public class AdapterNotificaciones extends RecyclerView.Adapter<AdapterNotificac
     @NonNull
     @Override
     public ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_notificaciones, null, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_notificaciones, parent, false);
         return new ViewHolderDatos(view);
     }
 
@@ -54,6 +54,5 @@ public class AdapterNotificaciones extends RecyclerView.Adapter<AdapterNotificac
             textViewTituloNotificacion.setText(notificacion.getTitulo());
             textViewDescripcion.setText(notificacion.getNoti());
         }
-        //H
     }
 }

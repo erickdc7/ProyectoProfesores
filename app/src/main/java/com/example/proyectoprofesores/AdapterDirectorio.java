@@ -48,9 +48,9 @@ public class AdapterDirectorio extends RecyclerView.Adapter<AdapterDirectorio.Vi
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
             imageViewContacto = itemView.findViewById(R.id.imageViewContacto);
-            //textViewNombreAlumno = itemView.findViewById(R.id.textViewNombreAlumno);
-            //textViewNumeroMadre = itemView.findViewById(R.id.textViewNumeroMadre);
-            //textViewNumeroPadre = itemView.findViewById(R.id.textViewNumeroPadre);
+            textViewNombreAlumno = itemView.findViewById(R.id.textViewNombreAlumno);
+            textViewNumeroMadre = itemView.findViewById(R.id.textViewNumeroMadre);
+            textViewNumeroPadre = itemView.findViewById(R.id.textViewNumeroPadre);
         }
 
         public void asignarDatos(Directorio directorio) {
