@@ -1,6 +1,6 @@
 package com.example.proyectoprofesores;
 
-public class Contacto {
+public class Directorio {
 
     public int id;
     public int image;
@@ -8,7 +8,7 @@ public class Contacto {
     public int num_Madre;
     public int num_Padre;
 
-    public Contacto(int id, int image, String nombre, int num_Madre, int num_Padre) {
+    public Directorio(int id, int image, String nombre, int num_Madre, int num_Padre) {
         this.id = id;
         this.image = image;
         this.nombre = nombre;
