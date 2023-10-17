@@ -6,31 +6,107 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="end"
+    android:background="#F6F6F6"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="42dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginRight="75dp"
-        android:text="Directorio de Padres"
-        android:textAppearance="@android:style/TextAppearance.Material.Display1" />
+    <RelativeLayout
+        android:id="@+id/titulo_directorio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recyclerViewCalendar"
+        android:orientation="horizontal">
 
-    <SearchView
-        android:layout_width="332dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="48dp"
-        android:queryHint="Search by name or number" />
+        <TextView
+            android:id="@+id/textViewDirectorioPadre"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="42dp"
+            android:layout_marginEnd="205dp"
+            android:text="Directorio de Padres"
+            android:textAppearance="@android:style/TextAppearance.Material.Display1"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/busqueda"
+        android:layout_width="match_parent"
+        android:layout_height="114dp"
+        android:layout_below="@id/recyclerViewCalendar"
+        android:orientation="horizontal">
+
+        <SearchView
+            android:id="@+id/busqueda_directorio"
+            android:layout_width="306dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="82dp"
+            android:layout_marginRight="48dp"
+            android:background="@drawable/searchview_rounded_background"
+            android:queryHint="Search by name or number">
+
+        </SearchView>
+
+        <ImageView
+            android:id="@+id/imageViewFiltros"
+            android:layout_width="51dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="55dp"
+            android:src="@tools:sample/avatars"
+            app:srcCompat="@drawable/icon_filter" />
+
+        <TextView
+            android:id="@+id/textViewContactos"
+            android:layout_width="93dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="77dp"
+            android:layout_marginEnd="293dp"
+            android:layout_marginBottom="12dp"
+            android:text="Contacts"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/ListViewContacto"
         android:layout_width="409dp"
-        android:layout_height="577dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="371dp"
+        android:layout_marginTop="5dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="153dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFFFF"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:itemIconTint="@color/color_item_bottom_nav"
+        app:itemTextColor="@color/color_item_bottom_nav"
+        app:labelVisibilityMode="labeled"
+        android:layout_marginTop="19dp"
+        app:menu="@menu/bottom_nav_menu" />
 
 
 </LinearLayout>

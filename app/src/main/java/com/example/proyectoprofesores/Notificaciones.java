@@ -2,25 +2,19 @@ package com.example.proyectoprofesores;
 
 public class Notificaciones {
 
-    public Notificaciones(int id, int image, String titulo, String noti) {
-        this.id = id;
+    public Notificaciones( int image, String titulo, String noti) {
+
         this.image = image;
         this.titulo = titulo;
         this.noti = noti;
     }
+//H
 
-    public int id;
     public int image;
     public String titulo;
     public String noti;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getImage() {
         return image;
