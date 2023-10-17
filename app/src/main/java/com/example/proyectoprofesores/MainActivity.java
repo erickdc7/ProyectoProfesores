@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -24,11 +25,13 @@ public class MainActivity extends AppCompatActivity {
         lineaSeleccion = findViewById(R.id.lineaSeleccion);
         binding.bottomNavigationView.findViewById(selectedItem);
         actualizarPosicionLinea();
+        replaceFragment(new InicioFragment());
         binding.bottomNavigationView.setOnItemSelectedListener(item ->{
             selectedItem = item.getItemId();
             actualizarPosicionLinea();
             switch (item.getItemId()){
                 case R.id.inicio:
+                    replaceFragment(new InicioFragment());
                     break;
                 case R.id.course:
                     replaceFragment(new SalonFragment());
@@ -59,5 +62,7 @@ public class MainActivity extends AppCompatActivity {
             lineaSeleccion.setLayoutParams(params);
         }
     }
+
+
 
 }

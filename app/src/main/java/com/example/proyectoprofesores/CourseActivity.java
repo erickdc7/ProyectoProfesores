@@ -39,12 +39,6 @@ public class CourseActivity extends AppCompatActivity {
         if (viewHolder != null) {
             viewHolder.setDias(listCursos.get(0).getDias());
         }
-
-
-
-
-
-
     }
 
     private void llenarCursos() {
@@ -56,7 +50,6 @@ public class CourseActivity extends AppCompatActivity {
         diasCurso2.add("Martes");
         listCursos.add(new cursodt(R.drawable.fondo_curso2, R.drawable.logo_math, "Algebra", "Secundaria", "1ro", "A", "20", diasCurso2));
         listCursos.add(new cursodt(R.drawable.fondo_curso3, R.drawable.logo_plant, "Biologia", "Secundaria", "5to", "B", "22", listDias));
-
 
     }
 }

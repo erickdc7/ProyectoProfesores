@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,12 +21,13 @@ import java.util.ArrayList;
  * Use the {@link SalonFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SalonFragment extends Fragment {
+public class SalonFragment extends Fragment implements OnSalonClickListener{
     ArrayList<salondt> listSalon;
 
 
     RecyclerView recy;
     RecyclerView.LayoutManager layoutManager;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -83,6 +85,7 @@ public class SalonFragment extends Fragment {
         listSalon = new ArrayList<>();
         llenarSalon();
         adapterSalon adaptersalon = new adapterSalon(getContext(), listSalon);
+        adaptersalon.setOnSalonItemClickListener(this);
         recy.setAdapter(adaptersalon);
         recy.setHasFixedSize(true);
 
@@ -97,5 +100,21 @@ public class SalonFragment extends Fragment {
         listSalon.add(new salondt(R.drawable.fondo_salon2, "3", "B"));
         listSalon.add(new salondt(R.drawable.fondo_salon2, "4", "A"));
         listSalon.add(new salondt(R.drawable.fondo_salon, "4", "B"));
+    }
+
+
+    @Override
+    public void onSalonClick(int position) {
+        String textoSalon = listSalon.get(position).getGrado() + listSalon.get(position).getSeccion();
+
+        CoursesFragment fragment = new CoursesFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("textoSalon", textoSalon);
+        fragment.setArguments(bundle);
+
+        getParentFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 }
