@@ -65,8 +65,8 @@
             android:layout_marginTop="15dp">
             <ImageView
                 android:id="@+id/location_id_agenda"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:src="@drawable/icon_location"
                 android:layout_marginStart="20dp"/>
             <TextView

@@ -5,13 +5,15 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
+        >
 
     <ImageView
         android:id="@+id/imageViewContacto"
         android:layout_width="1dp"
         android:layout_height="80dp"
-        android:layout_weight="20"
+        android:layout_weight="16"
         android:padding="10dp"
         app:srcCompat="@drawable/mujer_logo" />
 
@@ -75,8 +77,9 @@
         </LinearLayout>
 
     <ImageView
-        android:layout_width="60dp"
-        android:layout_height="80dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
         app:srcCompat="@drawable/__puntos" />
 
 </LinearLayout>

@@ -33,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.inicio:
                     replaceFragment(new InicioFragment());
                     break;
+                case R.id.agenda:
+                    replaceFragment(new AgendaFragment());
+                    break;
+                case R.id.directory:
+                    replaceFragment(new DirectorioFragment());
+                    break;
                 case R.id.course:
                     replaceFragment(new SalonFragment());
                     break;
