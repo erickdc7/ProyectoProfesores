@@ -30,6 +30,8 @@
         <activity android:name=".EmailActivity"/>
         <activity android:name=".ContraActivity"/>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".PerfilActivity"/>
+        <activity android:name=".NotificacionesActivity"/>
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="portrait"

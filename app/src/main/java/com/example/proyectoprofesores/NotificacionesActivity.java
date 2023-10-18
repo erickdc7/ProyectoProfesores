@@ -1,6 +1,8 @@
 package com.example.proyectoprofesores;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,13 +15,19 @@ public class NotificacionesActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AdapterNotificaciones adapter;
     private ArrayList<Notificaciones> listaNotificaciones = new ArrayList<>();
-
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notificaciones);
-
+        back = findViewById(R.id.retro);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         recyclerView = findViewById(R.id.recyclerViewNotificaciones);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

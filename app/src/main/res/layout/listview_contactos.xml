@@ -11,9 +11,8 @@
 
     <ImageView
         android:id="@+id/imageViewContacto"
-        android:layout_width="1dp"
+        android:layout_width="50dp"
         android:layout_height="80dp"
-        android:layout_weight="16"
         android:padding="10dp"
         app:srcCompat="@drawable/mujer_logo" />
 
@@ -44,7 +43,7 @@
                     android:layout_weight="1"
                     android:gravity="center|left"
                     android:text="Madre: "
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -61,7 +60,7 @@
                     android:layout_height="40dp"
                     android:gravity="center|left"
                     android:layout_weight="1"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textStyle="bold"
                     android:text="Padre: " />
 
@@ -77,8 +76,8 @@
         </LinearLayout>
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="36dp"
         android:layout_marginTop="20dp"
         app:srcCompat="@drawable/__puntos" />
 
