@@ -236,7 +236,7 @@ public class InicioFragment extends Fragment {
 
         // Personalizar el color de fondo
         Snackbar.SnackbarLayout layout = (Snackbar.SnackbarLayout) snackbar.getView();
-        layout.setBackgroundColor(Color.parseColor("#222222")); // Asegúrate de definir este color en tu archivo de recursos
+        layout.setBackgroundColor(Color.parseColor("#222222"));
 
         // Personalizar el tamaño de la letra
         TextView textView = snackbarLayout.findViewById(com.google.android.material.R.id.snackbar_text);
