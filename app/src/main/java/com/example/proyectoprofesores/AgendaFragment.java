@@ -22,7 +22,7 @@ import java.util.List;
  * Use the {@link AgendaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AgendaFragment extends Fragment {
+public class AgendaFragment extends Fragment implements OnAgendaClickListener{
     private RecyclerView recyclerView;
     private RecyclerView recyclerEvento;
     ArrayList<Evento> listaEventos;
@@ -117,6 +117,7 @@ public class AgendaFragment extends Fragment {
             listaEventos.add(new Evento("1:00", "2:00", "cursito", "leer para aprender", "casita"));
         }
         EventoAdapter adapterE = new EventoAdapter(listaEventos);
+        adapterE.setOnAgendaClickListener(this);
         recyclerEvento.setAdapter(adapterE);
 
     }
@@ -149,5 +150,16 @@ public class AgendaFragment extends Fragment {
     private String obtenerNombreMes(int month){
         String[] monthName = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
         return monthName[month];
+    }
+
+
+
+    public void onAgendaClick(int position) {
+        EventCursoFragment fragment = new EventCursoFragment();
+
+        getParentFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 }

@@ -18,6 +18,19 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder
     public EventoAdapter(ArrayList<Evento> listDatos) {
         this.listDatos = listDatos;
     }
+    OnAgendaClickListener listener;
+
+    public void setOnAgendaClickListener(OnAgendaClickListener listener) {
+        this.listener = listener;
+    }
+
+    public ArrayList<Evento> getListDatos() {
+        return listDatos;
+    }
+
+    public OnAgendaClickListener getListener() {
+        return listener;
+    }
 
     @NonNull
     @Override
@@ -51,6 +64,13 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder
             holder.cursoNombre.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
             holder.lugar.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
         }
+        holder.containerLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int adapterPosition = holder.getAdapterPosition();
+                listener.onAgendaClick(adapterPosition);
+            }
+        });
     }
 
     @Override

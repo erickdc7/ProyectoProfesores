@@ -32,7 +32,7 @@ public class NotificacionesActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewNotificaciones);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        listaNotificaciones.add(new Notificaciones(R.drawable.icon_branded_frame_32, "Reunión de profesores", "Reunión de profesores programada para el próximo viernes a las 10:00 AM en la sala de conferencias."));
+        listaNotificaciones.add(new Notificaciones(R.drawable.icon_branded_frame_32, "Reunión de profesores", "Reunión programada para el próximo viernes a las 10:00 AM en la sala de conferencias."));
 
 
         adapter = new AdapterNotificaciones(listaNotificaciones);
