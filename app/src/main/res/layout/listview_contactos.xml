@@ -5,15 +5,15 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:background="@drawable/contact_box"
         >
 
     <ImageView
         android:id="@+id/imageViewContacto"
-        android:layout_width="50dp"
+        android:layout_width="58dp"
         android:layout_height="80dp"
-        android:padding="10dp"
         app:srcCompat="@drawable/mujer_logo" />
 
         <LinearLayout
@@ -52,6 +52,7 @@
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:gravity="center|left"
+                    android:textSize="14sp"
                     android:text="553 339 721" />
 
                 <TextView
@@ -69,6 +70,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:textSize="14sp"
                     android:gravity="center|left"
                     android:text="553 397 721" />
 

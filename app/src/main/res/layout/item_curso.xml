@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_centerHorizontal="true"
     android:gravity="center_horizontal">
@@ -16,7 +18,6 @@
             android:layout_width="330dp"
             android:layout_height="140dp"
             android:layout_marginTop="10dp"
-
             android:contentDescription="@string/app_sec4"
             android:scaleType="fitXY" />
 
@@ -139,7 +140,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="115dp"
-            android:layout_marginStart="20dp"/>
+            android:orientation="horizontal"
+            android:layout_marginStart="20dp"
+            tools:listitem="@layout/item_dia"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </RelativeLayout>
 

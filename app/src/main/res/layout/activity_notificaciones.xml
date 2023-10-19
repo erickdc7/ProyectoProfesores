@@ -11,9 +11,9 @@
         android:id="@+id/textViewTituloNotificacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="45dp"
         android:text="@string/app_sec2"
-
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -23,8 +23,8 @@
 
     <ImageView
         android:id="@+id/retro"
-        android:layout_width="27dp"
-        android:layout_height="34dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.083"
@@ -35,13 +35,13 @@
     <androidx.recyclerview.widget.RecyclerView
 
         android:id="@+id/recyclerViewNotificaciones"
-        android:layout_width="405dp"
-        android:layout_height="584dp"
-        android:layout_marginTop="88dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="3dp" />
+        tools:listitem="@layout/listview_notificaciones"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
