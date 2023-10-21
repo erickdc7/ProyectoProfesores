@@ -99,7 +99,7 @@ public class InicioFragment extends Fragment {
         rectangulo_barra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventCursoFragment fragment = new EventCursoFragment();
+                AgendaFragment fragment = new AgendaFragment();
 
                 getParentFragmentManager().beginTransaction()
                         .replace(R.id.container, fragment)
