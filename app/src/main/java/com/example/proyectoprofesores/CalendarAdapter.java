@@ -42,7 +42,12 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
         //holder.year.setText(item.getYear());
 
         // Configura el OnClickListener para cada elemento
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarDetallesDeFecha(item);
+            }
+        });
     }
 
     @Override
