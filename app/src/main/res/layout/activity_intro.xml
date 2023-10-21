@@ -65,11 +65,12 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/text_contra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="112dp"
+        android:onClick="MensajeAdvertencia"
         android:clickable="true"
         android:minHeight="48dp"
         android:text="@string/recuperar_contra"
