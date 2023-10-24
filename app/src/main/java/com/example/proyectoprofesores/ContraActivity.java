@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 public class ContraActivity extends AppCompatActivity{
     Button button;
     EditText editText;
@@ -40,7 +42,8 @@ public class ContraActivity extends AppCompatActivity{
 
         String olvidaste=getString(R.string.recuperar_contra);
         SpannableString ss= new SpannableString(olvidaste);
-        ss.setSpan(new ForegroundColorSpan(Color.YELLOW), 0, olvidaste.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE );
+        int colorP = ContextCompat.getColor(this,R.color.amarillo);
+        ss.setSpan(new ForegroundColorSpan(colorP), 0, olvidaste.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE );
         TextView textView=findViewById(R.id.text_contra);
         textView.setText(ss);
     }
