@@ -12,7 +12,7 @@
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:layout_marginTop="24dp"
-        android:layout_marginBottom="152dp"
+        android:layout_marginBottom="80dp"
         android:background="@drawable/bordes_boton_azul"
         android:backgroundTint="@color/azul"
         android:text="@string/iniciar_sesion"
@@ -27,13 +27,12 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="228dp"
-        android:layout_height="237dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="290dp"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@drawable/ilustracion_intro"
@@ -41,22 +40,22 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="137dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="37.5dp"
+        android:layout_marginTop="110dp"
         android:contentDescription="logo1"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/libro_logo" />
+        app:srcCompat="@drawable/group12407n" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="217dp"
         android:layout_height="37dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="@string/intro_texto"
         android:textAlignment="center"
         android:textColor="#000000"
@@ -69,8 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="112dp"
-        android:onClick="MensajeAdvertencia"
+        android:layout_marginBottom="50dp"
         android:clickable="true"
         android:minHeight="48dp"
         android:text="@string/recuperar_contra"
