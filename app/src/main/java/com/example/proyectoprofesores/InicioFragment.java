@@ -119,6 +119,17 @@ public class InicioFragment extends Fragment {
                         .commit();
             }
         });
+        TextView moreJust = view.findViewById(R.id.moreJust);
+
+        moreJust.setOnClickListener(new View.OnClickListener() {
+            @Override            public void onClick(View v) {
+                JustifyFragment fragment = new JustifyFragment();
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.container, fragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         // ... (resto del código)
 
