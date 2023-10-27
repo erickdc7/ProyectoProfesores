@@ -20,8 +20,9 @@
             android:layout_height="wrap_content"
             android:text="@string/st_day"
             android:textColor="@color/back1"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="normal"
+            android:layout_centerVertical="true"
             android:layout_centerInParent="true"
             />
     </RelativeLayout>

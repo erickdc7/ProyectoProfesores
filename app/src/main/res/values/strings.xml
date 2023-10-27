@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">TeachNize</string>
-    <string name="ip"></string>
+    <string name="ip">https://fzac2311.000webhostapp.com</string>
     <string name="app_sec1">Perfil</string>
     <string name="app_sec2">Notificaciones</string>
     <string name="app_sec3">Agenda</string>
@@ -13,9 +13,9 @@
     <string name="logo_math">logo_math</string>
     <string name="st_more">more</string>
     <string name="st_level">Primaria</string>
-    <string name="st_grade">5to</string>
+    <string name="st_aula">5A</string>
     <string name="cant_students">20</string>
-    <string name="st_sec">B</string>
+    <string name="st_sesion">6</string>
     <string name="st_day">Martes</string>
     <string name="home_text">Inicio</string>
     <string name="schedule_text">Agenda</string>

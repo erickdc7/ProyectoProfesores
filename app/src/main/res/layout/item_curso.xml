@@ -23,9 +23,9 @@
 
         <ImageView
             android:id="@+id/iconCurso"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="25dp"
             android:layout_marginStart="20dp"
             android:contentDescription="@string/logo_math"/>
 
@@ -75,7 +75,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Alumnos:"
+            android:text="N° Estudiantes:"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -90,13 +90,13 @@
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:layout_marginStart="245dp"
+            android:layout_marginStart="290dp"
             android:layout_marginTop="65dp"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Grado:"
+            android:text="Aula:"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -107,7 +107,7 @@
             android:id="@+id/gradoCurso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/st_grade"
+            android:text="@string/st_aula"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -117,7 +117,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sección:"
+            android:text="Sesion:"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -128,7 +128,7 @@
             android:id="@+id/secCurso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/st_sec"
+            android:text="@string/st_sesion"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
