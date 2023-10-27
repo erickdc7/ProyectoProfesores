@@ -8,12 +8,17 @@ public class Directorio {
     public String num_Madre;
     public String num_Padre;
 
-    public Directorio( int image, String nombre, String num_Madre, String num_Padre) {
+
+
+    public int  imagefondo;
+
+    public Directorio( int image, String nombre, String num_Madre, String num_Padre,int imagefondo) {
 
         this.image = image;
         this.nombre = nombre;
         this.num_Madre = num_Madre;
         this.num_Padre = num_Padre;
+        this.imagefondo = imagefondo;
     }
 
     public int getImage() {
@@ -49,4 +54,7 @@ public class Directorio {
     public void setNum_Padre(String num_Padre) {
         this.num_Padre = num_Padre;
     }
+    public int getImagefondo() { return imagefondo;}
+
+    public void setImagefondo(int imagefondo) {this.imagefondo = imagefondo;}
 }

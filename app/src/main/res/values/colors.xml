@@ -17,6 +17,8 @@
     <color name="gris_letra_curso">#38435D</color>
     <color name="ic_launcher_background">#RRGGBBAA</color>
     <color name="colorNegroClaro">#333333</color>
+    <color name="colorcontactoboxazul">#FF1D518F</color>
+    <color name="colorcontactoblanco">#FFFFFFFF</color>
     <color name="amarillo">#FFF2BE22</color>
 
 </resources>

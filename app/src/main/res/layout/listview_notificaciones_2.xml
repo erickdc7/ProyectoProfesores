@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="358dp"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/fondo_not2" />
+
+    <ImageView
+        android:id="@+id/imageViewNotificacion2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginStart="16dp"
+        app:srcCompat="@drawable/emoji" />
+
+    <TextView
+        android:id="@+id/textViewTituloNotificacion2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="80dp"
+        android:textStyle="bold"
+        android:textSize="16.5dp"
+        android:text="Almost done!" />
+
+    <TextView
+        android:id="@+id/textViewDescripcion2"
+        android:layout_width="222dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="80dp"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        android:text="Complete registration of your business profile to start work." />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="40dp"
+        app:srcCompat="@drawable/btns_set_s_solo_circle" />
+</RelativeLayout>

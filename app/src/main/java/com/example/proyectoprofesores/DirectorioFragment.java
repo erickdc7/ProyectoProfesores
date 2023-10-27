@@ -62,12 +62,12 @@ public class DirectorioFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_directorio, container, false);
     }
 
@@ -75,8 +75,30 @@ public class DirectorioFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.recyclerViewDirectorio);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL, false));
-        listDirectorio.add(new Directorio(R.drawable.mujer_logo, "Alumna Ariana Fuentes", "553 339 721", "553 397 721"));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL, false));
+        listDirectorio.add(new Directorio(R.drawable.boy, "Juan Pérez",
+                "555 123 456", "555 789 012", R.drawable.contact_box));
+        listDirectorio.add(new Directorio(R.drawable.user_image, "María González",
+                "555 234 567", "555 890 123", R.drawable.contact_box_azul));
+        listDirectorio.add(new Directorio(R.drawable.boy, "Pedro Rodríguez",
+                "555 345 678", "555 901 234", R.drawable.contact_box));
+        listDirectorio.add(new Directorio(R.drawable.user_image, "Laura Sánchez",
+                "555 456 789", "555 012 345", R.drawable.contact_box_azul));
+        listDirectorio.add(new Directorio(R.drawable.user_image, "María López",
+                "555 111 222", "555 333 444", R.drawable.contact_box));
+        listDirectorio.add(new Directorio(R.drawable.boy, "Carlos Rodríguez",
+                "555 555 555", "555 666 666", R.drawable.contact_box_azul));
+        listDirectorio.add(new Directorio(R.drawable.user_image, "Laura Fernández",
+                "555 777 888", "555 888 999", R.drawable.contact_box));
+        listDirectorio.add(new Directorio(R.drawable.boy, "Juan Martínez",
+                "555 999 000", "555 000 111", R.drawable.contact_box_azul));
+        listDirectorio.add(new Directorio(R.drawable.user_image, "Ana García",
+                "555 222 333", "555 444 555", R.drawable.contact_box));
+        listDirectorio.add(new Directorio(R.drawable.boy, "Sergio Sánchez",
+                "555 666 777", "555 111 222", R.drawable.contact_box_azul));
+
+
+
 
         adapter = new AdapterDirectorio(listDirectorio);
 

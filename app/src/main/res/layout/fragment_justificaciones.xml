@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/titulo_justificacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="40dp"
+            app:srcCompat="@drawable/arrow" />
+
+        <TextView
+            android:id="@+id/textViewDirectorioPadre"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="40dp"
+            android:text="Inasistencias"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/busqueda"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <SearchView
+            android:id="@+id/busqueda_justificaciones"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/searchview_rounded_background"
+            android:queryHint="Search by name or number">
+
+        </SearchView>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="22.5dp"
+            android:layout_marginEnd="22.5dp"
+            tools:listitem="@layout/listview_justificaciones"/>
+    </LinearLayout>
+
+</LinearLayout>

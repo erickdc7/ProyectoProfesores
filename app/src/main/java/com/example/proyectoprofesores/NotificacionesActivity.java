@@ -32,7 +32,33 @@ public class NotificacionesActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewNotificaciones);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        listaNotificaciones.add(new Notificaciones(R.drawable.icon_branded_frame_32, "Reunión de profesores", "Reunión programada para el próximo viernes a las 10:00 AM en la sala de conferencias."));
+        listaNotificaciones.add(new Notificaciones(R.drawable.icon_branded_frame_32,
+                "Add Templates",
+                "To start work with data, please create your first components templates."));
+        listaNotificaciones.add(new Notificaciones(R.drawable.emoji,
+                "Almost done!",
+                "Complete registration of your business profile to start work."));
+        listaNotificaciones.add(new Notificaciones(0,
+                "Missing things...",
+                "To start work with data, please connect your first components templates."));
+        listaNotificaciones.add(new Notificaciones(R.drawable.icon_branded_frame_32,
+                "Add Templates",
+                "To start work with data, please create your first components templates."));
+        listaNotificaciones.add(new Notificaciones(R.drawable.emoji,
+                "Almost done!",
+                "Complete registration of your business profile to start work."));
+        listaNotificaciones.add(new Notificaciones(0,
+                "Missing things...",
+                "To start work with data, please connect your first components templates."));
+        listaNotificaciones.add(new Notificaciones(R.drawable.icon_branded_frame_32,
+                "Add Templates",
+                "To start work with data, please create your first components templates."));
+        listaNotificaciones.add(new Notificaciones(R.drawable.emoji,
+                "Almost done!",
+                "Complete registration of your business profile to start work."));
+        listaNotificaciones.add(new Notificaciones(0,
+                "Missing things...",
+                "To start work with data, please connect your first components templates."));
 
 
         adapter = new AdapterNotificaciones(listaNotificaciones);
