@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new DirectorioFragment());
                     break;
                 case R.id.course:
-                    replaceFragment(new SalonFragment());
+                    replaceFragment(new CoursesFragment());
                     break;
             }
             return true;

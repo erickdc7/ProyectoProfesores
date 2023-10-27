@@ -7,22 +7,15 @@
     android:id="@+id/frame2"
     tools:context=".CoursesFragment">
 
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <RelativeLayout
             android:background="#F6F6F6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
-            <ImageButton
-                android:id="@+id/backButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@drawable/arrow"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="25dp"
-                android:layout_centerVertical="true"
-                android:contentDescription="Atras"
-                />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -30,18 +23,104 @@
                 android:textStyle="bold"
                 android:textSize="25sp"
                 android:textColor="@color/back1"
-                android:layout_marginTop="15dp"
-                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="30dp"
                 />
+            <SearchView
+                android:id="@+id/busqueda_directorio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="75dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/searchview_rounded_background"
+                android:queryHint="Search by name or number">
 
+            </SearchView>
 
         </RelativeLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/frame12395"
+                android:contextClickable="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Más buscados"
+                android:textColor="@color/back1"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/frame12395n"
+                android:contextClickable="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Grado"
+                android:textColor="@color/back1"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/frame12393"
+                android:contextClickable="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Día"
+                android:textColor="@color/back1"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="60dp"
-            android:gravity="center_horizontal">
+            android:layout_marginTop="170dp"
+            android:gravity="center_horizontal"
+            >
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclercurso"
                 android:layout_width="wrap_content"

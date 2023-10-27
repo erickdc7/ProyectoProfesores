@@ -8,9 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
-public class CourseActivity extends AppCompatActivity {
+public class CourseActivity extends AppCompatActivity  {
     ArrayList<cursodt> listCursos;
 
     RecyclerView recy;
@@ -45,11 +50,12 @@ public class CourseActivity extends AppCompatActivity {
         ArrayList<String> listDias= new ArrayList<>();
         listDias.add("Lunes");
         listDias.add("Martes");
-        listCursos.add(new cursodt(R.drawable.fondo_curso1, R.drawable.logo_math, "Trigonometria", "Secundaria", "3ero", "B", "25", listDias));
+        listCursos.add(new cursodt(R.drawable.fondo_curso1, R.drawable.logo_math, "Trigonometria", "Secundaria", "3B", "25", listDias));
         ArrayList<String> diasCurso2 = new ArrayList<>();
         diasCurso2.add("Martes");
-        listCursos.add(new cursodt(R.drawable.fondo_curso2, R.drawable.logo_math, "Algebra", "Secundaria", "1ro", "A", "20", diasCurso2));
-        listCursos.add(new cursodt(R.drawable.fondo_curso3, R.drawable.logo_plant, "Biologia", "Secundaria", "5to", "B", "22", listDias));
+        listCursos.add(new cursodt(R.drawable.fondo_curso2, R.drawable.logo_math, "Algebra", "Secundaria", "1A", "20", diasCurso2));
+        listCursos.add(new cursodt(R.drawable.fondo_curso3, R.drawable.logo_plant, "Biologia", "Secundaria", "5B", "22", listDias));
 
     }
+
 }

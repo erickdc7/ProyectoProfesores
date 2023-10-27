@@ -33,8 +33,7 @@ public class adapterCursos extends RecyclerView.Adapter<adapterCursos.ViewHolder
     public void onBindViewHolder(@NonNull adapterCursos.ViewHolderDatos holder, int position) {
         holder.nombre.setText(listCursos.get(position).getNombre());
         holder.nivel.setText(listCursos.get(position).getNivel());
-        holder.seccion.setText(listCursos.get(position).getSeccion());
-        holder.grado.setText(listCursos.get(position).getGrado());
+        holder.seccion.setText(listCursos.get(position).getAula());
         holder.cantAlum.setText(listCursos.get(position).getCantAlum());
         holder.fondo.setImageResource(listCursos.get(position).getFondo());
         holder.icon.setImageResource(listCursos.get(position).getIcon());

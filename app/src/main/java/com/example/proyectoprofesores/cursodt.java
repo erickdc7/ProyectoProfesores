@@ -5,8 +5,7 @@ public class cursodt {
     private int icon;
     private String nombre;
     private String nivel;
-    private String grado;
-    private String seccion;
+    private String aula;
 
     private String cantAlum;
 
@@ -17,13 +16,12 @@ public class cursodt {
 
     }
 
-    public cursodt(int fondo, int icon, String nombre, String nivel, String grado, String seccion, String cantAlum, ArrayList<String> dias) {
+    public cursodt(int fondo, int icon, String nombre, String nivel, String aula, String cantAlum, ArrayList<String> dias) {
         this.fondo = fondo;
         this.icon = icon;
         this.nombre = nombre;
         this.nivel = nivel;
-        this.grado = grado;
-        this.seccion = seccion;
+        this.aula = aula;
         this.cantAlum = cantAlum;
         this.dias = dias;
     }
@@ -60,20 +58,12 @@ public class cursodt {
         this.nivel = nivel;
     }
 
-    public String getSeccion() {
-        return seccion;
+    public String getAula() {
+        return aula;
     }
 
-    public void setSeccion(String seccion) {
-        this.seccion = seccion;
-    }
-
-    public String getGrado() {
-        return grado;
-    }
-
-    public void setGrado(String grado) {
-        this.grado = grado;
+    public void setAula(String aula) {
+        this.aula = aula;
     }
 
     public String getCantAlum() {
