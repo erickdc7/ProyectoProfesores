@@ -9,26 +9,27 @@
     tools:context=".NotificacionesActivity">
 
     <RelativeLayout
-        android:layout_width="253dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="59dp">
-
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+        <ImageView
+            android:id="@+id/retro"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="30dp"
+            app:srcCompat="@drawable/arrow" />
         <TextView
             android:id="@+id/textViewTituloNotificacion"
             android:layout_width="145dp"
             android:layout_height="22dp"
-            android:layout_marginStart="90dp"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@color/back1"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:text="Notificaciones"/>
 
-        <ImageView
-            android:id="@+id/retro"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:layout_marginStart="0dp"
-            app:srcCompat="@drawable/arrow" />
+
 
     </RelativeLayout>
 
@@ -37,8 +38,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="22.5dp"
-        android:layout_marginEnd="22.5dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/listview_notificaciones"/>
