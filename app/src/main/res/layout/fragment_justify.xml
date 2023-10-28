@@ -25,7 +25,7 @@
             android:id="@+id/textViewDirectorioPadre"
             android:layout_width="150dp"
             android:layout_height="30dp"
-            android:layout_marginStart="130dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="40dp"
             android:text="Inasistencias"
             android:textSize="24sp"

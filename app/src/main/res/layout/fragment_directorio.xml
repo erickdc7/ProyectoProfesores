@@ -13,21 +13,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
-
+        <!-- TODO: titulo
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        -->
         <TextView
             android:id="@+id/textViewDirectorioPadre"
             android:layout_width="206dp"
             android:layout_height="30dp"
-            android:layout_marginStart="22.5dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="49dp"
-            android:text="Directorio de Padres"
-            android:textSize="20sp" />
+            android:textStyle="bold"
 
+            android:text="Directorio de Padres"
+            android:textSize="24sp" />
+        <!-- TODO: search
+                android:layout_width="march_parent"
+                android:layout_height="wrap_content"
+        -->
         <SearchView
             android:id="@+id/busqueda_directorio"
             android:layout_width="277dp"
             android:layout_height="40dp"
-            android:layout_marginStart="22.5dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="91dp"
             android:background="@drawable/searchview_rounded_background"
             android:queryHint="Search by name or number"/>
