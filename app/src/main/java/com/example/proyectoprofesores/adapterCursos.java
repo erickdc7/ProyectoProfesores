@@ -16,10 +16,20 @@ import java.util.ArrayList;
 public class adapterCursos extends RecyclerView.Adapter<adapterCursos.ViewHolderDatos> {
     Context context;
     ArrayList<cursodt> listCursos;
+    OnCursoClickListener listener;
+
+    public void setOnCursoClickListener(OnCursoClickListener listener){
+        this.listener = listener;
+    }
 
     public adapterCursos(Context context, ArrayList<cursodt> listCursos) {
         this.context = context;
         this.listCursos = listCursos;
+    }
+
+    public adapterCursos(Context context, ArrayList<cursodt> listCursos, OnCursoClickListener listener) {        this.context = context;
+        this.listCursos = listCursos;
+        this.listener = listener;
     }
 
     @NonNull
@@ -42,6 +52,13 @@ public class adapterCursos extends RecyclerView.Adapter<adapterCursos.ViewHolder
         ArrayList<String> dias = listCursos.get(position).getDias();
         adapterDias adapterDias = new adapterDias(dias);
         holder.recyDias.setAdapter(adapterDias);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int adapterPosition = holder.getAdapterPosition();
+                listener.onCursoClick(adapterPosition);
+            }
+        });
     }
 
     @Override

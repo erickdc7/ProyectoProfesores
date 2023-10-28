@@ -37,6 +37,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp">
         <TextView
+            android:id="@+id/titleC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Comunicacion"
@@ -68,12 +69,14 @@
                 android:orientation="horizontal">
 
                 <RelativeLayout
+                    android:id="@+id/timefondo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
                     android:background="@drawable/group12383">
 
                     <TextView
+                        android:id="@+id/timetxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -83,12 +86,14 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/asistfondo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:background="@drawable/group12382">
 
                     <TextView
+                        android:id="@+id/asistxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -113,6 +118,7 @@
                     android:layout_centerVertical="true"
                     android:textColor="@color/back1"/>
                 <TextView
+                    android:id="@+id/txtNivel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Primaria"
@@ -129,6 +135,7 @@
                     android:layout_centerVertical="true"
                     android:textColor="@color/back1"/>
                 <TextView
+                    android:id="@+id/txtAula"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5B"
@@ -154,6 +161,7 @@
                     android:layout_centerVertical="true"
                     android:textColor="@color/back1"/>
                 <TextView
+                    android:id="@+id/txtNest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="18"
@@ -170,6 +178,7 @@
                     android:layout_centerVertical="true"
                     android:textColor="@color/back1"/>
                 <TextView
+                    android:id="@+id/txtSes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="6"

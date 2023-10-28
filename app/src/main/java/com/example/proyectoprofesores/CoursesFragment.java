@@ -13,17 +13,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
 
-public class CoursesFragment extends Fragment {
+public class CoursesFragment extends Fragment implements OnCursoClickListener{
     ArrayList<cursodt> listCursos;
 
     RecyclerView recy;
     RecyclerView recyD;
 
     String nombre;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class CoursesFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         Bundle args = getArguments();
         if (args != null) {
             String textoSalon = args .getString("textoSalon", "");
@@ -45,6 +48,7 @@ public class CoursesFragment extends Fragment {
         listCursos = new ArrayList<>();
         llenarCursos();
         adapterCursos adapter = new adapterCursos(getContext(),listCursos);
+        adapter.setOnCursoClickListener(this);
         recy.setAdapter(adapter);
         adapterCursos.ViewHolderDatos viewHolder = (adapterCursos.ViewHolderDatos) recy.findViewHolderForAdapterPosition(0);
 
@@ -68,4 +72,22 @@ public class CoursesFragment extends Fragment {
     }
 
 
+    @Override
+    public void onCursoClick(int position) {
+        String textoCurso = listCursos.get(position).getNombre();
+        String textoAula = listCursos.get(position).getAula();
+        String textoNivel = listCursos.get(position).getNivel();
+
+
+        CourseDescpFragment fragment = new CourseDescpFragment();       Bundle bundle = new Bundle();
+        bundle.putString("aula", textoAula);
+        bundle.putString("curso", textoCurso);
+        bundle.putString("nivel", textoNivel);
+        fragment.setArguments(bundle);
+
+        getParentFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment)
+                .addToBackStack(null)
+                .commit();
+    }
 }

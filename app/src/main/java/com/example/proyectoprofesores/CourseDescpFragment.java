@@ -2,11 +2,15 @@ package com.example.proyectoprofesores;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +27,7 @@ public class CourseDescpFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    ImageView backp;
     public CourseDescpFragment() {
         // Required empty public constructor
     }
@@ -60,5 +64,25 @@ public class CourseDescpFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_course_descp, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        backp = view.findViewById(R.id.closeCur);
+        backp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                getParentFragmentManager().popBackStack();
+            }
+        });
+        Bundle args = getArguments();
+        if (args != null) {
+            String textoCurso = args .getString("curso", "");
+            TextView textCour = view.findViewById(R.id.titleC);
+            textCour.setText(textoCurso);
+            // Usa textoSalon como desees
+        }
     }
 }
