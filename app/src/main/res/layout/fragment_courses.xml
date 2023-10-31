@@ -34,7 +34,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:background="@drawable/searchview_rounded_background"
-                android:queryHint="Search by name or number">
+                android:queryHint="Buscar por nombre">
 
             </SearchView>
 
@@ -46,49 +46,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:orientation="horizontal">
 
         <RelativeLayout
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+
             android:gravity="center">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/frame12395"
-                android:contextClickable="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Más buscados"
-                android:textColor="@color/back1"
-                android:textStyle="bold"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/filtodos"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
                 android:background="@drawable/frame12395n"
-                android:contextClickable="true" />
+                android:contentDescription="todos"
+                android:text="Todos"
+                android:textSize="14sp"
+                tools:ignore="TouchTargetSizeCheck" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Grado"
-                android:textColor="@color/back1"
-                android:textStyle="bold"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"/>
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -96,28 +74,108 @@
             android:layout_marginStart="10dp"
             android:gravity="center">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/frame12393"
-                android:contextClickable="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Día"
-                android:textColor="@color/back1"
-                android:textStyle="bold"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"/>
+            <Button
+                android:id="@+id/fillunes"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:background="@drawable/frame12395n"
+                android:contentDescription="lunes"
+                android:text="Lunes"
+                android:textSize="14sp"
+                tools:ignore="TouchTargetSizeCheck" />
         </RelativeLayout>
+
+        <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/filmartes"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:background="@drawable/frame12395n"
+                android:contentDescription="martes"
+                android:text="Martes"
+                android:textSize="14sp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/filmierco"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:background="@drawable/frame12395n"
+                android:contentDescription="miercoles"
+                android:text="Miercoles"
+                android:textSize="14sp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/filjueves"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:background="@drawable/frame12395n"
+                android:contentDescription="jueves"
+                android:text="Jueves"
+                android:textSize="14sp"
+                tools:ignore="TouchTargetSizeCheck" />
+        </RelativeLayout>
+
+        <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/filviernes"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:background="@drawable/frame12395n"
+                android:contentDescription="viernes"
+                android:text="Viernes"
+                android:textSize="14sp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+
+        </RelativeLayout>
+
     </LinearLayout>
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="170dp"
+            android:layout_marginTop="220dp"
             android:gravity="center_horizontal"
             >
 
@@ -125,7 +183,7 @@
                 android:id="@+id/recyclercurso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 tools:listitem="@layout/item_curso"
                 />
 

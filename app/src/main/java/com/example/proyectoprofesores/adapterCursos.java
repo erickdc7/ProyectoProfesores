@@ -43,7 +43,7 @@ public class adapterCursos extends RecyclerView.Adapter<adapterCursos.ViewHolder
     public void onBindViewHolder(@NonNull adapterCursos.ViewHolderDatos holder, int position) {
         holder.nombre.setText(listCursos.get(position).getNombre());
         holder.nivel.setText(listCursos.get(position).getNivel());
-        holder.seccion.setText(listCursos.get(position).getAula());
+        holder.aula.setText(listCursos.get(position).getAula());
         holder.cantAlum.setText(listCursos.get(position).getCantAlum());
         holder.fondo.setImageResource(listCursos.get(position).getFondo());
         holder.icon.setImageResource(listCursos.get(position).getIcon());
@@ -67,7 +67,7 @@ public class adapterCursos extends RecyclerView.Adapter<adapterCursos.ViewHolder
     }
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
-        TextView nombre, nivel, seccion, grado, cantAlum;
+        TextView nombre, nivel, aula, sesion, cantAlum;
         ImageView fondo, icon;
         RecyclerView recyDias;
         adapterDias adapterDias;
@@ -75,12 +75,14 @@ public class adapterCursos extends RecyclerView.Adapter<adapterCursos.ViewHolder
             super(itemView);
             nombre=itemView.findViewById(R.id.titleCurso);
             nivel = itemView.findViewById(R.id.nivelCurso);
-            seccion = itemView.findViewById(R.id.secCurso);
-            grado = itemView.findViewById(R.id.gradoCurso);
             cantAlum = itemView.findViewById(R.id.cantAlumCurso);
+            aula = itemView.findViewById(R.id.aulCurso);
+            sesion = itemView.findViewById(R.id.sesCurso);
+
             fondo = itemView.findViewById(R.id.fondoCurso);
             icon = itemView.findViewById(R.id.iconCurso);
             recyDias = itemView.findViewById(R.id.recyclerdia);
+            adapterDias = new adapterDias(new ArrayList<>());
             LinearLayoutManager layoutManager = new LinearLayoutManager(itemView.getContext(), LinearLayoutManager.HORIZONTAL, false);
             recyDias.setLayoutManager(layoutManager);
         }
