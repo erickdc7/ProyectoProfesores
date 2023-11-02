@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +16,10 @@ import android.widget.Button;
 import android.widget.SearchView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CoursesFragment extends Fragment implements OnCursoClickListener {
     ArrayList<cursodt> listCursos;
-
-
     RecyclerView recy;
     RecyclerView recyD;
     SearchView searchView;
@@ -73,56 +71,27 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener {
         });
 
         Button filtodos = view.findViewById(R.id.filtodos);
-        filtodos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedFilter = "todos";
-                searchView.setQuery("", false);
-                searchView.clearFocus();
-                adapterCursos filteredAdapter = new adapterCursos(getContext(), listCursos);
-                recy.setAdapter(filteredAdapter);
-            }
+        filtodos.setOnClickListener(v -> {
+            selectedFilter = "todos";
+            searchView.setQuery("", false);
+            searchView.clearFocus();
+            adapterCursos filteredAdapter = new adapterCursos(getContext(), listCursos);
+            recy.setAdapter(filteredAdapter);
         });
         Button fillunes = view.findViewById(R.id.fillunes);
-        fillunes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                filterList("lunes");
-
-            }
-        });
+        fillunes.setOnClickListener(v -> filterList("lunes"));
 
         Button filmartes = view.findViewById(R.id.filmartes);
-        filmartes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                filterList("martes");
-            }
-        });
+        filmartes.setOnClickListener(v -> filterList("martes"));
 
         Button filmierco = view.findViewById(R.id.filmierco);
-        filmierco.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                filterList("miercoles");
-            }
-        });
+        filmierco.setOnClickListener(v -> filterList("miercoles"));
 
         Button filjueves = view.findViewById(R.id.filjueves);
-        filjueves.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                filterList("jueves");
-            }
-        });
+        filjueves.setOnClickListener(v -> filterList("jueves"));
 
         Button filviernes = view.findViewById(R.id.filviernes);
-        filviernes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                filterList("viernes");
-            }
-        });
+        filviernes.setOnClickListener(v -> filterList("viernes"));
 
 
     }
@@ -204,7 +173,7 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener {
             }
 
             if (diasCursoLowerCase.contains(selectedFilter)) {
-                if(currentSearchText==""){
+                if(Objects.equals(currentSearchText, "")){
                     filteredList.add(curso);
                 }else{
                     if(curso.getNombre().toLowerCase().contains(currentSearchText.toLowerCase())){
