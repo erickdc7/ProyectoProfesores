@@ -1,85 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/whitehumo"
-    tools:context=".IntroActivity">
-
-    <Button
-        android:id="@+id/button_intro"
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="80dp"
-        android:background="@drawable/bordes_boton_azul"
-        android:backgroundTint="@color/azul"
-        android:text="@string/iniciar_sesion"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="ExtraText" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="280dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/ilustracion_intro"
-        android:contentDescription="imagen1"/>
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="37.5dp"
-        android:layout_marginTop="90dp"
-        android:contentDescription="logo1"
-
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/group12407n" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="290dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/intro_texto"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="19sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <TextView
-        android:id="@+id/text_contra"
-        android:layout_width="wrap_content"
+    tools:context=".IntroActivity"
+    android:gravity="center">
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="50dp"
-        android:clickable="true"
-        android:minHeight="48dp"
-        android:textSize="14sp"
-        android:text="@string/recuperar_contra"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_intro"
-        app:layout_constraintVertical_bias="0.0" />
+        android:orientation="vertical"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="37.5dp"
+            android:layout_marginBottom="70dp"
+            android:contentDescription="logo1"
+            app:srcCompat="@drawable/group12407n"
+            android:layout_centerHorizontal="true"/>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="280dp"
+            android:layout_marginBottom="20dp"
+            app:srcCompat="@drawable/ilustracion_intro"
+            android:contentDescription="imagen1"/>
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="290dp"
+            android:layout_height="47dp"
+            android:layout_marginBottom="50dp"
+            android:text="@string/intro_texto"
+                        android:textColor="#000000"
+            android:textSize="19sp"/>
+        <Button
+            android:id="@+id/button_intro"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bordes_boton_azul"
+            android:backgroundTint="@color/azul"
+            android:text="@string/iniciar_sesion"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            tools:ignore="ExtraText" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/text_contra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="@string/recuperar_contra"
+            android:textSize="14sp"
+            android:onClick="MensajeAdvertencia"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+</LinearLayout>

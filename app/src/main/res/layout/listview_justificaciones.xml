@@ -1,117 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="10dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_marginBottom="15dp"
+    android:background="@drawable/fonod_justificacion"
     >
-
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/fondo4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/fonod_justificacion"
-        app:srcCompat="@drawable/fonod_justificacion" />
+        >
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Falta Justificada"
+            android:textSize="20sp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="15dp"
+            android:gravity="end"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="150dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="7dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="Falta justificada" />
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="10 Octubre"
+                android:textSize="11sp" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="52dp"
-        android:layout_height="17dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginStart="7dp"
-        android:textStyle="bold"
-        android:textSize="12sp"
-        android:text="Nombre:" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="116dp"
-        android:layout_height="17dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginStart="71dp"
-        android:text="Juan Pereira Nuñez"
-        android:textSize="12sp"/>
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:layout_marginStart="13dp"
-        android:textSize="12sp"
-        android:text="Tomar Examen Bimestral" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="79dp"
-        android:layout_height="17dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginStart="7dp"
-        android:textStyle="bold"
-        android:textSize="12sp"
-        android:text="Anotaciones:" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="31dp"
-        android:layout_height="17dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginStart="209dp"
-        android:textStyle="bold"
-        android:textSize="12sp"
-        android:text="Aula:" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="16dp"
-        android:layout_height="17dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginStart="252dp"
-        android:textSize="12sp"
-        android:text="3A" />
+        </LinearLayout>
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:layout_marginStart="15dp"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:text="Nombre:" />
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:layout_marginStart="7dp"
+                android:text="RODRIGUEZ SAENZ ASTRID MICHELLE"
+                android:textSize="14sp"/>
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="270dp"
-        android:textSize="11sp"
-        android:text="10 Octubre" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="30dp"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:text="Anotaciones:" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"
+            android:gravity="end">
 
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="94dp"
-        android:layout_marginStart="252dp">
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="70dp"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:text="Aula:" />
 
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="93dp"
-            android:layout_height="33dp"
-            app:srcCompat="@drawable/fondo_jus_verde" />
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:textSize="14sp"
+                android:text="3A" />
+        </LinearLayout>
+
+
 
         <TextView
-            android:id="@+id/textView13"
-            android:layout_width="50dp"
-            android:layout_height="17dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="22dp"
-            android:textSize="12sp"
-            android:text="Recibida" />
-    </FrameLayout>
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="92dp"
+            android:maxWidth="195dp"
+            android:layout_marginStart="15dp"
+            android:textSize="14sp"
+            android:text="Tomar Examen Bimestral" />
 
-</RelativeLayout>
+
+
+
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="-15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:gravity="end">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="93dp"
+                android:layout_height="33dp"
+                app:srcCompat="@drawable/fondo_jus_verde" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="50dp"
+                android:layout_height="17dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="Recibida"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
