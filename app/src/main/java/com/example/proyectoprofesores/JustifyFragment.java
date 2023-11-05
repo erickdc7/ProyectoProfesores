@@ -46,7 +46,7 @@ public class JustifyFragment extends Fragment implements Response.Listener<JSONA
     RecyclerView recyFal;
     ArrayList<JustiFaltas> listFaltas;
 
-    RequestQueue request;
+    //RequestQueue request;
     JsonArrayRequest jsonArrayRequest;
 
     ProgressBar progressBar;
@@ -91,7 +91,7 @@ public class JustifyFragment extends Fragment implements Response.Listener<JSONA
         recyFal.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyFal.setHasFixedSize(true);
 
-        request= Volley.newRequestQueue(getContext());
+        //request= Volley.newRequestQueue(getContext());
 
         cargarWebService();
 
@@ -100,10 +100,12 @@ public class JustifyFragment extends Fragment implements Response.Listener<JSONA
 
     private void cargarWebService() {
         progressBar.setVisibility(View.VISIBLE);
-        String url = "https://fzac2311.000webhostapp.com/obtener_justificaciones.php";
+        String ip = getString(R.string.ip);
+        String url = ip + "/obtener_justificaciones.php";
 
         jsonArrayRequest= new JsonArrayRequest(Request.Method.GET, url, null, this, this );
-        request.add(jsonArrayRequest);
+        //request.add(jsonArrayRequest);
+        VoleySingleton.getIntanciaV(getContext()).addToRequestQueue(jsonArrayRequest);
     }
 
     @Override

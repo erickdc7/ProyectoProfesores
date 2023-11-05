@@ -12,11 +12,10 @@ public class VoleySingleton {
 
     private static VoleySingleton intanciaV;
     private RequestQueue request;
-    private ImageLoader mImageLoader;
     private static Context contexto;
 
-    private VoleySingleton(Context contexto) {
-        contexto = contexto;
+    private VoleySingleton(Context context) {
+        contexto = context;
         request = getRequestQueue();
     }
 
@@ -24,7 +23,7 @@ public class VoleySingleton {
 
     public static  synchronized VoleySingleton getIntanciaV(Context context) {
         if(intanciaV==null){
-            intanciaV=new VoleySingleton(contexto);
+            intanciaV=new VoleySingleton(context);
         }
         return intanciaV;
     }
