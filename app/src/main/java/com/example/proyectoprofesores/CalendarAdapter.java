@@ -1,21 +1,27 @@
 package com.example.proyectoprofesores;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Calendar;
 import java.util.List;
 
-public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHolder> {
+public class CalendarAdapter extends RecyclerView.Adapter<com.example.proyectoprofesores.CalendarAdapter.ViewHolder> {
 
-    private List<CalendarItem> calendarItems;
-    private Context context;
+        private List<CalendarItem> calendarItems;
+    private int selectedItemPosition = -1;
+    private boolean inicio = true;
+        private Context context;
 
 
     public CalendarAdapter(List<CalendarItem> calendarItems, Context context) {
@@ -33,19 +39,68 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         final CalendarItem item = calendarItems.get(position);
 
         holder.dayOfWeek.setText(item.getDayOfWeek());
         holder.dayNumber.setText(item.getDayNumber());
-       //holder.monthName.setText(item.getMonthName());
-        //holder.year.setText(item.getYear());
+
+        if (item.isSelected()) {
+            holder.itemView.setBackgroundResource(R.drawable.rectangle_outline_blue);
+            holder.dayOfWeek.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.white));
+            holder.dayNumber.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.white));
+        } else {
+            holder.itemView.setBackgroundResource(R.drawable.rectangle_outline);
+            holder.dayOfWeek.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
+            holder.dayNumber.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
+        }
+        // Comprueba si el día actual es igual a la fecha de este elemento
+
+        Calendar calendar = Calendar.getInstance();
+        int todayDay = calendar.get(Calendar.DAY_OF_MONTH);
+        int todayMonth = calendar.get(Calendar.MONTH);
+        int todayYear = calendar.get(Calendar.YEAR);
+
+        if (item.getDayNumber().equals(String.valueOf(todayDay)) && item.getMonth() == todayMonth && item.getYear() == todayYear && inicio) {
+            // Establece el estado seleccionado si es el día actual
+            item.setSelected(true);
+            selectedItemPosition=position;
+            holder.itemView.setBackgroundResource(R.drawable.rectangle_outline_blue);
+            holder.dayOfWeek.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.white));
+            holder.dayNumber.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.white));
+            inicio = false;
+        }
+
+        // Comprueba si el elemento actual es diferente del elemento seleccionado y no es el día actual
+        if (position != selectedItemPosition && !item.isSelected()) {
+            holder.itemView.setBackgroundResource(R.drawable.rectangle_outline);
+            holder.dayOfWeek.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
+            holder.dayNumber.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
+        }
 
         // Configura el OnClickListener para cada elemento
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 mostrarDetallesDeFecha(item);
+
+                if (!item.isSelected()) {
+                    // Restablece el fondo del elemento previamente seleccionado
+                    if (selectedItemPosition != -1) {
+                        CalendarItem previouslySelectedItem = calendarItems.get(selectedItemPosition);
+                        previouslySelectedItem.setSelected(false);
+                        notifyItemChanged(selectedItemPosition);
+                    }
+
+                    // Marca el nuevo elemento como seleccionado
+                    selectedItemPosition = position;
+                    item.setSelected(true);
+                    holder.itemView.setBackgroundResource(R.drawable.rectangle_outline_blue);
+                    holder.dayOfWeek.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.white));
+                    holder.dayNumber.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.white));
+                }
+
             }
         });
     }
@@ -63,22 +118,25 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
             dayOfWeek = itemView.findViewById(R.id.calendar_day);
             dayNumber = itemView.findViewById(R.id.calendar_number);
 
-
         }
     }
 
     // Método para mostrar los detalles de las fechas en el Activity
     private void mostrarDetallesDeFecha(CalendarItem item) {
+
         // Actualiza los elementos de la vista principal en el Activity
         TextView numberCalendar = ((Activity) context).findViewById(R.id.number_calendar);
         TextView weekDayCalendar = ((Activity) context).findViewById(R.id.weekDay_calendar);
         TextView monthCalendar = ((Activity) context).findViewById(R.id.month_calendar);
         TextView yearCalendar = ((Activity) context).findViewById(R.id.year_calendar);
-
+        LinearLayout fondo = ((Activity) context).findViewById(R.id.linear_calendar);
 
         numberCalendar.setText(item.getDayNumber());
         weekDayCalendar.setText(item.getFullWeekName(item.getDayOfWeek()));
         monthCalendar.setText(item.getMonthName());
-        yearCalendar.setText(String.valueOf(item.getYear()));// Actualiza el mes como desees
+        yearCalendar.setText(String.valueOf(item.getYear()));
+
+
+
     }
 }

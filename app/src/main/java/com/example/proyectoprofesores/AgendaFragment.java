@@ -66,6 +66,7 @@ public class AgendaFragment extends Fragment implements OnAgendaClickListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
@@ -97,7 +98,7 @@ public class AgendaFragment extends Fragment implements OnAgendaClickListener{
         Calendar calendar = Calendar.getInstance();
 
 
-
+//guardar el año y mes actual
         currentYear = calendar.get(Calendar.YEAR);
         currentMonth = calendar.get(Calendar.MONTH);
 
@@ -106,7 +107,8 @@ public class AgendaFragment extends Fragment implements OnAgendaClickListener{
         monthName.setText(obtenerNombreMes(currentMonth));
         year.setText(String.valueOf(currentYear));
 
-        updateCalendar(currentYear, currentMonth);
+        updateCalendar(currentYear);
+        posicionActual(recyclerView);
 
         //Evento
         recyclerEvento = view.findViewById(R.id.recycleEvento_id);
@@ -121,23 +123,29 @@ public class AgendaFragment extends Fragment implements OnAgendaClickListener{
         recyclerEvento.setAdapter(adapterE);
 
     }
-    private void updateCalendar(int year, int month) {
+
+
+    private void updateCalendar(int year) {
         calendarItems.clear();
 
-        // Obtén el primer día del mes
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, 1);
-        //int firstDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-        int maxDayOfMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        // Recorre todos los meses del año
+        for (int month = 0; month < 12; month++) {
+            // Obtén el primer día del mes actual
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(year, month, 1);
 
-        // Llena la lista con datos del calendario
-        for (int i = 1; i <= maxDayOfMonth; i++) {
-            calendar.set(year, month, i);
-            String dayOfWeek = obtenerNombreDiaSemana(calendar.get(Calendar.DAY_OF_WEEK));
-            String monthName = obtenerNombreMes(currentMonth);
-            String dayNumber = String.valueOf(i);
+            // Número de días del mes actual
+            int maxDayOfMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
 
-            calendarItems.add(new CalendarItem(dayOfWeek, dayNumber, year, month, monthName));
+            // Llena la lista con datos del calendario para este mes
+            for (int i = 1; i <= maxDayOfMonth; i++) {
+                calendar.set(year, month, i);
+                String dayOfWeek = obtenerNombreDiaSemana(calendar.get(Calendar.DAY_OF_WEEK));
+                String monthName = obtenerNombreMes(month);
+                String dayNumber = String.valueOf(i);
+
+                calendarItems.add(new CalendarItem(dayOfWeek, dayNumber, year, month, monthName));
+            }
         }
 
         adapter.notifyDataSetChanged();
@@ -161,5 +169,25 @@ public class AgendaFragment extends Fragment implements OnAgendaClickListener{
                 .replace(R.id.container, fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    public void posicionActual(RecyclerView recycleCalendar){
+        Calendar calendar = Calendar.getInstance();
+        int todayDay = calendar.get(Calendar.DAY_OF_MONTH);
+        int todayMonth = calendar.get(Calendar.MONTH);
+
+        int positionOfToday = -1;
+        for (int i = 0; i < calendarItems.size(); i++) {
+            CalendarItem item = calendarItems.get(i);
+            if ((Integer.parseInt(item.getDayNumber()) == todayDay) && (item.getMonth() == todayMonth)) {
+                positionOfToday = i;
+                break;
+            }
+        }
+
+        if (positionOfToday != -1) {
+            // Establece la posición del día actual en la vista
+            recycleCalendar.scrollToPosition(positionOfToday);
+        }
     }
 }

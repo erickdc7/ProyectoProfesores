@@ -6,6 +6,7 @@ public class CalendarItem {
     private int year;          // Año
     private int month;         // Mes (0 para enero, 1 para febrero, ...)
     private String monthName;
+    private boolean isSelected;
 
     public CalendarItem(String dayOfWeek, String dayNumber, int year, int month, String monthName) {
         this.dayOfWeek = dayOfWeek;
@@ -13,6 +14,7 @@ public class CalendarItem {
         this.year = year;
         this.month = month;
         this.monthName = monthName;
+        this.isSelected = false;
     }
 
     public String getDayOfWeek() {
@@ -37,6 +39,13 @@ public class CalendarItem {
 
     public void setMonthName(String monthName) {
         this.monthName = monthName;
+    }
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
     public static String getFullWeekName(String weekName){
         switch (weekName){
