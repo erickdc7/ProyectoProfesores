@@ -5,12 +5,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.toolbox.JsonArrayRequest;
+
 public class EmailActivity extends AppCompatActivity{
     Button button;
     EditText editText;
+    
+    JsonArrayRequest jsonArrayRequest;
+
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +36,13 @@ public class EmailActivity extends AppCompatActivity{
                     Intent intent =new Intent(EmailActivity.this, ContraActivity.class);
                     startActivity(intent);
                 }
+                verificarusuario();
             }
         });
+    }
+
+    private void verificarusuario() {
+
     }
 
 }

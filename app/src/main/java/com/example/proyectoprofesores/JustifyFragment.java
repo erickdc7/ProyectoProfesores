@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -105,6 +106,7 @@ public class JustifyFragment extends Fragment implements Response.Listener<JSONA
 
         jsonArrayRequest= new JsonArrayRequest(Request.Method.GET, url, null, this, this );
         //request.add(jsonArrayRequest);
+        jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS*2, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         VoleySingleton.getIntanciaV(getContext()).addToRequestQueue(jsonArrayRequest);
     }
 

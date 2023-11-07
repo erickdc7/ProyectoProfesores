@@ -12,7 +12,12 @@
         android:layout_height="55dp"
         android:layout_marginBottom="40dp"
         app:srcCompat="@drawable/group12427mmm" />
-
+    <ProgressBar
+        android:id="@+id/progres_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="297dp"
