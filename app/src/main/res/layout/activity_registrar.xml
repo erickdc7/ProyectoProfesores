@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_marginBottom="40dp"
+        app:srcCompat="@drawable/group12427mmm" />
+    <ProgressBar
+        android:id="@+id/progre_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+    <EditText
+        android:id="@+id/TextE"
+        android:layout_width="297dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/input_personalizado"
+        android:ems="10"
+        android:hint="@string/ejemplo_mail"
+        android:inputType="text"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#616161" />
+    <EditText
+        android:id="@+id/TextC"
+        android:layout_width="297dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/input_personalizado"
+        android:ems="10"
+        android:hint="@string/ejemplo_mail"
+        android:inputType="text"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#616161" />
+    <Button
+        android:id="@+id/button_enter"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bordes_boton_azul"
+        android:backgroundTint="@color/azul"
+        android:text="@string/iniciar_sesion"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"/>
+
+</LinearLayout>
