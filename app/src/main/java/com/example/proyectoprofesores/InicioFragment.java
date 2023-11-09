@@ -44,6 +44,13 @@ public class InicioFragment extends Fragment {
     ArrayList<Justificacion> listaJustificaciones;
     RecyclerView recyclerCurso;
     RecyclerView recyclerJustificacion;
+    TextView usuario_bienvenida;
+    String idUsuario;
+    String idDocente;
+    String nombre;
+    String apellido;
+    String correo;
+    String aulaTuto;
     private ActivityResultLauncher<Intent> scanActivityResultLauncher;
 
 
@@ -84,7 +91,9 @@ public class InicioFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
+
     }
 
     @Override
@@ -94,7 +103,16 @@ public class InicioFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_inicio, container, false);
 
         // ... (código existente)
+        Bundle args = getArguments();
+        idUsuario = args.getString("idUsuario", "");
+        idDocente =args.getString("idDocente", "");
+        nombre = args.getString("nombre", "");
+        apellido = args.getString("apellido", "");
+        correo = args.getString("correo", "");
+        aulaTuto = args.getString("aulaTuto", "");
 
+        usuario_bienvenida = view.findViewById(R.id.usuario_bienvenida);
+        usuario_bienvenida.setText("Bienvenido, "+nombre+"!");
         ImageView rectangulo_barra = view.findViewById(R.id.vermas);
         rectangulo_barra.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,7 +184,8 @@ public class InicioFragment extends Fragment {
                     }
                 }
         );
-        scanPlace.setOnClickListener(v -> iniciarEscaneo());
+
+
         notiPlace.setOnClickListener(v -> {
             Intent intent = new Intent( getContext(), NotificacionesActivity.class);
             startActivity(intent);

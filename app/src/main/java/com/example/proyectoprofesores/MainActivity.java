@@ -20,6 +20,13 @@ public class MainActivity extends AppCompatActivity {
     private int selectedItem = R.id.inicio;
     private View lineaSeleccion;
     private View itemSeleccionado;
+
+    String idUsuario;
+    String idDocente;
+    String nombre;
+    String apellido;
+    String correo;
+    String aulaTuto;
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,29 +35,50 @@ public class MainActivity extends AppCompatActivity {
         lineaSeleccion = findViewById(R.id.lineaSeleccion);
         binding.bottomNavigationView.findViewById(selectedItem);
         actualizarPosicionLinea();
-        replaceFragment(new InicioFragment());
+        Intent intent = getIntent();
+        if (intent != null) {
+            idUsuario= intent.getStringExtra("idUsuario");
+            idDocente= intent.getStringExtra("idDocente");
+            nombre= intent.getStringExtra("nombre");
+            apellido= intent.getStringExtra("apellido");
+            correo= intent.getStringExtra("idUsuario");
+            aulaTuto= intent.getStringExtra("aulaTuto");
+        }
+
+        Bundle bundle = new Bundle();
+        bundle.putString("idUsuario", idUsuario);
+        bundle.putString("idDocente", idDocente);
+        bundle.putString("nombre", nombre);
+        bundle.putString("apellido", apellido);
+        bundle.putString("correo", correo);
+        bundle.putString("aulaTuto", aulaTuto);
+        replaceFragment(new InicioFragment(), bundle);
+
+
         binding.bottomNavigationView.setOnItemSelectedListener(item ->{
             selectedItem = item.getItemId();
             actualizarPosicionLinea();
             switch (item.getItemId()){
                 case R.id.inicio:
-                    replaceFragment(new InicioFragment());
+                    replaceFragment(new InicioFragment(), bundle);
+
                     break;
                 case R.id.agenda:
-                    replaceFragment(new AgendaFragment());
+                    replaceFragment(new AgendaFragment(), bundle);
                     break;
                 case R.id.directory:
-                    replaceFragment(new DirectorioFragment());
+                    replaceFragment(new DirectorioFragment(), bundle);
                     break;
                 case R.id.course:
-                    replaceFragment(new CoursesFragment());
+                    replaceFragment(new CoursesFragment(), bundle);
                     break;
             }
             return true;
         });
 
     }
-    private void replaceFragment(Fragment fragment){
+    private void replaceFragment(Fragment fragment, Bundle bundle){
+        fragment.setArguments(bundle);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.container, fragment);

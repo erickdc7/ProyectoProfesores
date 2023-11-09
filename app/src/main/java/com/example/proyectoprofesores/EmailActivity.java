@@ -42,6 +42,7 @@ public class EmailActivity extends AppCompatActivity{
                     Intent intent =new Intent(EmailActivity.this, ContraActivity.class);
                     intent.putExtra("USER", user);
                     startActivity(intent);
+
                 }
 
             }

@@ -76,6 +76,7 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener {
             searchView.setQuery("", false);
             searchView.clearFocus();
             adapterCursos filteredAdapter = new adapterCursos(getContext(), listCursos);
+            filteredAdapter.setOnCursoClickListener(this);
             recy.setAdapter(filteredAdapter);
         });
         Button fillunes = view.findViewById(R.id.fillunes);
@@ -156,8 +157,8 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener {
 
         // Crea un nuevo adaptador con la lista filtrada y configura el RecyclerView
         adapterCursos filteredAdapter = new adapterCursos(getContext(), filteredList);
-        recy.setAdapter(filteredAdapter);
         filteredAdapter.setOnCursoClickListener(this);
+        recy.setAdapter(filteredAdapter);
     }
 
     private void filterList(String status) {
@@ -185,8 +186,9 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener {
         }
 
         adapterCursos filteredAdapter = new adapterCursos(getContext(), filteredList);
-        recy.setAdapter(filteredAdapter);
         filteredAdapter.setOnCursoClickListener(this);
+        recy.setAdapter(filteredAdapter);
+
     }
 
 }
