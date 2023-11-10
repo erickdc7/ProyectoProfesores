@@ -25,6 +25,8 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener {
     SearchView searchView;
     String selectedFilter = "todos";
     String currentSearchText = "";
+    String idUsuario;
+    String idDocente;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -34,8 +36,10 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         Bundle args = getArguments();
+        idUsuario = args.getString("idUsuario", "");
+        idDocente = args.getString("idDocente", "");
+
         if (args != null) {
             String textoSalon = args.getString("textoSalon", "");
             // Usa textoSalon como desees
@@ -123,6 +127,8 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener {
         bundle.putString("aula", textoAula);
         bundle.putString("curso", textoCurso);
         bundle.putString("nivel", textoNivel);
+        bundle.putString("idUsuario", idUsuario);
+        bundle.putString("idDocente", idDocente);
         fragment.setArguments(bundle);
 
         getParentFragmentManager().beginTransaction()

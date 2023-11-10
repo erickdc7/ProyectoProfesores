@@ -48,6 +48,8 @@ public class CourseDescpFragment extends Fragment implements OnNoteSavedListener
     NoteAdapter adapter;
 
     String textoCurso;
+    String idUsuario;
+    String idDocente;
 
     /**
      * Use this factory method to create a new instance of
@@ -90,6 +92,9 @@ public class CourseDescpFragment extends Fragment implements OnNoteSavedListener
         backp.setOnClickListener(v -> getParentFragmentManager().popBackStack());
 
         Bundle args = getArguments();
+        idUsuario = args.getString("idUsuario", "");
+        idDocente = args.getString("idDocente", "");
+
         if(args!=null){
             textoCurso = args.getString("curso", "");
             TextView textCour = view.findViewById(R.id.titleC);
@@ -104,6 +109,8 @@ public class CourseDescpFragment extends Fragment implements OnNoteSavedListener
             noteDetailActivity.setOnNoteSavedListener(this);
             Intent intent = new Intent(getContext(), NoteDetailActivity.class);
             intent.putExtra("curso", textoCurso);
+            intent.putExtra("idUsuario", idUsuario);
+            intent.putExtra("idDocenete", idDocente);
             startActivity(intent);
         });
 

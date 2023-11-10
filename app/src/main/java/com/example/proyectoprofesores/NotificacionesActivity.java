@@ -1,5 +1,6 @@
 package com.example.proyectoprofesores;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,7 +17,8 @@ public class NotificacionesActivity extends AppCompatActivity {
     private AdapterNotificaciones adapter;
     private ArrayList<Notificaciones> listaNotificaciones = new ArrayList<>();
     ImageView back;
-
+    String idUsuario;
+    String idDocente;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,12 @@ public class NotificacionesActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            idUsuario= intent.getStringExtra("idUsuario");
+            idDocente= intent.getStringExtra("idDocente");
+        }
 
         recyclerView = findViewById(R.id.recyclerViewNotificaciones);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

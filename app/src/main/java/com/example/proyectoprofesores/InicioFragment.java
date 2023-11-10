@@ -187,10 +187,18 @@ public class InicioFragment extends Fragment {
         scanPlace.setOnClickListener(v -> iniciarEscaneo());
         notiPlace.setOnClickListener(v -> {
             Intent intent = new Intent( getContext(), NotificacionesActivity.class);
+            intent.putExtra("idUsuario", idUsuario);
+            intent.putExtra("idDocente", idDocente);
             startActivity(intent);
         });
         userPlace.setOnClickListener(v -> {
+
             Intent intent = new Intent( getContext(), PerfilActivity.class);
+            intent.putExtra("idUsuario", idUsuario);
+            intent.putExtra("idDocente", idDocente);
+            intent.putExtra("nombre", nombre);
+            intent.putExtra("apellido", apellido);
+            intent.putExtra("correo", correo);
             startActivity(intent);
         });
 
