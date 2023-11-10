@@ -1,17 +1,22 @@
 package com.example.proyectoprofesores;
 
+import static android.app.Activity.RESULT_OK;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,15 +25,30 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CourseDescpFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CourseDescpFragment extends Fragment implements OnNoteSavedListener {
+public class CourseDescpFragment extends Fragment implements Response.Listener<JSONArray>, Response.ErrorListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,17 +59,19 @@ public class CourseDescpFragment extends Fragment implements OnNoteSavedListener
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    String tituloN = "titulo ejemplo";
-    String contentN = "conenido";
     ImageView backp;
     ArrayList<notas>  noteList = new ArrayList<>();
     Button botonInsertarNotas;
     RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
     NoteAdapter adapter;
 
     String textoCurso;
     String idUsuario;
     String idDocente;
+    String idCurso = "9";
+
+    JsonArrayRequest jsonArrayRequest;
 
     /**
      * Use this factory method to create a new instance of
@@ -78,6 +100,18 @@ public class CourseDescpFragment extends Fragment implements OnNoteSavedListener
         }
     }
 
+    private final ActivityResultLauncher<Intent> noteDetailLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    // Handle the result if needed
+                    noteList.clear();
+                    cargarWebService();
+                }
+            }
+    );
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -105,27 +139,32 @@ public class CourseDescpFragment extends Fragment implements OnNoteSavedListener
 
         botonInsertarNotas = view.findViewById(R.id.botonInsertarNotas);
         botonInsertarNotas.setOnClickListener(v -> {
-            NoteDetailActivity noteDetailActivity = new NoteDetailActivity();
-            noteDetailActivity.setOnNoteSavedListener(this);
             Intent intent = new Intent(getContext(), NoteDetailActivity.class);
             intent.putExtra("curso", textoCurso);
             intent.putExtra("idUsuario", idUsuario);
             intent.putExtra("idDocenete", idDocente);
-            startActivity(intent);
+            intent.putExtra("idCurso", idCurso);
+            noteDetailLauncher.launch(intent);
         });
 
 
         recyclerView = view.findViewById(R.id.recy_note);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
+        noteList.clear();
+        cargarWebService();
 
-        adapter = new NoteAdapter(getContext(), noteList);
-        noteList.add(new notas(tituloN, contentN));
-        adapter.notifyDataSetChanged();
-        recyclerView.setAdapter(adapter);
 
-        loadNotesFromPreferences();
+    }
+    private void cargarWebService() {
+        String ip = getString(R.string.ip);
+        String url = ip + "/obtener_notas.php?id_usuario="+idUsuario+"&id_cursos="+idCurso;
 
+        jsonArrayRequest= new JsonArrayRequest(Request.Method.GET, url, null, this, this );
+        //request.add(jsonArrayRequest);
+        jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS*2, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        VoleySingleton.getIntanciaV(getContext()).addToRequestQueue(jsonArrayRequest);
     }
     public void saveNotesToPreferences() {
         SharedPreferences sharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -188,10 +227,42 @@ public class CourseDescpFragment extends Fragment implements OnNoteSavedListener
 
 
     @Override
-    public void onNoteSaved(String noteTitle, String noteContent) {
+    public void onResponse(JSONArray response) {
+        try {
+            noteList.clear();
+            for(int i=0; i<response.length(); i++){
+                JSONObject jsonObject = response.getJSONObject(i);
 
-        Log.d("Cargado desde noteDEs", "Título: " + noteTitle + ", Contenido: " + noteContent);
-        noteList.add(new notas(noteTitle, noteContent));
+                notas nota =  new notas();
+                nota.setId(Integer.parseInt(jsonObject.optString("id_anotaciones")));
+                nota.setTitle(jsonObject.optString("titulo"));
+                nota.setContent(jsonObject.optString("descripcion"));
+                nota.setFecha(jsonObject.optString("fecha"));
+                nota.setHora(jsonObject.optString("hora"));
+                noteList.add(nota);
+            }
+            if (adapter != null) {
+                adapter.updateData(noteList);
+            } else {
+                adapter = new NoteAdapter(getContext(), noteList);
+                recyclerView.setAdapter(adapter);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(), "No se ha podido establecer conexion con el servidor" + " " + response, Toast.LENGTH_LONG).show();
+
+        }
+    }
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(getContext(), "No se puede conectar" + error.toString(), Toast.LENGTH_LONG).show();
+        System.out.println();
+        Log.d("ERROR:", error.toString());
 
     }
+
+
+
+
 }

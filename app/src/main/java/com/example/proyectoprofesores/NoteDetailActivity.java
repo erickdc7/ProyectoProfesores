@@ -31,6 +31,7 @@ public class NoteDetailActivity extends AppCompatActivity implements Response.Li
     String textoCurso;
     String idUsuario;
     String idDocente;
+    String idCurso;
 
     JsonObjectRequest jsonObjectRequest;
 
@@ -47,7 +48,7 @@ public class NoteDetailActivity extends AppCompatActivity implements Response.Li
         noteList = new ArrayList<>();
         saveNoteBtn.setOnClickListener((v)->{
                     cargarNotaService();
-                    saveNote();
+                    finish();
                 });
         volver = findViewById(R.id.volverbt);
         volver.setOnClickListener(v -> finish());
@@ -57,32 +58,26 @@ public class NoteDetailActivity extends AppCompatActivity implements Response.Li
             idUsuario= intent.getStringExtra("idUsuario");
             idDocente= intent.getStringExtra("idDocente");
             textoCurso= intent.getStringExtra("curso");
+            idCurso = intent.getStringExtra("idCurso");
         }
 
-        // Inicializa el listener aquí si es necesario
-        listener = new CourseDescpFragment();
 
     }
 
     private void cargarNotaService() {
         String ip = getString(R.string.ip);
-        String url = ip + "/obtener_justificaciones.php?titulo="+titleEditText.getText().toString()+"&contenido="+contentEditText.getText().toString();
+        String noteTitle = titleEditText.getText().toString();
+        String noteContent = contentEditText.getText().toString();
+        String url = ip + "/registrar_anotacion.php?titulo="+noteTitle+"&contenido="+noteContent+"&id_usuario="+idUsuario+"&id_cursos="+idCurso;
         url=url.replace(" ", "%20");
         jsonObjectRequest= new JsonObjectRequest(Request.Method.GET, url, null, this, this );
         //request.add(jsonArrayRequest);
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS*2, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS*4, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         VoleySingleton.getIntanciaV(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
     }
 
 
-    private void saveNote() {
-        String noteTitle = titleEditText.getText().toString();
-        String noteContent = contentEditText.getText().toString();
-        if(!noteTitle.isEmpty() && !noteContent.isEmpty()){
-            listener.onNoteSaved(noteTitle, noteContent);
-            finish();
-        }
-    }
+
 
     private void clearInputFields() {
         titleEditText.getText().clear();
@@ -97,6 +92,7 @@ public class NoteDetailActivity extends AppCompatActivity implements Response.Li
         Toast.makeText(this, "Se ha registrado exitosamente", Toast.LENGTH_SHORT).show();
         titleEditText.setText("");
         contentEditText.setText("");
+        setResult(RESULT_OK, new Intent());
     }
 
     @Override
