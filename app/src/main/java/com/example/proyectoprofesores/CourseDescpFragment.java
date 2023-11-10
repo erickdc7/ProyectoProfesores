@@ -32,6 +32,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,7 +49,7 @@ import java.util.Locale;
  * Use the {@link CourseDescpFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CourseDescpFragment extends Fragment implements Response.Listener<JSONArray>, Response.ErrorListener {
+public class CourseDescpFragment extends Fragment implements OnNoteClickListener, Response.Listener<JSONArray>, Response.ErrorListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -166,6 +167,46 @@ public class CourseDescpFragment extends Fragment implements Response.Listener<J
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS*2, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         VoleySingleton.getIntanciaV(getContext()).addToRequestQueue(jsonArrayRequest);
     }
+    @Override
+    public void onNoteClick(int position) {
+        String id = String.valueOf(noteList.get(position).getId());
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Eliminar esta nota.");
+        builder.setMessage("¿Esta seguro de querer eliminar esta nota?");
+        builder.setPositiveButton("Delete", (dialog, which) -> {eliminarWebService(id);
+            noteList.clear();
+            cargarWebService();});
+        builder.setNegativeButton("Cancel", null);
+        builder.show();
+
+    }
+    private void eliminarWebService(String id) {
+        String ip = getString(R.string.ip);
+        String url = ip + "/eliminar_notas.php?id="+ id;
+        StringRequest request =  new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(response.trim().equalsIgnoreCase("elimina")){
+                    Toast.makeText(getContext(), "Se ha eliminado con exito", Toast.LENGTH_SHORT).show();
+                }else{
+                    if (response.trim().equalsIgnoreCase("noExiste")) {
+                        Toast.makeText(getContext(), "No se encuentra la nota", Toast.LENGTH_SHORT).show();
+
+                    }else{
+                        Toast.makeText(getContext(), "No se ha eliminado", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "No se ha podido conectar", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        request.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS*2, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        VoleySingleton.getIntanciaV(getContext()).addToRequestQueue(request);
+    }
     public void saveNotesToPreferences() {
         SharedPreferences sharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -215,14 +256,13 @@ public class CourseDescpFragment extends Fragment implements Response.Listener<J
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Eliminar esta nota.");
         builder.setMessage("¿Esta seguro de querer eliminar esta nota?");
-        builder.setPositiveButton("Delete", (dialog, which) -> deleteNoteAndRefresh(nota));
+        builder.setPositiveButton("Delete", (dialog, which) -> {deleteNoteAndRefresh();});
         builder.setNegativeButton("Cancel", null);
         builder.show();
     }
 
-    private void deleteNoteAndRefresh(notas nota){
-        noteList.remove(nota);
-        saveNotesToPreferences();
+    private void deleteNoteAndRefresh(){
+
     }
 
 
@@ -243,8 +283,11 @@ public class CourseDescpFragment extends Fragment implements Response.Listener<J
             }
             if (adapter != null) {
                 adapter.updateData(noteList);
+                adapter.notifyDataSetChanged();
+                Log.d("CourseDescpFragment", "onResponse: Data updated successfully.");
             } else {
                 adapter = new NoteAdapter(getContext(), noteList);
+                adapter.setOnNoteClickListener(this);
                 recyclerView.setAdapter(adapter);
             }
 
@@ -253,6 +296,7 @@ public class CourseDescpFragment extends Fragment implements Response.Listener<J
             Toast.makeText(getContext(), "No se ha podido establecer conexion con el servidor" + " " + response, Toast.LENGTH_LONG).show();
 
         }
+
     }
     @Override
     public void onErrorResponse(VolleyError error) {
@@ -262,7 +306,23 @@ public class CourseDescpFragment extends Fragment implements Response.Listener<J
 
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        noteList.clear();
+        cargarWebService();
+        Log.d("CourseDescpFragment", "onResponse: Data updated successfully.");
+    }
 
 
 }

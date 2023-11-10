@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -32,11 +33,13 @@ public class NoteDetailActivity extends AppCompatActivity implements Response.Li
     String idUsuario;
     String idDocente;
     String idCurso;
+    TextView pageTitleTextView;
+    String title, content, docId, codId, id;
 
     JsonObjectRequest jsonObjectRequest;
 
     private OnNoteSavedListener listener;
-
+    boolean isEditMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,23 @@ public class NoteDetailActivity extends AppCompatActivity implements Response.Li
         titleEditText = findViewById(R.id.notes_title_text);
         contentEditText = findViewById(R.id.notes_content_text);
         saveNoteBtn = findViewById(R.id.save_note_btn);
+        pageTitleTextView = findViewById(R.id.page_title);
         noteList = new ArrayList<>();
+        idUsuario= getIntent().getStringExtra("idUsuario");
+        idDocente= getIntent().getStringExtra("idDocente");
+        textoCurso= getIntent().getStringExtra("curso");
+        idCurso = getIntent().getStringExtra("idCurso");
+        title = getIntent().getStringExtra("title");
+        content = getIntent().getStringExtra("content");
+        id = getIntent().getStringExtra("id");
+        if(id!=null && !id.isEmpty()){
+            isEditMode= true;
+        }
+        titleEditText.setText(title);
+        contentEditText.setText(content);
+        if(isEditMode){
+            pageTitleTextView.setText("Editar nota");
+        }
         saveNoteBtn.setOnClickListener((v)->{
                     cargarNotaService();
                     finish();
@@ -53,13 +72,6 @@ public class NoteDetailActivity extends AppCompatActivity implements Response.Li
         volver = findViewById(R.id.volverbt);
         volver.setOnClickListener(v -> finish());
 
-        Intent intent = getIntent();
-        if (intent != null) {
-            idUsuario= intent.getStringExtra("idUsuario");
-            idDocente= intent.getStringExtra("idDocente");
-            textoCurso= intent.getStringExtra("curso");
-            idCurso = intent.getStringExtra("idCurso");
-        }
 
 
     }
@@ -68,12 +80,26 @@ public class NoteDetailActivity extends AppCompatActivity implements Response.Li
         String ip = getString(R.string.ip);
         String noteTitle = titleEditText.getText().toString();
         String noteContent = contentEditText.getText().toString();
-        String url = ip + "/registrar_anotacion.php?titulo="+noteTitle+"&contenido="+noteContent+"&id_usuario="+idUsuario+"&id_cursos="+idCurso;
-        url=url.replace(" ", "%20");
-        jsonObjectRequest= new JsonObjectRequest(Request.Method.GET, url, null, this, this );
-        //request.add(jsonArrayRequest);
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS*4, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        VoleySingleton.getIntanciaV(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
+        String url;
+        if(isEditMode){
+            url = ip + "/update_notas.php?id="+ id+ "&titulo="+noteTitle+"&contenido="+noteContent;
+            url=url.replace(" ", "%20");
+            jsonObjectRequest= new JsonObjectRequest(Request.Method.GET, url, null, this, this );
+            //request.add(jsonArrayRequest);
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS*4, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            VoleySingleton.getIntanciaV(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
+
+
+        }else{
+            url = ip + "/registrar_anotacion.php?titulo="+noteTitle+"&contenido="+noteContent+"&id_usuario="+idUsuario+"&id_cursos="+idCurso;
+            url=url.replace(" ", "%20");
+            jsonObjectRequest= new JsonObjectRequest(Request.Method.GET, url, null, this, this );
+            //request.add(jsonArrayRequest);
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS*4, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            VoleySingleton.getIntanciaV(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
+        }
+
+
     }
 
 
@@ -89,17 +115,31 @@ public class NoteDetailActivity extends AppCompatActivity implements Response.Li
 
     @Override
     public void onResponse(JSONObject response) {
-        Toast.makeText(this, "Se ha registrado exitosamente", Toast.LENGTH_SHORT).show();
-        titleEditText.setText("");
-        contentEditText.setText("");
-        setResult(RESULT_OK, new Intent());
+        if(isEditMode){
+            Toast.makeText(this, "Se ha editado exitosamente", Toast.LENGTH_SHORT).show();
+            titleEditText.setText("");
+            contentEditText.setText("");
+            setResult(RESULT_OK, new Intent());
+        }else{
+            Toast.makeText(this, "Se ha registrado exitosamente", Toast.LENGTH_SHORT).show();
+            titleEditText.setText("");
+            contentEditText.setText("");
+            setResult(RESULT_OK, new Intent());
+        }
+
     }
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(this, "No se pudo registrar"+error.toString(), Toast.LENGTH_SHORT).show();
-        Log.i("ERROR: ", error.toString() );
+        if (isEditMode){
+            Toast.makeText(this, "No se pudo editar"+error.toString(), Toast.LENGTH_SHORT).show();
+            Log.i("ERROR: ", error.toString() );
+        }else {
+            Toast.makeText(this, "No se pudo registrar"+error.toString(), Toast.LENGTH_SHORT).show();
+            Log.i("ERROR: ", error.toString() );
+        }
+
     }
 
-    
+
 }

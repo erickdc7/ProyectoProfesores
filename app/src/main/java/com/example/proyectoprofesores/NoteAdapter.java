@@ -1,6 +1,7 @@
 package com.example.proyectoprofesores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,7 +70,18 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolderDato
         }
         holder.titulo.setText(listNotas.get(position).getTitle());
         holder.content.setText(listNotas.get(position).getContent());
-
+        holder.itemView.setOnClickListener((V)->{
+            Intent intent =  new Intent(context, NoteDetailActivity.class);
+            intent.putExtra("title", listNotas.get(position).getTitle());
+            intent.putExtra("content", listNotas.get(position).getContent());
+            intent.putExtra("id",  String.valueOf(listNotas.get(position).getId()));
+            context.startActivity(intent);
+        });
+        holder.itemView.setOnLongClickListener((v)->{
+            int adapterPosition = holder.getAdapterPosition();
+            listener.onNoteClick(adapterPosition);
+            return false;
+        });
     }
 
     @Override
