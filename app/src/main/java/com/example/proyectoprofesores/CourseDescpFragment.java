@@ -2,8 +2,6 @@ package com.example.proyectoprofesores;
 
 import static android.content.Context.MODE_PRIVATE;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -20,13 +18,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,7 +47,7 @@ public class CourseDescpFragment extends Fragment implements OnNoteSavedListener
     RecyclerView recyclerView;
     NoteAdapter adapter;
 
-
+    String textoCurso;
 
     /**
      * Use this factory method to create a new instance of
@@ -92,18 +87,16 @@ public class CourseDescpFragment extends Fragment implements OnNoteSavedListener
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         backp = view.findViewById(R.id.closeCur);
-        backp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        backp.setOnClickListener(v -> getParentFragmentManager().popBackStack());
 
-                getParentFragmentManager().popBackStack();
-            }
-        });
         Bundle args = getArguments();
-            String textoCurso = args.getString("curso", "");
+        if(args!=null){
+            textoCurso = args.getString("curso", "");
             TextView textCour = view.findViewById(R.id.titleC);
             textCour.setText(textoCurso);
             // Usa textoSalon como desees
+        }
+
 
         botonInsertarNotas = view.findViewById(R.id.botonInsertarNotas);
         botonInsertarNotas.setOnClickListener(v -> {
@@ -166,12 +159,9 @@ public class CourseDescpFragment extends Fragment implements OnNoteSavedListener
         TextView contentTextView = noteView.findViewById(R.id.contectTextView);
         titleTextView.setText(note.getTitle());
         contentTextView.setText(note.getContent());
-        noteView.setOnLongClickListener(new View.OnLongClickListener(){
-            @Override
-            public boolean onLongClick(View v) {
-                showDeleteDialog(note);
-                return false;
-            }
+        noteView.setOnLongClickListener(v -> {
+            showDeleteDialog(note);
+            return false;
         });
     }
 

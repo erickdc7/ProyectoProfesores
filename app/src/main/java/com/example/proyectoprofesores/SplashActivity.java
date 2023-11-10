@@ -12,7 +12,6 @@ public class SplashActivity extends AppCompatActivity {
     String nombre;
     String apellido;
     String correo;
-    String aulaTuto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +22,7 @@ public class SplashActivity extends AppCompatActivity {
             idDocente= intent.getStringExtra("idDocente");
             nombre= intent.getStringExtra("nombre");
             apellido= intent.getStringExtra("apellido");
-            correo= intent.getStringExtra("idUsuario");
-            aulaTuto= intent.getStringExtra("aulaTuto");
+            correo= intent.getStringExtra("correo");
 
         }
         new Handler().postDelayed(new Runnable() {
@@ -36,7 +34,6 @@ public class SplashActivity extends AppCompatActivity {
                 intent.putExtra("nombre", nombre);
                 intent.putExtra("apellido", apellido);
                 intent.putExtra("correo", correo);
-                intent.putExtra("aulaTuto", aulaTuto);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();

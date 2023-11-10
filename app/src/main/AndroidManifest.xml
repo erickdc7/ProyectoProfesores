@@ -38,7 +38,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EmailActivity" />
+        <activity android:name=".UserActivity" />
         <activity android:name=".ContraActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".PerfilActivity" />

@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     String nombre;
     String apellido;
     String correo;
-    String aulaTuto;
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +40,7 @@ public class MainActivity extends AppCompatActivity {
             idDocente= intent.getStringExtra("idDocente");
             nombre= intent.getStringExtra("nombre");
             apellido= intent.getStringExtra("apellido");
-            correo= intent.getStringExtra("idUsuario");
-            aulaTuto= intent.getStringExtra("aulaTuto");
+            correo= intent.getStringExtra("correo");
         }
 
         Bundle bundle = new Bundle();
@@ -51,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         bundle.putString("nombre", nombre);
         bundle.putString("apellido", apellido);
         bundle.putString("correo", correo);
-        bundle.putString("aulaTuto", aulaTuto);
         replaceFragment(new InicioFragment(), bundle);
 
 

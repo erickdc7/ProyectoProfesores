@@ -1,7 +1,6 @@
 package com.example.proyectoprofesores;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -25,7 +24,7 @@ public class IntroActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(IntroActivity.this, EmailActivity.class);
+                Intent intent =new Intent(IntroActivity.this, UserActivity.class);
                 startActivity(intent);
             }
         });

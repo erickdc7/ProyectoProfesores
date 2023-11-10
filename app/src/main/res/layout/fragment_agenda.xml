@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="24"
-                android:textSize="35dp"
+                android:textSize="35sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"/>
             <TextView
@@ -108,9 +108,8 @@
             android:layout_height="match_parent"
             android:layout_below="@id/titulo_directorio"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="21dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_evento" />
@@ -118,6 +117,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:src="@drawable/line"
             android:layout_below="@id/titulo_directorio"
             android:layout_marginStart="95dp"/>

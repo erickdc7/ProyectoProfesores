@@ -1,8 +1,9 @@
 package com.example.proyectoprofesores;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,16 +12,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,6 +52,7 @@ public class JustifyFragment extends Fragment implements Response.Listener<JSONA
     JsonArrayRequest jsonArrayRequest;
 
     ProgressBar progressBar;
+    ImageView backp;
     public JustifyFragment() {
         // Required empty public constructor
     }
@@ -97,6 +99,13 @@ public class JustifyFragment extends Fragment implements Response.Listener<JSONA
         cargarWebService();
 
         return vista;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        backp = view.findViewById(R.id.imageatras);
+        backp.setOnClickListener(v -> getParentFragmentManager().popBackStack());
     }
 
     private void cargarWebService() {

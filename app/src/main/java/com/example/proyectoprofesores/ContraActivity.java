@@ -43,7 +43,6 @@ public class ContraActivity extends AppCompatActivity implements Response.Listen
     String nombre;
     String apellido;
     String correo;
-    String aulaTuto;
 
     ProgressBar progressBar;
     @SuppressLint("MissingInflatedId")
@@ -95,11 +94,7 @@ public class ContraActivity extends AppCompatActivity implements Response.Listen
 
     }
 
-    public static boolean verifyPassword(String inputPassword, String hashedPassword) {
-        Log.d("Password Verification", "Input Password: " + inputPassword);
-        Log.d("Password Verification", "Hashed Password: " + hashedPassword);
-        return BCrypt.checkpw(inputPassword, hashedPassword);
-    }
+
 
     @Override
     public void onErrorResponse(VolleyError error) {
@@ -119,14 +114,12 @@ public class ContraActivity extends AppCompatActivity implements Response.Listen
                 nombre = jsonObject.optString("nombre");
                 apellido = jsonObject.optString("apellido");
                 correo = jsonObject.optString("correo");
-                aulaTuto = jsonObject.optString("aula");
 
             }
 
             Log.d("Password Verification", "1 Password: " + pass);
             String inputPassword = editText.getText().toString();
-            final String contrasenaEncriptada = BCrypt.hashpw(inputPassword, BCrypt.gensalt());
-            Log.d("Password Verification", "2 Password: " + contrasenaEncriptada);
+            Log.d("Password Verification", "2 Password: " + inputPassword);
             if (verifyPassword(inputPassword, pass)) {
                 Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
 
@@ -136,7 +129,6 @@ public class ContraActivity extends AppCompatActivity implements Response.Listen
                 intent.putExtra("nombre", nombre);
                 intent.putExtra("apellido", apellido);
                 intent.putExtra("correo", correo);
-                intent.putExtra("aulaTuto", aulaTuto);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
@@ -148,5 +140,11 @@ public class ContraActivity extends AppCompatActivity implements Response.Listen
             e.printStackTrace();
             Toast.makeText(getApplicationContext(), "usuario incorrecto", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public static boolean verifyPassword(String inputPassword, String hashedPassword) {
+        Log.d("Password Verification", "Input Password: " + inputPassword);
+        Log.d("Password Verification", "Hashed Password: " + hashedPassword);
+        return BCrypt.checkpw(inputPassword, hashedPassword);
     }
 }

@@ -43,7 +43,7 @@
     <string name="intro_texto"><b>Organizarte</b> se vuelve más fácil. Ahora al alcance de tu mano &#9995;</string>
     <string name="iniciar_sesion">Iniciar Sesión</string>
     <string name="recuperar_contra">¿Olvidaste tu contraseña?</string>
-    <string name="ejemplo_mail">example@gmail.com</string>
+    <string name="ejemplo_user">exampleuser</string>
     <string name="contrasena">Contraseña</string>
     <string name="perfil">Perfil</string>
     <string name="nombre">Nombre</string>

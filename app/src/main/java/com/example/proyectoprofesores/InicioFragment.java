@@ -50,7 +50,6 @@ public class InicioFragment extends Fragment {
     String nombre;
     String apellido;
     String correo;
-    String aulaTuto;
     private ActivityResultLauncher<Intent> scanActivityResultLauncher;
 
 
@@ -109,10 +108,10 @@ public class InicioFragment extends Fragment {
         nombre = args.getString("nombre", "");
         apellido = args.getString("apellido", "");
         correo = args.getString("correo", "");
-        aulaTuto = args.getString("aulaTuto", "");
-
+        String[] partes = nombre.split(" ");
+        String primerNombre = partes[0];
         usuario_bienvenida = view.findViewById(R.id.usuario_bienvenida);
-        usuario_bienvenida.setText("Bienvenido, "+nombre+"!");
+        usuario_bienvenida.setText("Bienvenido, "+primerNombre+"!");
         ImageView rectangulo_barra = view.findViewById(R.id.vermas);
         rectangulo_barra.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,7 +166,7 @@ public class InicioFragment extends Fragment {
                         Intent data = result.getData();
                         if (data != null) {
                             IntentResult scanResult = IntentIntegrator.parseActivityResult(
-                                    IntentIntegrator.REQUEST_CODE,   // Usamos REQUEST_CODE
+                                    IntentIntegrator.REQUEST_CODE,
                                     Activity.RESULT_OK,
                                     data
                             );
@@ -185,7 +184,7 @@ public class InicioFragment extends Fragment {
                 }
         );
 
-
+        scanPlace.setOnClickListener(v -> iniciarEscaneo());
         notiPlace.setOnClickListener(v -> {
             Intent intent = new Intent( getContext(), NotificacionesActivity.class);
             startActivity(intent);
