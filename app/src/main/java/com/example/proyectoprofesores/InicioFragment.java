@@ -9,6 +9,11 @@ import android.os.Bundle;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -19,6 +24,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,19 +34,27 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link InicioFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class InicioFragment extends Fragment {
+public class InicioFragment extends Fragment  implements Response.Listener<JSONArray>, Response.ErrorListener {
 
-    ArrayList<String> listaCursos;
+   // ArrayList<String> listaCursos;
+
+    ArrayList<CursoInicio> listaCursos = new ArrayList<>();
+
     ArrayList<Justificacion> listaJustificaciones;
     RecyclerView recyclerCurso;
     RecyclerView recyclerJustificacion;
@@ -50,6 +64,8 @@ public class InicioFragment extends Fragment {
     String nombre;
     String apellido;
     String correo;
+
+    JsonArrayRequest jsonArrayRequestCurso;
     private ActivityResultLauncher<Intent> scanActivityResultLauncher;
 
 
@@ -105,6 +121,7 @@ public class InicioFragment extends Fragment {
         Bundle args = getArguments();
         idUsuario = args.getString("idUsuario", "");
         idDocente =args.getString("idDocente", "");
+        System.out.println(idDocente);
         nombre = args.getString("nombre", "");
         apellido = args.getString("apellido", "");
         correo = args.getString("correo", "");
@@ -149,6 +166,11 @@ public class InicioFragment extends Fragment {
         });
 
         // ... (resto del código)
+        //instancia del recyclerCurso
+        recyclerCurso = view.findViewById(R.id.recyclerCourseId);
+        recyclerCurso.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerCurso.setHasFixedSize(true);
+        cargarWebServiceCurso();
 
         return view;
     }
@@ -202,15 +224,7 @@ public class InicioFragment extends Fragment {
             startActivity(intent);
         });
 
-        recyclerCurso = view.findViewById(R.id.recyclerCourseId);
-        recyclerCurso.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        recyclerCurso.setHasFixedSize(true);
-        listaCursos = new ArrayList<String>();
-        for(int i = 0; i<=20; i++){
-            listaCursos.add("Curso #" + i);
-        }
-        AdapterCurso adapterc = new AdapterCurso(listaCursos);
-        recyclerCurso.setAdapter(adapterc);
+
 
         recyclerJustificacion = view.findViewById(R.id.recyclerJustiId);
         recyclerJustificacion.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -223,6 +237,17 @@ public class InicioFragment extends Fragment {
         recyclerJustificacion.setAdapter(adapterj);
     }
 
+
+    private void cargarWebServiceCurso() {
+        String ip = "https://proyectoprofesores.000webhostapp.com";
+        String idDocenteURL ="?id_docente=" + idDocente;
+        String url = ip + "/obtenerCursosInicio.php" + idDocenteURL; //cambiar
+
+        jsonArrayRequestCurso= new JsonArrayRequest(Request.Method.GET, url, null, this, this );
+        //request.add(jsonArrayRequest);
+        //jsonArrayRequestCurso.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS*2, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        VoleySingleton.getIntanciaV(getContext()).addToRequestQueue(jsonArrayRequestCurso);
+    }
     private void iniciarEscaneo() {
         IntentIntegrator integrator = new IntentIntegrator(requireActivity());
         integrator.setOrientationLocked(true);
@@ -290,4 +315,40 @@ public class InicioFragment extends Fragment {
     }
 
 
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(getContext(), "No se puede conectar cursosss" + error.toString(), Toast.LENGTH_LONG).show();
+        System.out.println();
+        Log.d("ERROR:", error.toString());
+
+    }
+
+    @Override
+    public void onResponse(JSONArray response) {
+        try {
+            for(int i=0; i<response.length(); i++){
+                JSONObject jsonObject = response.getJSONObject(i);
+
+               CursoInicio cursosInicio =  new CursoInicio.Builder()
+                       .withCodHorario(jsonObject.optString("cod_horario"))
+                       .withAula(jsonObject.optString("aula"))
+                       .withCursos(jsonObject.optString("curso"))
+                       .withDia(jsonObject.optString("dia"))
+                       .withHoraInicio(Time.valueOf(jsonObject.optString("horainicio")))
+                       .withHoraFin(Time.valueOf(jsonObject.optString("horafin")))
+                       .build();
+
+               listaCursos.add(cursosInicio);
+            }
+           // progressBar.setVisibility(View.GONE);
+          AdapterCurso adapter =  new AdapterCurso(listaCursos, getContext());
+            recyclerCurso.setAdapter(adapter);
+           // recyFal.setAdapter(adapter);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(), "Error carga cursos" + " " + response, Toast.LENGTH_LONG).show();
+           // progressBar.setVisibility(View.GONE);
+        }
+    }
 }
