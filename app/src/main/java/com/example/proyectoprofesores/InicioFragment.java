@@ -239,13 +239,13 @@ public class InicioFragment extends Fragment  implements Response.Listener<JSONA
 
 
     private void cargarWebServiceCurso() {
-        String ip = "https://proyectoprofesores.000webhostapp.com";
+        String ip = getString(R.string.ip);
         String idDocenteURL ="?id_docente=" + idDocente;
         String url = ip + "/obtenerCursosInicio.php" + idDocenteURL; //cambiar
 
         jsonArrayRequestCurso= new JsonArrayRequest(Request.Method.GET, url, null, this, this );
         //request.add(jsonArrayRequest);
-        //jsonArrayRequestCurso.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS*2, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        jsonArrayRequestCurso.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS*4, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         VoleySingleton.getIntanciaV(getContext()).addToRequestQueue(jsonArrayRequestCurso);
     }
     private void iniciarEscaneo() {
