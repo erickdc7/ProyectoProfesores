@@ -24,19 +24,14 @@
             android:layout_marginTop="5dp"/>
     </RelativeLayout>
     <RelativeLayout
-        android:id="@+id/cuadroAgenda"
+        android:id="@+id/cuadro_horario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/horaAgenda"
         android:layout_marginStart="50dp"
-        android:layout_marginEnd="10dp">
-
-        <ImageView
-            android:id="@+id/cuadro_horario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/curso_agenda_primero" />
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/curso_agenda_primero">
 
         <TextView
             android:id="@+id/curso_nombre_agenda"
@@ -45,7 +40,8 @@
             android:text="Matemática"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="20dp"
+
             android:textSize="20dp"
             android:layout_marginStart="20dp"/>
         <TextView
@@ -68,7 +64,8 @@
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:src="@drawable/icon_location"
-                android:layout_marginStart="20dp"/>
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="20dp"/>
             <TextView
                 android:id="@+id/lugar_id"
                 android:layout_width="wrap_content"
@@ -76,7 +73,8 @@
                 android:text="Aula 6-105"
                 android:textColor="@color/white"
                 android:layout_toRightOf="@id/location_id_agenda"
-                android:layout_marginStart="10dp"/>
+                android:layout_marginStart="10dp"
+                />
         </RelativeLayout>
         <ImageView
             android:id="@+id/mas_id"
