@@ -124,8 +124,32 @@
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_evento" />
+        <RelativeLayout
+            android:id="@+id/noevento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titulo_directorio"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:visibility="gone">
+            >
+            <ImageView
+                android:id="@+id/caritaid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/carita"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No hay eventos que mostrar"
+                android:layout_toRightOf="@id/caritaid"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="5dp"/>
+
+        </RelativeLayout>
 
         <ImageView
+            android:id="@+id/lineaE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

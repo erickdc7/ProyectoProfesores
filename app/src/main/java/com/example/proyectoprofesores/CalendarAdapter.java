@@ -6,7 +6,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,7 +26,10 @@ public class CalendarAdapter extends RecyclerView.Adapter<com.example.proyectopr
     private RecyclerView recyclerViewE;
     private int selectedItemPosition = -1;
     private boolean inicio = true;
-        private Context context;
+    private Context context;
+    RelativeLayout noevento;
+    ImageView lineaE;
+
 
 
     public CalendarAdapter(List<CalendarItem> calendarItems, ArrayList<Evento> listaEventos, RecyclerView recyclerViewE, Context context) {
@@ -32,6 +37,8 @@ public class CalendarAdapter extends RecyclerView.Adapter<com.example.proyectopr
         this.listaEventos = listaEventos;
         this.recyclerViewE = recyclerViewE;
         this.context = context;
+        noevento = ((Activity) context).findViewById(R.id.noevento);
+        lineaE = ((Activity) context).findViewById(R.id.lineaE);
     }
 
 
@@ -41,6 +48,8 @@ public class CalendarAdapter extends RecyclerView.Adapter<com.example.proyectopr
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fecha_layout, parent, false);
         return new ViewHolder(view);
+
+
     }
 
     @Override
@@ -78,9 +87,14 @@ public class CalendarAdapter extends RecyclerView.Adapter<com.example.proyectopr
 
             //actualizar eventos
             ArrayList<Evento> eventosF= Evento.filtrarPorDia(listaEventos, CalendarItem.obtenerNombreDiaSemanaBD(todayWeek));
-            eventosF = Evento.filtrarEventosPasados(eventosF);
+            eventosF = (ArrayList<Evento>) Evento.filtrarEventosPasados(eventosF);
             EventoAdapter adapter =  new EventoAdapter(eventosF, context);
             recyclerViewE.setAdapter(adapter);
+
+            if(eventosF.size() == 0){
+                noevento.setVisibility(View.VISIBLE);
+                lineaE.setVisibility(View.GONE);
+            }
 
 
 
@@ -92,11 +106,6 @@ public class CalendarAdapter extends RecyclerView.Adapter<com.example.proyectopr
             holder.dayOfWeek.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
             holder.dayNumber.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
 
-
-
-
-
-
         }
 
         // Configura el OnClickListener para cada elemento
@@ -105,14 +114,25 @@ public class CalendarAdapter extends RecyclerView.Adapter<com.example.proyectopr
             public void onClick(View v) {
                 int dayOfWeek = item.getDayOfWeekNumber();
 
+                //RESTAURAR VISTA
+
+                noevento.setVisibility(View.GONE);
+                lineaE.setVisibility(View.VISIBLE);
+
                 if (item.getDayNumber().equals(String.valueOf(todayDay)) && item.getMonth() == todayMonth && item.getYear() == todayYear){
                     //actualizar eventos
                     ArrayList<Evento> eventosF;
                     eventosF  = Evento.filtrarPorDia(listaEventos, CalendarItem.obtenerNombreDiaSemanaBD(dayOfWeek));
-                    eventosF = Evento.filtrarEventosPasados(eventosF);
+                    eventosF = (ArrayList<Evento>) Evento.filtrarEventosPasados(eventosF);
                     EventoAdapter adapter =  new EventoAdapter(eventosF, context);
                     recyclerViewE.setAdapter(adapter);
                     mostrarDetallesDeFecha(item);
+                    mostrarDetallesDeFecha(item);
+
+                    if(eventosF.size() == 0){
+                        noevento.setVisibility(View.VISIBLE);
+                        lineaE.setVisibility(View.GONE);
+                    }
 
                 }else {
                     //actualizar eventos
@@ -121,6 +141,11 @@ public class CalendarAdapter extends RecyclerView.Adapter<com.example.proyectopr
                     EventoAdapter adapter =  new EventoAdapter(eventosF, context);
                     recyclerViewE.setAdapter(adapter);
                     mostrarDetallesDeFecha(item);
+
+                    if(eventosF.size() == 0){
+                        noevento.setVisibility(View.VISIBLE);
+                        lineaE.setVisibility(View.GONE);
+                    }
                 }
 
 

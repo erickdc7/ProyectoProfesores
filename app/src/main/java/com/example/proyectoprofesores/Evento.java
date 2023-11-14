@@ -3,8 +3,10 @@ package com.example.proyectoprofesores;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 public class Evento {
@@ -99,33 +101,15 @@ public class Evento {
 
         return horaFormateada;
     }
-    public static ArrayList<Evento> filtrarEventosPasados(List<Evento> listaDeHorarios) {
-        ArrayList<Evento> eventosFiltrados = new ArrayList<>();
-        Time horaActual = obtenerHoraActual();
 
-        for (Evento evento : listaDeHorarios) {
-            if (!evento.horaFin.before(horaActual)) {
-                eventosFiltrados.add(evento);
-            }
-        }
-
-        return eventosFiltrados;
-    }
-
-    /*
-    public static void ordenarListaPorProximidad(List<Evento> listaDeHorarios) {
-        Collections.sort(listaDeHorarios, (horario1, horario2) -> {
-            long diferencia1 = Math.abs(horario1.horaInicio.getTime() - obtenerHoraActual().getTime());
-            long diferencia2 = Math.abs(horario2.horaInicio.getTime() - obtenerHoraActual().getTime());
-            return Long.compare(diferencia1, diferencia2);
-        });
-    }
-*/
     public static void ordenarListaPorHoraInicio(List<Evento> listaDeHorarios) {
         Collections.sort(listaDeHorarios, Comparator.comparing(horario -> horario.horaInicio));
     }
     public static Time obtenerHoraActual() {
         return new Time(System.currentTimeMillis());
+    }
+    private static Date obtenerFechaActual() {
+        return new Date();
     }
 
     public static ArrayList<Evento> filtrarPorDia(ArrayList<Evento> listaDeHorarios, String dia) {
@@ -136,6 +120,33 @@ public class Evento {
             }
         }
         return horariosFiltrados;
+    }
+
+    public static List<Evento> filtrarEventosPasados(List<Evento> listaDeEventos) {
+        List<Evento> eventosFiltrados = new ArrayList<>();
+        Date ahora = obtenerFechaActual();
+
+        for (Evento evento : listaDeEventos) {
+            Date fechaHoraInicio = combinarFechaYHora(ahora, evento.horaInicio);
+
+            if (!fechaHoraInicio.before(ahora)) {
+                eventosFiltrados.add(evento);
+            }
+        }
+
+        return eventosFiltrados;
+    }
+
+    // Función para combinar fecha y hora
+    private static Date combinarFechaYHora(Date fecha, Time hora) {
+        Calendar calFecha = Calendar.getInstance();
+        calFecha.setTime(fecha);
+
+        Calendar calFechaHora = Calendar.getInstance();
+        calFechaHora.set(calFecha.get(Calendar.YEAR), calFecha.get(Calendar.MONTH), calFecha.get(Calendar.DAY_OF_MONTH),
+                hora.getHours(), hora.getMinutes(), hora.getSeconds());
+
+        return calFechaHora.getTime();
     }
 
 }

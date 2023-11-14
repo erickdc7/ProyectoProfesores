@@ -1,5 +1,8 @@
 package com.example.proyectoprofesores;
 
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+
 public class CalendarItem {
     private int dayOfWeekNumber;
     private String dayOfWeek;  // Día de la semana (por ejemplo, "Lun")
