@@ -207,63 +207,6 @@ public class CourseDescpFragment extends Fragment implements OnNoteClickListener
         request.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS*2, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         VoleySingleton.getIntanciaV(getContext()).addToRequestQueue(request);
     }
-    public void saveNotesToPreferences() {
-        SharedPreferences sharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(KEY_NOTE_COUNT, noteList.size());
-        for(int i=0; i<noteList.size(); i++){
-            notas nota = noteList.get(i);
-            editor.putString("note_title_"+ i, nota.getTitle());
-            editor.putString("note_content_"+ i, nota.getContent() );
-        }
-        editor.apply();
-
-        Log.d("Guardado en Preferencias", "Datos guardados en preferencias compartidas.");
-    }
-
-
-
-
-    private void loadNotesFromPreferences() {
-        SharedPreferences sharedPreferences = requireContext().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        int noteCount = sharedPreferences.getInt(KEY_NOTE_COUNT, 0);
-        for (int i=0; i< noteCount; i++){
-            String title = sharedPreferences.getString("note_title_" + i, "");
-            String content = sharedPreferences.getString("note_content_"+ i, "");
-            notas nota= new notas();
-            nota.setTitle(title);
-            nota.setContent(content);
-            noteList.add(nota);
-            Log.d("Cargado desde Preferencias", "Título: " + title + ", Contenido: " + content);
-
-        }
-
-    }
-
-    public void createNoteView(final notas note) {
-        View noteView = getLayoutInflater().inflate(R.layout.note_item, null);
-        TextView titleTextView = noteView.findViewById(R.id.titleTextView);
-        TextView contentTextView = noteView.findViewById(R.id.contectTextView);
-        titleTextView.setText(note.getTitle());
-        contentTextView.setText(note.getContent());
-        noteView.setOnLongClickListener(v -> {
-            showDeleteDialog(note);
-            return false;
-        });
-    }
-
-    private void showDeleteDialog(final notas nota) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("Eliminar esta nota.");
-        builder.setMessage("¿Esta seguro de querer eliminar esta nota?");
-        builder.setPositiveButton("Delete", (dialog, which) -> {deleteNoteAndRefresh();});
-        builder.setNegativeButton("Cancel", null);
-        builder.show();
-    }
-
-    private void deleteNoteAndRefresh(){
-
-    }
 
 
     @Override
