@@ -32,13 +32,13 @@ public class CalendarAdapter extends RecyclerView.Adapter<com.example.proyectopr
 
 
 
-    public CalendarAdapter(List<CalendarItem> calendarItems, ArrayList<Evento> listaEventos, RecyclerView recyclerViewE, Context context) {
+    public CalendarAdapter(List<CalendarItem> calendarItems, ArrayList<Evento> listaEventos, RecyclerView recyclerViewE, Context context, RelativeLayout noevento, ImageView lineaE) {
         this.calendarItems = calendarItems;
         this.listaEventos = listaEventos;
         this.recyclerViewE = recyclerViewE;
         this.context = context;
-        noevento = ((Activity) context).findViewById(R.id.noevento);
-        lineaE = ((Activity) context).findViewById(R.id.lineaE);
+        this.noevento = noevento;
+        this.lineaE = lineaE;
     }
 
 
