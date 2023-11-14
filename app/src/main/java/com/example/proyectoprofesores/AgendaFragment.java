@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -40,6 +41,8 @@ import java.util.List;
 public class AgendaFragment extends Fragment implements OnAgendaClickListener, Response.Listener<JSONArray>, Response.ErrorListener{
     String idDocente;
     RelativeLayout directorio;
+    private RelativeLayout noevento;
+    private ImageView lineaE;
     private RecyclerView recyclerView;
     private RecyclerView recyclerEvento;
     ArrayList<Evento> listaEventos;
@@ -98,6 +101,17 @@ public class AgendaFragment extends Fragment implements OnAgendaClickListener, R
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_agenda, container, false);
         // ... (código existente)
+
+
+
+
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         Bundle args = getArguments();
         idDocente =args.getString("idDocente", "");
 
@@ -108,6 +122,8 @@ public class AgendaFragment extends Fragment implements OnAgendaClickListener, R
 
         directorio = view.findViewById(R.id.titulo_directorio);
         directorio.setVisibility(View.GONE);
+        noevento = view.findViewById(R.id.noevento);
+        lineaE = view.findViewById(R.id.lineaE);
 
         recyclerEvento.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerEvento.setHasFixedSize(true);
@@ -120,17 +136,6 @@ public class AgendaFragment extends Fragment implements OnAgendaClickListener, R
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setHasFixedSize(true);
         calendarItems = new ArrayList<>();
-
-
-
-
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
         TextView number = view.findViewById(R.id.number_calendar);
         TextView weekDayName = view.findViewById(R.id.weekDay_calendar);
         TextView monthName = view.findViewById(R.id.month_calendar);
@@ -263,8 +268,10 @@ public class AgendaFragment extends Fragment implements OnAgendaClickListener, R
 
             //Adaptador Calendar
 
-            adapterC = new CalendarAdapter(calendarItems, listaEventos, recyclerEvento, getContext());
+            adapterC = new CalendarAdapter(calendarItems, listaEventos, recyclerEvento, getContext(), noevento, lineaE);
             recyclerView.setAdapter(adapterC);
+
+
 
             Calendar calendar = Calendar.getInstance();
             currentYear = calendar.get(Calendar.YEAR);

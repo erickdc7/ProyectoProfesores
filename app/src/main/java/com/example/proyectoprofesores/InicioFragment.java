@@ -139,7 +139,13 @@ public class InicioFragment extends Fragment  implements  Response.ErrorListener
             @Override
             public void onClick(View v) {
                 AgendaFragment fragment = new AgendaFragment();
-
+                Bundle bundle = new Bundle();
+                bundle.putString("idUsuario", idUsuario);
+                bundle.putString("idDocente", idDocente);
+                bundle.putString("nombre", nombre);
+                bundle.putString("apellido", apellido);
+                bundle.putString("correo", correo);
+                fragment.setArguments(bundle);
                 getParentFragmentManager().beginTransaction()
                         .replace(R.id.container, fragment)
                         .addToBackStack(null)
@@ -151,7 +157,13 @@ public class InicioFragment extends Fragment  implements  Response.ErrorListener
             @Override
             public void onClick(View v) {
                 CoursesFragment fragment = new CoursesFragment();
-
+                Bundle bundle = new Bundle();
+                bundle.putString("idUsuario", idUsuario);
+                bundle.putString("idDocente", idDocente);
+                bundle.putString("nombre", nombre);
+                bundle.putString("apellido", apellido);
+                bundle.putString("correo", correo);
+                fragment.setArguments(bundle);
                 getParentFragmentManager().beginTransaction()
                         .replace(R.id.container, fragment)
                         .addToBackStack(null)
@@ -163,6 +175,13 @@ public class InicioFragment extends Fragment  implements  Response.ErrorListener
         moreJust.setOnClickListener(new View.OnClickListener() {
             @Override            public void onClick(View v) {
                 JustifyFragment fragment = new JustifyFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("idUsuario", idUsuario);
+                bundle.putString("idDocente", idDocente);
+                bundle.putString("nombre", nombre);
+                bundle.putString("apellido", apellido);
+                bundle.putString("correo", correo);
+                fragment.setArguments(bundle);
                 getParentFragmentManager().beginTransaction()
                         .replace(R.id.container, fragment)
                         .addToBackStack(null)
