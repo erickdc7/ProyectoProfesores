@@ -37,9 +37,9 @@
     <string name="inicio_justificaciones_reciente">Más recientes</string>
     <string name="justificacion_nombre">Juan Pereira Nuñes</string>
     <string name="justificacion_aula">3ro A</string>
-    <string name="justificacion_especificaciones">Tomar examen Bimestral</string>
+    <string name="justificacion_especificaciones">01/01/2001</string>
     <string name="aula">Aula: </string>
-    <string name="especificaciones">Especificaciones:</string>
+    <string name="especificaciones">Fecha:</string>
     <string name="intro_texto"><b>Organizarte</b> se vuelve más fácil. Ahora al alcance de tu mano &#9995;</string>
     <string name="iniciar_sesion">Iniciar Sesión</string>
     <string name="recuperar_contra">¿Olvidaste tu contraseña?</string>

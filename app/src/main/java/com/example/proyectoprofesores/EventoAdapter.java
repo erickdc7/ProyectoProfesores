@@ -1,10 +1,10 @@
 package com.example.proyectoprofesores;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,8 +15,10 @@ import java.util.ArrayList;
 
 public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolderDatos> {
     ArrayList<Evento> listDatos;
-    public EventoAdapter(ArrayList<Evento> listDatos) {
+    Context context;
+    public EventoAdapter(ArrayList<Evento> listDatos, Context context) {
         this.listDatos = listDatos;
+        this.context = context;
     }
     OnAgendaClickListener listener;
 
@@ -96,15 +98,15 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder
             horaInicio= itemView.findViewById(R.id.hora_inicio);
             horaFin = itemView.findViewById(R.id.hora_fin);
             cursoNombre= itemView.findViewById(R.id.curso_nombre_agenda);
-            cursoTema= itemView.findViewById(R.id.curso_tema_agemda);
+            cursoTema= itemView.findViewById(R.id.curso_nivel_agemda);
             lugar= itemView.findViewById(R.id.lugar_id);
         }
         public void asignarDatos(Evento dato) {
-            horaInicio.setText(dato.getHoraInicio());
-            horaFin.setText(dato.getHoraFin());
-            cursoNombre.setText(dato.getNombreCurso());
-            cursoTema.setText(dato.getTemaCurso());
-            lugar.setText(dato.getLugar());
+            horaInicio.setText(Evento.convertirTiempoAstring(dato.getHoraInicio()));
+            horaFin.setText(Evento.convertirTiempoAstring(dato.getHoraFin()));
+            cursoNombre.setText(dato.getCurso());
+            cursoTema.setText(dato.getNivel());
+            lugar.setText(dato.getAula());
         }
     }
 

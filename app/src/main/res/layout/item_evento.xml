@@ -49,10 +49,10 @@
             android:textSize="20dp"
             android:layout_marginStart="20dp"/>
         <TextView
-            android:id="@+id/curso_tema_agemda"
+            android:id="@+id/curso_nivel_agemda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Capítulo 1: Introducción"
+            android:text="NIVEL DEFAULT"
             android:textColor="@color/white"
             android:layout_below="@id/curso_nombre_agenda"
             android:layout_marginStart="20dp"
@@ -61,7 +61,7 @@
             android:id="@+id/ubicacion_cuadro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/curso_tema_agemda"
+            android:layout_below="@id/curso_nivel_agemda"
             android:layout_marginTop="15dp">
             <ImageView
                 android:id="@+id/location_id_agenda"

@@ -13,19 +13,24 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public class CalendarAdapter extends RecyclerView.Adapter<com.example.proyectoprofesores.CalendarAdapter.ViewHolder> {
 
-        private List<CalendarItem> calendarItems;
+    private List<CalendarItem> calendarItems;
+    private ArrayList<Evento> listaEventos;
+    private RecyclerView recyclerViewE;
     private int selectedItemPosition = -1;
     private boolean inicio = true;
         private Context context;
 
 
-    public CalendarAdapter(List<CalendarItem> calendarItems, Context context) {
+    public CalendarAdapter(List<CalendarItem> calendarItems, ArrayList<Evento> listaEventos, RecyclerView recyclerViewE, Context context) {
         this.calendarItems = calendarItems;
+        this.listaEventos = listaEventos;
+        this.recyclerViewE = recyclerViewE;
         this.context = context;
     }
 
@@ -58,6 +63,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<com.example.proyectopr
 
         Calendar calendar = Calendar.getInstance();
         int todayDay = calendar.get(Calendar.DAY_OF_MONTH);
+        int todayWeek = calendar.get(Calendar.DAY_OF_WEEK);
         int todayMonth = calendar.get(Calendar.MONTH);
         int todayYear = calendar.get(Calendar.YEAR);
 
@@ -69,6 +75,15 @@ public class CalendarAdapter extends RecyclerView.Adapter<com.example.proyectopr
             holder.dayOfWeek.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.white));
             holder.dayNumber.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.white));
             inicio = false;
+
+            //actualizar eventos
+            ArrayList<Evento> eventosF= Evento.filtrarPorDia(listaEventos, CalendarItem.obtenerNombreDiaSemanaBD(todayWeek));
+            eventosF = Evento.filtrarEventosPasados(eventosF);
+            EventoAdapter adapter =  new EventoAdapter(eventosF, context);
+            recyclerViewE.setAdapter(adapter);
+
+
+
         }
 
         // Comprueba si el elemento actual es diferente del elemento seleccionado y no es el día actual
@@ -76,14 +91,40 @@ public class CalendarAdapter extends RecyclerView.Adapter<com.example.proyectopr
             holder.itemView.setBackgroundResource(R.drawable.rectangle_outline);
             holder.dayOfWeek.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
             holder.dayNumber.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
+
+
+
+
+
+
         }
 
         // Configura el OnClickListener para cada elemento
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int dayOfWeek = item.getDayOfWeekNumber();
 
-                mostrarDetallesDeFecha(item);
+                if (item.getDayNumber().equals(String.valueOf(todayDay)) && item.getMonth() == todayMonth && item.getYear() == todayYear){
+                    //actualizar eventos
+                    ArrayList<Evento> eventosF;
+                    eventosF  = Evento.filtrarPorDia(listaEventos, CalendarItem.obtenerNombreDiaSemanaBD(dayOfWeek));
+                    eventosF = Evento.filtrarEventosPasados(eventosF);
+                    EventoAdapter adapter =  new EventoAdapter(eventosF, context);
+                    recyclerViewE.setAdapter(adapter);
+                    mostrarDetallesDeFecha(item);
+
+                }else {
+                    //actualizar eventos
+                    ArrayList<Evento> eventosF;
+                    eventosF  = Evento.filtrarPorDia(listaEventos, CalendarItem.obtenerNombreDiaSemanaBD(dayOfWeek));
+                    EventoAdapter adapter =  new EventoAdapter(eventosF, context);
+                    recyclerViewE.setAdapter(adapter);
+                    mostrarDetallesDeFecha(item);
+                }
+
+
+
 
                 if (!item.isSelected()) {
                     // Restablece el fondo del elemento previamente seleccionado

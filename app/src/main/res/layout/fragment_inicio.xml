@@ -261,10 +261,16 @@
 
 
         </LinearLayout>
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
+            <ProgressBar
+                android:id="@+id/progress_barI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:visibility="gone" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerCourseId"
@@ -277,7 +283,7 @@
                 tools:listitem="@layout/curso_inicio_layout"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <!--Justificaciones-->
         <LinearLayout
@@ -335,9 +341,15 @@
         </LinearLayout>
 
         <!--adaptador justifiacciones recylce-->
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <ProgressBar
+                android:id="@+id/progress_barJ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone" />
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -351,7 +363,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 
 

@@ -39,19 +39,19 @@ public class AdapterJustificacion extends RecyclerView.Adapter<AdapterJustificac
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
         TextView nombre;
         TextView aula;
-        TextView detalle;
+        TextView fecha;
 
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
             nombre = itemView.findViewById(R.id.justificacion_nombre);
             aula = itemView.findViewById(R.id.justificacion_aula);
-            detalle= itemView.findViewById(R.id.justificacion_especificacion);
+            fecha= itemView.findViewById(R.id.justificacion_especificacion);
         }
 
         public void asignarDatos(Justificacion dato) {
-            nombre.setText(dato.getNombre());
+            nombre.setText(Justificacion.getApellidos(dato.getNombre()));
             aula.setText(dato.getAula());
-            detalle.setText(dato.getEspecificacion());
+            fecha.setText(Justificacion.convertirFechaAString(dato.getFecha()));
         }
     }
 }
