@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,7 +48,7 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder
 
         if (position == 0) {
             // Cambiar el fondo del primer elemento
-            holder.containerLayout.setImageResource(R.drawable.curso_agenda_primero);
+            holder.containerLayout.setBackgroundResource(R.drawable.curso_agenda_primero);
             holder.iconoubicacion.setImageResource(R.drawable.icon_location);
             holder.mas.setImageResource(R.drawable.icon_mas_light);
             holder.horaInicio.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
@@ -57,7 +58,7 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder
             holder.lugar.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.white));
         } else {
             // Restablecer el fondo para otros elementos
-            holder.containerLayout.setImageResource(R.drawable.curso_agenda);
+            holder.containerLayout.setBackgroundResource(R.drawable.curso_agenda);
             holder.iconoubicacion.setImageResource(R.drawable.icon_location_dark);
             holder.mas.setImageResource(R.drawable.icon_mas_dark);
             holder.horaInicio.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
@@ -81,7 +82,7 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder
     }
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
-        ImageView containerLayout;
+        RelativeLayout containerLayout;
         ImageView iconoubicacion;
         ImageView mas;
 
