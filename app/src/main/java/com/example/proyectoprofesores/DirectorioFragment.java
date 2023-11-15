@@ -74,7 +74,7 @@ public class DirectorioFragment extends Fragment implements Response.Listener<JS
         idDocente =args.getString("idDocente", "");
 
         recyDir = vista.findViewById(R.id.recyclerViewDirectorio);
-        progressBar = vista.findViewById(R.id.progress_bar);
+        progressBar = vista.findViewById(R.id.progress_bar2);
         recyDir.setLayoutManager(new LinearLayoutManager(getContext()));
         recyDir.setHasFixedSize(true);
 

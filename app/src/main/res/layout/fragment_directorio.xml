@@ -40,7 +40,15 @@
             android:layout_marginTop="91dp"
             android:background="@drawable/searchview_rounded_background"
             android:queryHint="Search by name or number"/>
-
+        <ProgressBar
+            android:id="@+id/progress_bar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true"
+            android:indeterminateTint="@color/azul"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:layout_width="match_parent"
