@@ -1,6 +1,7 @@
 package com.example.proyectoprofesores;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,12 +33,20 @@ public class NotificacionesActivity extends AppCompatActivity implements Respons
 
     ProgressBar progressBar;
 
+    String idUsuario;
+    String idDocente;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notificaciones);
+        Intent intent = getIntent();
+        if (intent != null) {
+            idUsuario= intent.getStringExtra("idUsuario");
+            idDocente= intent.getStringExtra("idDocente");
 
+        }
         back = findViewById(R.id.retro);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +56,7 @@ public class NotificacionesActivity extends AppCompatActivity implements Respons
         });
 
         recyNot = findViewById(R.id.recyclerViewNotificaciones);
-        progressBar = findViewById(R.id.progress_bar);
+        progressBar = findViewById(R.id.progress_bar3);
         recyNot.setLayoutManager(new LinearLayoutManager(this));
         recyNot.setHasFixedSize(true);
 
@@ -59,7 +68,7 @@ public class NotificacionesActivity extends AppCompatActivity implements Respons
     private void cargarWebService() {
         progressBar.setVisibility(View.VISIBLE);
         String ip = getString(R.string.ip);
-        String url = ip + "/obtener_notificacion.php";
+        String url = ip + "/obtener_notificacion.php?id_usuario="+idUsuario;
 
         jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, this, this);
         VoleySingleton.getIntanciaV(this).addToRequestQueue(jsonArrayRequest);
@@ -81,8 +90,8 @@ public class NotificacionesActivity extends AppCompatActivity implements Respons
 
                 Notificaciones notificaciones = new Notificaciones.Builder()
                         .withImage(R.drawable.icon_branded_frame_32)
-                        .withTitulo(jsonObject.optString("Titulo:"))
-                        .withNoti(jsonObject.optString("descripcion:"))
+                        .withTitulo(jsonObject.optString("titulo"))
+                        .withNoti(jsonObject.optString("descripcion"))
                         .build();
                 listaNotificaciones.add(notificaciones);
             }
