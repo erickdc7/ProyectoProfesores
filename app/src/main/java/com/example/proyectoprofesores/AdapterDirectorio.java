@@ -33,13 +33,14 @@ public class AdapterDirectorio extends RecyclerView.Adapter<AdapterDirectorio.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
-        // Use Glide to load images into ImageView
-        Glide.with(context).load(listDirectorio.get(position).image).into(holder.Contacto);
-        Glide.with(context).load(listDirectorio.get(position).imagefondo).into(holder.FondoContacto);
 
-        holder.NombreAlumno.setText(listDirectorio.get(position).nombre);
-        holder.NumeroMadre.setText(listDirectorio.get(position).num_Madre);
-        holder.NumeroPadre.setText(listDirectorio.get(position).num_Padre);
+        String alumno  = "" + listDirectorio.get(position). nombreAlumno;
+        holder.NombreAlumno.setText(alumno);
+
+
+        //holder.NombreAlumno.setText(listDirectorio.get(position).nombreAlumno);
+        holder.NombrePariente.setText(listDirectorio.get(position).nombrePariente);
+        holder.NumeroPariente.setText(listDirectorio.get(position).numeroPariente);
     }
 
     @Override
@@ -50,14 +51,14 @@ public class AdapterDirectorio extends RecyclerView.Adapter<AdapterDirectorio.Vi
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
 
         ImageView Contacto, FondoContacto;
-        TextView NombreAlumno, NumeroMadre, NumeroPadre;
+        TextView NombreAlumno, NombrePariente, NumeroPariente;
 
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
             Contacto = itemView.findViewById(R.id.imageViewContacto);
             NombreAlumno = itemView.findViewById(R.id.textViewNombreAlumno);
-            NumeroMadre = itemView.findViewById(R.id.textViewNumeroMadre);
-            NumeroPadre = itemView.findViewById(R.id.textViewNumeroPadre);
+            NombrePariente = itemView.findViewById(R.id.textViewNombrePariente);
+            NumeroPariente = itemView.findViewById(R.id.textViewNumeroPariente);
             FondoContacto = itemView.findViewById(R.id.imageViewFondo);
         }
     }

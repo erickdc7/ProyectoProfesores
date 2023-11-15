@@ -8,7 +8,7 @@
 
     <ImageView
             android:id="@+id/imageViewFondo"
-        android:layout_width="364dp"
+        android:layout_width="wrap_content"
         android:layout_height="61dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
@@ -16,79 +16,50 @@
 
     <ImageView
         android:id="@+id/imageViewContacto"
-        android:layout_width="28dp"
+        android:layout_width="wrap_content"
         android:layout_height="28dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="18dp"
         app:srcCompat="@drawable/user_image" />
     
     <FrameLayout
-        android:layout_width="242dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginStart="45dp"
         android:layout_marginTop="11dp">
 
         <TextView
             android:id="@+id/textViewNombreAlumno"
-            android:layout_width="154dp"
+            android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:text="Alumna Ariana Fuentes"
             android:textStyle="bold"/>
 
             <FrameLayout
-                android:layout_width="121dp"
+                android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginTop="20dp">
 
 
                 <TextView
-                    android:id="@+id/textView21"
-                    android:layout_width="44dp"
+                    android:id="@+id/textViewNombrePariente"
+                    android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:text="Madre:"
                     android:gravity="center"
                     android:textSize="13sp"/>
 
                 <TextView
-                    android:id="@+id/textViewNumeroMadre"
-                    android:layout_width="77dp"
+                    android:id="@+id/textViewNumeroPariente"
+                    android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginStart="44dp"
                     android:text="553 399 721"
                     android:gravity="center"
                     android:textSize="12sp"/>
             </FrameLayout>
-        <FrameLayout
-            android:layout_width="121dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="121dp"
-            android:layout_marginTop="20dp">
 
-
-            <TextView
-                android:id="@+id/textView23"
-                android:layout_width="44dp"
-                android:layout_height="20dp"
-                android:text="Padre:"
-                android:gravity="center"
-                android:textSize="13sp"/>
-
-            <TextView
-                android:id="@+id/textViewNumeroPadre"
-                android:layout_width="77dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="44dp"
-                android:text="553 399 721"
-                android:gravity="center"
-                android:textSize="12sp" />
-        </FrameLayout>
     </FrameLayout>
 
-    <ImageView
-        android:id="@+id/imageView19"
-        android:layout_width="22.07dp"
-        android:layout_height="5dp"
-        android:layout_marginStart="288.78dp"
-        android:layout_marginTop="26dp"
-        app:srcCompat="@drawable/icon_option" />
+
 </RelativeLayout>

@@ -30,6 +30,7 @@ public class DirectorioFragment extends Fragment implements Response.Listener<JS
     private static final String ARG_PARAM3 = "param3";
     private static final String ARG_PARAM4 = "param4";
 
+
     private String mParam3;
     private String mParam4;
     private RecyclerView recyDir;
@@ -109,11 +110,9 @@ public class DirectorioFragment extends Fragment implements Response.Listener<JS
                 JSONObject jsonObject = response.getJSONObject(i);
 
                 Directorio directorio = new Directorio.Builder()
-                        .withImage(R.drawable.user_image)
-                        .withNombre(jsonObject.optString("nombre"))
-                        .withNum_Madre(jsonObject.optString("parentesco"))
-                        .withNum_Padre(jsonObject.optString("telefono"))
-                        .withImagefondo(R.drawable.contact_box)
+                        .withNombreAlumno(jsonObject.optString("nombre"))
+                        .withNombrePariente(jsonObject.optString("parentesco"))
+                        .withNumeroPariente(jsonObject.optString("telefono"))
                         .build();
                 listDirectorio.add(directorio);
             }

@@ -1,48 +1,47 @@
-    package com.example.proyectoprofesores;
+package com.example.proyectoprofesores;
 
-    public class Directorio {
-
-
-        public int image;
-
-        public String nombre;
-        public String num_Madre;
-        public String num_Padre;
-        public int  imagefondo;
-
-       public static class Builder{
-
-           private Directorio directorio;
-
-           public Builder(){directorio =  new Directorio();}
+public class Directorio {
 
 
-           public Builder withImage(int image) {
-               directorio.image = image;
-               return this;
-           }
-           public Builder withNombre(String nombre){
-               directorio.nombre=nombre;
-               return this;
-           }
-           public Builder withNum_Madre(String num_Madre){
-               directorio.num_Madre=num_Madre;
-               return this;
-           }
+    public int image;
+    public String nombreAlumno;
+    public String nombrePariente;
+    public String numeroPariente;
+    public int  imagefondo;
 
-           public Builder withNum_Padre(String num_Padre){
-               directorio.num_Padre=num_Padre;
-               return this;
-           }
+    public static class Builder{
 
-           public Builder withImagefondo(int imagefondo) {
-               directorio.imagefondo = imagefondo;
-               return this;
-           }
+        private Directorio directorio;
 
-           public Directorio build(){
-               return directorio;
-           }
+        public Builder(){directorio =  new Directorio();}
 
-       }
+
+        public Builder withImage(int image) {
+            directorio.image = image;
+            return this;
+        }
+        public Builder withNombreAlumno(String nombreAlumno){
+            directorio.nombreAlumno=nombreAlumno;
+            return this;
+        }
+        public Builder withNombrePariente(String nombrePariente){
+            directorio.nombrePariente=nombrePariente;
+            return this;
+        }
+
+        public Builder withNumeroPariente(String numeroPariente){
+            directorio.numeroPariente=numeroPariente;
+            return this;
+        }
+
+        public Builder withImagefondo(int imagefondo) {
+            directorio.imagefondo = imagefondo;
+            return this;
+        }
+
+        public Directorio build(){
+            return directorio;
+        }
+
     }
+}
