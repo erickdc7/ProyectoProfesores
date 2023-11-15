@@ -38,6 +38,8 @@ public class DirectorioFragment extends Fragment implements Response.Listener<JS
     private JsonArrayRequest jsonArrayRequest;
 
     private ProgressBar progressBar;
+    String idUsuario;
+    String idDocente;
 
     public DirectorioFragment() {
         // Constructor vacío requerido
@@ -67,6 +69,9 @@ public class DirectorioFragment extends Fragment implements Response.Listener<JS
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_directorio, container, false);
         listDirectorio = new ArrayList<>();
+        Bundle args = getArguments();
+        idUsuario = args.getString("idUsuario", "");
+        idDocente =args.getString("idDocente", "");
 
         recyDir = vista.findViewById(R.id.recyclerViewDirectorio);
         progressBar = vista.findViewById(R.id.progress_bar);
@@ -81,7 +86,7 @@ public class DirectorioFragment extends Fragment implements Response.Listener<JS
     private void cargarWebService() {
         progressBar.setVisibility(View.VISIBLE);
         String ip = getString(R.string.ip);
-        String url = ip + "/Obtener_Directorio.php";
+        String url = ip + "/obtener_Directorio.php?id_docente="+idDocente;
 
         jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, this, this);
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS*2, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
@@ -106,8 +111,8 @@ public class DirectorioFragment extends Fragment implements Response.Listener<JS
                 Directorio directorio = new Directorio.Builder()
                         .withImage(R.drawable.user_image)
                         .withNombre(jsonObject.optString("nombre"))
-                        .withNum_Madre(jsonObject.optString("num_Madre"))
-                        .withNum_Padre(jsonObject.optString("num_Padre"))
+                        .withNum_Madre(jsonObject.optString("parentesco"))
+                        .withNum_Padre(jsonObject.optString("telefono"))
                         .withImagefondo(R.drawable.contact_box)
                         .build();
                 listDirectorio.add(directorio);
