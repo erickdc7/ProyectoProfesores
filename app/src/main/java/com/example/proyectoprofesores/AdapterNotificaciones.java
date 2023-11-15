@@ -1,24 +1,31 @@
 package com.example.proyectoprofesores;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
 public class AdapterNotificaciones extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private ArrayList<Notificaciones> listNotificaciones;
-    private static final int VISTA1 = 1;
-    private static final int VISTA2 = 2;
-    private static final int VISTA3 = 3;
+    private static final int VIEW_TYPE_1 = 1;
+    private static final int VIEW_TYPE_2 = 2;
+    private static final int VIEW_TYPE_3 = 3;
 
-    public AdapterNotificaciones(ArrayList<Notificaciones> listNotificaciones) {
+    ArrayList<Notificaciones> listNotificaciones;
+    Context context;
+
+    public AdapterNotificaciones(ArrayList<Notificaciones> listNotificaciones, Context context) {
         this.listNotificaciones = listNotificaciones;
+        this.context = context;
     }
 
     @NonNull
@@ -27,15 +34,15 @@ public class AdapterNotificaciones extends RecyclerView.Adapter<RecyclerView.Vie
         View view;
 
         switch (viewType) {
-            case VISTA1:
-            default:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_notificaciones, parent, false);
+            case VIEW_TYPE_1:
+                view = LayoutInflater.from(context).inflate(R.layout.listview_notificaciones, parent, false);
                 return new ViewHolderDatos1(view);
-            case VISTA2:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_notificaciones_2, parent, false);
+            case VIEW_TYPE_2:
+                view = LayoutInflater.from(context).inflate(R.layout.listview_notificaciones_2, parent, false);
                 return new ViewHolderDatos2(view);
-            case VISTA3:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_notificaciones_3, parent, false);
+            case VIEW_TYPE_3:
+            default:
+                view = LayoutInflater.from(context).inflate(R.layout.listview_notificaciones_3, parent, false);
                 return new ViewHolderDatos3(view);
         }
     }
@@ -45,26 +52,24 @@ public class AdapterNotificaciones extends RecyclerView.Adapter<RecyclerView.Vie
         int viewType = getItemViewType(position);
 
         switch (viewType) {
-
-            case VISTA1:
+            case VIEW_TYPE_1:
                 ViewHolderDatos1 holder1 = (ViewHolderDatos1) holder;
-                holder1.imageViewNotificacion1.setImageResource(R.drawable.icon_branded_frame_32);
-                holder1.textViewTituloNotificacion1.setText(listNotificaciones.get(position).getTitulo());
-                holder1.textViewDescripcion1.setText(listNotificaciones.get(position).getNoti());
+                Glide.with(context).load(listNotificaciones.get(position).image).into(holder1.imgNotificaciones);
+                holder1.TituloNotificacion.setText(listNotificaciones.get(position).titulo);
+                holder1.Descripcion.setText(listNotificaciones.get(position).noti);
                 break;
-
-            case VISTA2:
+            case VIEW_TYPE_2:
                 ViewHolderDatos2 holder2 = (ViewHolderDatos2) holder;
-                holder2.imageViewNotificacion2.setImageResource(R.drawable.emoji);
-                holder2.textViewTituloNotificacion2.setText(listNotificaciones.get(position).getTitulo());
-                holder2.textViewDescripcion2.setText(listNotificaciones.get(position).getNoti());
+                Glide.with(context).load(listNotificaciones.get(position).image).into(holder2.imgNotificaciones);
+                holder2.TituloNotificacion.setText(listNotificaciones.get(position).titulo);
+                holder2.Descripcion.setText(listNotificaciones.get(position).noti);
                 break;
-            case VISTA3:
+            case VIEW_TYPE_3:
+            default:
                 ViewHolderDatos3 holder3 = (ViewHolderDatos3) holder;
-                holder3.textViewTituloNotificacion3.setText(listNotificaciones.get(position).getTitulo());
-                holder3.textViewDescripcion3.setText(listNotificaciones.get(position).getNoti());
+                holder3.TituloNotificacion.setText(listNotificaciones.get(position).titulo);
+                holder3.Descripcion.setText(listNotificaciones.get(position).noti);
                 break;
-
         }
     }
 
@@ -76,48 +81,46 @@ public class AdapterNotificaciones extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public int getItemViewType(int position) {
         if (position % 3 == 0) {
-            return VISTA1;
+            return VIEW_TYPE_1;
         } else if (position % 3 == 1) {
-            return VISTA2;
+            return VIEW_TYPE_2;
         } else {
-            return VISTA3;
+            return VIEW_TYPE_3;
         }
     }
 
     public class ViewHolderDatos1 extends RecyclerView.ViewHolder {
-        ImageView imageViewNotificacion1;
-        TextView textViewTituloNotificacion1;
-        TextView textViewDescripcion1;
+        ImageView imgNotificaciones;
+        TextView TituloNotificacion, Descripcion;
 
         public ViewHolderDatos1(@NonNull View itemView) {
             super(itemView);
-            imageViewNotificacion1 = itemView.findViewById(R.id.imageViewNotificacion1);
-            textViewTituloNotificacion1 = itemView.findViewById(R.id.textViewTituloNotificacion1);
-            textViewDescripcion1 = itemView.findViewById(R.id.textViewDescripcion1);
+            imgNotificaciones = itemView.findViewById(R.id.imageViewNotificacion1);
+            TituloNotificacion = itemView.findViewById(R.id.textViewTituloNotificacion1);
+            Descripcion = itemView.findViewById(R.id.textViewDescripcion1);
         }
     }
 
     public class ViewHolderDatos2 extends RecyclerView.ViewHolder {
-        ImageView imageViewNotificacion2;
-        TextView textViewTituloNotificacion2;
-        TextView textViewDescripcion2;
+        ImageView imgNotificaciones;
+        TextView TituloNotificacion, Descripcion;
 
         public ViewHolderDatos2(@NonNull View itemView) {
             super(itemView);
-            imageViewNotificacion2 = itemView.findViewById(R.id.imageViewNotificacion2);
-            textViewTituloNotificacion2 = itemView.findViewById(R.id.textViewTituloNotificacion2);
-            textViewDescripcion2 = itemView.findViewById(R.id.textViewDescripcion2);
+            imgNotificaciones = itemView.findViewById(R.id.imageViewNotificacion2);
+            TituloNotificacion = itemView.findViewById(R.id.textViewTituloNotificacion2);
+            Descripcion = itemView.findViewById(R.id.textViewDescripcion2);
         }
     }
 
     public class ViewHolderDatos3 extends RecyclerView.ViewHolder {
-        TextView textViewTituloNotificacion3;
-        TextView textViewDescripcion3;
+
+        TextView TituloNotificacion, Descripcion;
 
         public ViewHolderDatos3(@NonNull View itemView) {
             super(itemView);
-            textViewTituloNotificacion3 = itemView.findViewById(R.id.textViewTituloNotificacion3);
-            textViewDescripcion3 = itemView.findViewById(R.id.textViewDescripcion3);
+            TituloNotificacion = itemView.findViewById(R.id.textViewTituloNotificacion3);
+            Descripcion = itemView.findViewById(R.id.textViewDescripcion3);
         }
     }
 }
