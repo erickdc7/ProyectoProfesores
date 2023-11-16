@@ -54,13 +54,11 @@ public class AdapterNotificaciones extends RecyclerView.Adapter<RecyclerView.Vie
         switch (viewType) {
             case VIEW_TYPE_1:
                 ViewHolderDatos1 holder1 = (ViewHolderDatos1) holder;
-                Glide.with(context).load(listNotificaciones.get(position).image).into(holder1.imgNotificaciones);
                 holder1.TituloNotificacion.setText(listNotificaciones.get(position).titulo);
                 holder1.Descripcion.setText(listNotificaciones.get(position).noti);
                 break;
             case VIEW_TYPE_2:
                 ViewHolderDatos2 holder2 = (ViewHolderDatos2) holder;
-                Glide.with(context).load(listNotificaciones.get(position).image).into(holder2.imgNotificaciones);
                 holder2.TituloNotificacion.setText(listNotificaciones.get(position).titulo);
                 holder2.Descripcion.setText(listNotificaciones.get(position).noti);
                 break;
@@ -90,24 +88,22 @@ public class AdapterNotificaciones extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     public class ViewHolderDatos1 extends RecyclerView.ViewHolder {
-        ImageView imgNotificaciones;
+
         TextView TituloNotificacion, Descripcion;
 
         public ViewHolderDatos1(@NonNull View itemView) {
             super(itemView);
-            imgNotificaciones = itemView.findViewById(R.id.imageViewNotificacion1);
             TituloNotificacion = itemView.findViewById(R.id.textViewTituloNotificacion1);
             Descripcion = itemView.findViewById(R.id.textViewDescripcion1);
         }
     }
 
     public class ViewHolderDatos2 extends RecyclerView.ViewHolder {
-        ImageView imgNotificaciones;
+
         TextView TituloNotificacion, Descripcion;
 
         public ViewHolderDatos2(@NonNull View itemView) {
             super(itemView);
-            imgNotificaciones = itemView.findViewById(R.id.imageViewNotificacion2);
             TituloNotificacion = itemView.findViewById(R.id.textViewTituloNotificacion2);
             Descripcion = itemView.findViewById(R.id.textViewDescripcion2);
         }

@@ -32,13 +32,13 @@
 
     <TextView
         android:id="@+id/textViewDescripcion2"
-        android:layout_width="222dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="210dp"
+        android:layout_height="49dp"
         android:layout_marginStart="80dp"
-        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:text="Complete registration of your business profile to start work."
         android:textSize="13sp"
-        android:text="Complete registration of your business profile to start work." />
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imageView11"

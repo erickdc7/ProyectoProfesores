@@ -17,6 +17,7 @@
     <color name="colorcontactoboxazul">#FF1D518F</color>
     <color name="colorcontactoblanco">#FFFFFFFF</color>
     <color name="amarillo">#FFF2BE22</color>
-
+    <color name="colorBlanco">#FFFFFF</color>
+    <color name="colorAzul">#0000FF</color>
 
 </resources>

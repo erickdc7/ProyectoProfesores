@@ -8,9 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -32,15 +31,20 @@ public class AdapterDirectorio extends RecyclerView.Adapter<AdapterDirectorio.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
-
-        String alumno  = "" + listDirectorio.get(position). nombreAlumno;
+    public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) 
+        String alumno = "" + listDirectorio.get(position).nombreAlumno;
         holder.NombreAlumno.setText(alumno);
 
-
-        //holder.NombreAlumno.setText(listDirectorio.get(position).nombreAlumno);
         holder.NombrePariente.setText(listDirectorio.get(position).nombrePariente);
         holder.NumeroPariente.setText(listDirectorio.get(position).numeroPariente);
+
+        if (position % 2 == 0) {
+            holder.FondoContacto.setImageResource(R.drawable.contact_box);
+            holder.Contacto.setImageResource(R.drawable.boy__1_);
+        } else {
+            holder.FondoContacto.setImageResource(R.drawable.contact_box_azul);
+            holder.Contacto.setImageResource(R.drawable.user_image);
+        }
     }
 
     @Override
@@ -63,6 +67,3 @@ public class AdapterDirectorio extends RecyclerView.Adapter<AdapterDirectorio.Vi
         }
     }
 }
-
-
-

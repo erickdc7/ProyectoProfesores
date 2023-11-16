@@ -84,12 +84,11 @@ public class NotificacionesActivity extends AppCompatActivity implements Respons
     @Override
     public void onResponse(JSONArray jsonArray) {
         try {
-            listaNotificaciones.clear(); // Limpiar la lista antes de agregar nuevas notificaciones
+            listaNotificaciones.clear();
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                 Notificaciones notificaciones = new Notificaciones.Builder()
-                        .withImage(R.drawable.icon_branded_frame_32)
                         .withTitulo(jsonObject.optString("titulo"))
                         .withNoti(jsonObject.optString("descripcion"))
                         .build();
