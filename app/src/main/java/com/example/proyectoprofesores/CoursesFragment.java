@@ -9,16 +9,28 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.Toast;
+
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class CoursesFragment extends Fragment implements OnCursoClickListener {
+public class CoursesFragment extends Fragment implements OnCursoClickListener, Response.Listener<JSONArray>, Response.ErrorListener {
     ArrayList<cursodt> listCursos;
     RecyclerView recy;
     RecyclerView recyD;
@@ -27,6 +39,7 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener {
     String currentSearchText = "";
     String idUsuario;
     String idDocente;
+    JsonArrayRequest jsonArrayRequest;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -102,18 +115,56 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener {
     }
 
     private void llenarCursos() {
-        ArrayList<String> listDias = new ArrayList<>();
-        listDias.add("Lunes");
-        listDias.add("Martes");
-        listCursos.add(new cursodt(R.drawable.fondo_curso1, R.drawable.logo_math, "Trigonometria", "Secundaria", "3B", "25", listDias));
-        ArrayList<String> diasCurso2 = new ArrayList<>();
-        diasCurso2.add("Martes");
-        listCursos.add(new cursodt(R.drawable.fondo_curso2, R.drawable.logo_math, "Algebra", "Secundaria", "1A", "20", diasCurso2));
-        listCursos.add(new cursodt(R.drawable.fondo_curso3, R.drawable.logo_plant, "Biologia", "Secundaria", "5B", "22", listDias));
+//        ArrayList<String> listDias = new ArrayList<>();
+//        listDias.add("Lunes");
+//        listDias.add("Martes");
+//        listCursos.add(new cursodt(R.drawable.fondo_curso1, R.drawable.logo_math, "Trigonometria", "Secundaria", "3B", "25", listDias));
+//        ArrayList<String> diasCurso2 = new ArrayList<>();
+//        diasCurso2.add("Martes");
+//        listCursos.add(new cursodt(R.drawable.fondo_curso2, R.drawable.logo_math, "Algebra", "Secundaria", "1A", "20", diasCurso2));
+//        listCursos.add(new cursodt(R.drawable.fondo_curso3, R.drawable.logo_plant, "Biologia", "Secundaria", "5B", "22", listDias));
+        String ip = getString(R.string.ip);
+        String url = ip + "/obtener_cursos.php?user="+ idDocente;
 
-
+        jsonArrayRequest= new JsonArrayRequest(Request.Method.GET, url, null, this, this);
+        //request.add(jsonArrayRequest);
+        jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS*2, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        VoleySingleton.getIntanciaV(getContext()).addToRequestQueue(jsonArrayRequest);
     }
 
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Toast.makeText(getContext(), "Error al conectar con el servidor: " + error.toString(), Toast.LENGTH_LONG).show();
+        Log.d("ERROR:", error.toString());
+    }
+
+    @Override
+    public void onResponse(JSONArray response) {
+        try {
+            Toast.makeText(getContext(), "Si responde", Toast.LENGTH_LONG).show();
+            for (int i = 0; i < response.length(); i++) {
+                JSONObject jsonObject = response.getJSONObject(i);
+                //Toast.makeText(getContext(), "Intento: " + i, Toast.LENGTH_LONG).show();
+
+                // Extraer datos del objeto JSON
+                String nombreCurso = jsonObject.getString("nombre_curso");
+                String nivel = jsonObject.getString("nivel");
+                String aula = jsonObject.getString("nombre_aula");
+                String dia = jsonObject.getString("dia");
+
+                // Crear una ArrayList para los días y agregar el día
+                ArrayList<String> listDias = new ArrayList<>();
+                listDias.add(dia);
+
+                // Crear un nuevo objeto cursodt y agregarlo a listCursos
+                listCursos.add(new cursodt(R.drawable.fondo_curso1, R.drawable.logo_math, nombreCurso, nivel, aula, "22", listDias));
+            }
+
+            // Utilizar listCursos según sea necesario en tu aplicación
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void onCursoClick(int position) {

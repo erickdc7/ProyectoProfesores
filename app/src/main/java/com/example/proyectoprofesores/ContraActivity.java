@@ -132,6 +132,7 @@ public class ContraActivity extends AppCompatActivity implements Response.Listen
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
+
             } else {
                 Toast.makeText(getApplicationContext(), "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
             }

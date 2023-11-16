@@ -1,182 +1,256 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PerfilActivity">
+    android:fillViewport="true">
 
-    <EditText
-        android:id="@+id/editTextText6"
-        android:layout_width="297dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/input_personalizado"
-        android:ems="10"
-        android:hint="@string/tutor"
-        android:inputType="text"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
-
-    <EditText
-        android:id="@+id/editTextText7"
-        android:layout_width="297dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/input_personalizado"
-        android:ems="10"
-        android:hint="@string/correo"
-        android:inputType="text"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_actualilzar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText6" />
-
-    <EditText
-        android:id="@+id/editTextText3"
-        android:layout_width="297dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/input_personalizado"
-        android:ems="10"
-        android:hint="@string/apellido"
-        android:inputType="text"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
-
-    <EditText
-        android:id="@+id/editTextText4"
-        android:layout_width="297dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/input_personalizado"
-        android:ems="10"
-        android:hint="@string/inicio_cursos"
-        android:inputType="text"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="40dp"
-        android:text="@string/perfil"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:context=".PerfilActivity">
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="84dp"
-        android:layout_height="83dp"
-        android:layout_marginTop="104dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        <EditText
+            android:id="@+id/editTextTutor"
+            android:layout_width="297dp"
+            android:layout_height="48dp"
+            android:background="@drawable/input_personalizado"
+            android:ems="10"
+            android:hint="@string/tutor"
+            android:inputType="text"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextCorreo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextCursos"
+            android:layout_marginTop="8dp"/>
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="5dp"
-        android:text="@string/nombre"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        <EditText
+            android:id="@+id/editTextCorreo"
+            android:layout_width="297dp"
+            android:layout_height="48dp"
+            android:background="@drawable/input_personalizado"
+            android:ems="10"
+            android:hint="@string/correo"
+            android:inputType="text"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/button_actualilzar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTutor"
+            android:layout_marginTop="8dp"/>
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="24dp"
-        android:text="@string/ejemplo_user"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        <TextView
+            android:id="@+id/editTextApellido"
+            android:layout_width="297dp"
+            android:layout_height="48dp"
+            android:background="@drawable/input_personalizado"
+            android:ems="10"
+            android:hint="@string/apellido"
+            android:inputType="text"
+            android:textSize="18sp"
+            android:gravity="center_vertical|start"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextCursos"
+            app:layout_constraintEnd_toEndOf="@+id/editTextCursos"
+            app:layout_constraintHorizontal_bias="0.017"
+            app:layout_constraintStart_toStartOf="@+id/editTextCursos"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNombre"
+            android:layout_marginTop="8dp"/>
 
-    <EditText
-        android:id="@+id/editTextText2"
-        android:layout_width="297dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/input_personalizado"
-        android:ems="10"
-        android:hint="@string/nombre"
-        android:inputType="text"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        <TextView
+            android:id="@+id/editTextCursos"
+            android:layout_width="297dp"
+            android:layout_height="48dp"
+            android:background="@drawable/input_personalizado"
+            android:ems="10"
+            android:hint="@string/inicio_cursos"
+            android:inputType="text"
+            android:textSize="18sp"
+            android:gravity="center_vertical|start"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTutor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextApellido"
+            android:layout_marginTop="8dp"/>
 
-    <Button
-        android:id="@+id/button_actualilzar"
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="19dp"
-        android:backgroundTint="@color/azul"
-        android:text="@string/actualizar_perfil"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText7" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/perfil"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline10"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <ImageView
-        android:id="@+id/backB"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="22.5dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="256dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.027"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/arrow" />
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="84dp"
+            android:layout_height="83dp"
+            app:layout_constraintBottom_toTopOf="@+id/textNombre"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintHorizontal_bias="0.517"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.0"
+            tools:srcCompat="@tools:sample/avatars" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nombre"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textCorreo"
+            app:layout_constraintEnd_toEndOf="@+id/imageView6"
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="@+id/imageView6"
+            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+        <TextView
+            android:id="@+id/textCorreo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ejemplo_mail"
+            app:layout_constraintBottom_toTopOf="@+id/guideline14"
+            app:layout_constraintEnd_toEndOf="@+id/imageView6"
+            app:layout_constraintStart_toStartOf="@+id/imageView6"
+            app:layout_constraintTop_toBottomOf="@+id/textNombre" />
+
+        <TextView
+            android:id="@+id/editTextNombre"
+            android:layout_width="297dp"
+            android:layout_height="48dp"
+            android:background="@drawable/input_personalizado"
+            android:ems="10"
+            android:hint="@string/nombre"
+            android:inputType="text"
+            android:textSize="18sp"
+            android:gravity="center_vertical|start"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextApellido"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextID"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/editTextID"
+            android:layout_width="297dp"
+            android:layout_height="48dp"
+            android:background="@drawable/input_personalizado"
+            android:ems="10"
+            android:hint="ID"
+            android:inputType="text"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextNombre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline14"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:id="@+id/button_actualilzar"
+            android:layout_width="227dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bordes_boton_azul"
+            android:backgroundTint="@color/azul"
+            android:onClick="actualizar"
+            android:text="@string/actualizar_perfil"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/button_cerrar_sesion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.477"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextCorreo" />
+
+        <ImageView
+            android:id="@+id/backB"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline9"
+            app:layout_constraintEnd_toStartOf="@+id/guideline12"
+            app:layout_constraintHorizontal_bias="0.052"
+            app:layout_constraintStart_toStartOf="@+id/guideline11"
+            app:layout_constraintTop_toTopOf="@+id/guideline10"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/arrow" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.20" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.35" />
+
+        <Button
+            android:id="@+id/button_cerrar_sesion"
+            android:layout_width="227dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bordes_boton_azul"
+            android:backgroundTint="#E86767"
+            android:text="@string/cerrar_sesion"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/guideline13"
+            app:layout_constraintEnd_toEndOf="@+id/button_actualilzar"
+            app:layout_constraintHorizontal_bias="0.513"
+            app:layout_constraintStart_toStartOf="@+id/button_actualilzar"
+            app:layout_constraintTop_toBottomOf="@+id/button_actualilzar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
