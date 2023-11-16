@@ -8,13 +8,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class AdapterDirectorio extends RecyclerView.Adapter<AdapterDirectorio.ViewHolderDatos> {
-
+public class AdapterDirectorio extends RecyclerView.Adapter<AdapterDirectorio.ViewHolderDatos>  {
     ArrayList<Directorio> listDirectorio;
     Context context;
 
@@ -29,10 +27,9 @@ public class AdapterDirectorio extends RecyclerView.Adapter<AdapterDirectorio.Vi
         View view = LayoutInflater.from(context).inflate(R.layout.listview_contactos, parent, false);
         return new ViewHolderDatos(view);
     }
-
     @Override
-    public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) 
-        String alumno = "" + listDirectorio.get(position).nombreAlumno;
+    public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position){
+    String alumno = "" + listDirectorio.get(position).nombreAlumno;
         holder.NombreAlumno.setText(alumno);
 
         holder.NombrePariente.setText(listDirectorio.get(position).nombrePariente);
@@ -53,7 +50,6 @@ public class AdapterDirectorio extends RecyclerView.Adapter<AdapterDirectorio.Vi
     }
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
-
         ImageView Contacto, FondoContacto;
         TextView NombreAlumno, NombrePariente, NumeroPariente;
 
@@ -64,6 +60,7 @@ public class AdapterDirectorio extends RecyclerView.Adapter<AdapterDirectorio.Vi
             NombrePariente = itemView.findViewById(R.id.textViewNombrePariente);
             NumeroPariente = itemView.findViewById(R.id.textViewNumeroPariente);
             FondoContacto = itemView.findViewById(R.id.imageViewFondo);
+
         }
     }
 }
