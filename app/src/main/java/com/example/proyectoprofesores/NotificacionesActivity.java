@@ -89,6 +89,7 @@ public class NotificacionesActivity extends AppCompatActivity implements Respons
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                 Notificaciones notificaciones = new Notificaciones.Builder()
+                        .withId(Integer.parseInt(jsonObject.optString("id_notificacion")))
                         .withTitulo(jsonObject.optString("titulo"))
                         .withNoti(jsonObject.optString("descripcion"))
                         .build();

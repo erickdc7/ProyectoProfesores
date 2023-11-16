@@ -2,12 +2,16 @@ package com.example.proyectoprofesores;
 
 public class Notificaciones {
 
-    public int image;
+    public int id;
     public String titulo;
     public String noti;
 
    public static  class Builder {
        private Notificaciones notificaciones;
+
+       public Builder() {
+           notificaciones = new Notificaciones();
+       }
 
        public Builder withTitulo(String titulo){
            notificaciones.titulo=titulo;
@@ -18,8 +22,8 @@ public class Notificaciones {
            return this;
        }
 
-       public Builder withImage(int image) {
-           notificaciones.image = image;
+       public Builder withId(int id) {
+           notificaciones.id = id;
            return this;
        }
 
