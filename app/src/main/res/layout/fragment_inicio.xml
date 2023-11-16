@@ -68,6 +68,15 @@
 
         </LinearLayout>
 
+        <ProgressBar
+            android:id="@+id/progress_barP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:visibility="gone" />
+
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="match_parent"
@@ -78,6 +87,7 @@
             android:layout_marginEnd="25dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp">
+
 
             <RelativeLayout
                 android:id="@+id/eventoAct"
@@ -105,7 +115,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/nivel_curso"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -128,7 +138,7 @@
                     tools:ignore="ContentDescription,ImageContrastCheck" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/hora_curso"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -140,6 +150,7 @@
                     tools:ignore="TextContrastCheck" />
 
                 <TextView
+                    android:id="@+id/aula_curso"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"

@@ -20,6 +20,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,15 +32,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -67,9 +69,18 @@ public class InicioFragment extends Fragment  implements  Response.ErrorListener
     String correo;
     ProgressBar progressBarI;
     ProgressBar progressBarJ;
+    ProgressBar progressBarP;
 
+    JsonArrayRequest jsonArrayRequestProximo;
     JsonArrayRequest jsonArrayRequestCurso;
     JsonArrayRequest jsonArrayRequestJusti;
+
+    RelativeLayout cardEvent;
+
+    TextView cursoNombre;
+    TextView cursoNivel;
+    TextView cursoHora;
+    TextView cursoAula;
     private ActivityResultLauncher<Intent> scanActivityResultLauncher;
 
 
@@ -122,6 +133,8 @@ public class InicioFragment extends Fragment  implements  Response.ErrorListener
         View view = inflater.inflate(R.layout.fragment_inicio, container, false);
         progressBarI = view.findViewById(R.id.progress_barI);
         progressBarJ = view.findViewById(R.id.progress_barJ);
+        progressBarP = view.findViewById(R.id.progress_barP);
+
 
         // ... (código existente)
         Bundle args = getArguments();
@@ -135,6 +148,8 @@ public class InicioFragment extends Fragment  implements  Response.ErrorListener
         usuario_bienvenida = view.findViewById(R.id.usuario_bienvenida);
         usuario_bienvenida.setText("Bienvenido, "+primerNombre+"!");
         ImageView rectangulo_barra = view.findViewById(R.id.vermas);
+
+
         rectangulo_barra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -189,6 +204,9 @@ public class InicioFragment extends Fragment  implements  Response.ErrorListener
             }
         });
 
+        cargarWebServiceProximo();
+
+
         // ... (resto del código)
         //instancia del recyclerCurso
         recyclerCurso = view.findViewById(R.id.recyclerCourseId);
@@ -208,6 +226,13 @@ public class InicioFragment extends Fragment  implements  Response.ErrorListener
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        cursoNombre = view.findViewById(R.id.nombre_curso);
+        cursoNivel = view.findViewById(R.id.nivel_curso);
+        cursoHora= view.findViewById(R.id.hora_curso);
+        cursoAula = view.findViewById(R.id.aula_curso);
+        cardEvent = view.findViewById(R.id.eventoAct);
+        cardEvent.setVisibility(view.GONE);
+
         ImageView scanPlace = view.findViewById(R.id.scan_place);
         ImageView notiPlace = view.findViewById(R.id.bell_place);
         ImageView userPlace = view.findViewById(R.id.user_place);
@@ -255,7 +280,55 @@ public class InicioFragment extends Fragment  implements  Response.ErrorListener
         });
 
     }
+    private void cargarWebServiceProximo(){
+        progressBarP.setVisibility(View.VISIBLE);
+        String ip = "https://proyectoprofesores.000webhostapp.com";
+        String idDocenteURL ="?id_docente=" + idDocente;
+        String url = ip + "/obtenerCursoProximo.php" + idDocenteURL; //cambiar
+        jsonArrayRequestProximo = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
 
+                try {
+                        JSONObject jsonObject = response.getJSONObject(0);
+                        cursoNombre.setText(jsonObject.optString("curso"));
+                        String nivel = jsonObject.optString("nivel").equals("SEC")? "NIVEL SECUNDARIA": "NIVEL PRIMARIA";
+                        cursoNivel.setText(nivel);
+
+                    // Convertir la hora String a Date
+                        SimpleDateFormat sdfParse = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+                        Date horaInicioDate = sdfParse.parse(jsonObject.optString("horainicio"));
+                        Date horaFinDate = sdfParse.parse(jsonObject.optString("horafin"));
+                    // Formatear la hora a un nuevo formato sin segundos
+                        SimpleDateFormat sdfFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+                        String horaIFormateada = sdfFormat.format(horaInicioDate);
+                        String horaFFormateada = sdfFormat.format(horaFinDate);
+                        cursoHora.setText(horaIFormateada + " - " + horaFFormateada);
+
+                        cursoAula.setText("Aula " + jsonObject.optString("aula"));
+
+                        progressBarP.setVisibility(View.GONE);
+                        cardEvent.setVisibility(View.VISIBLE);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getContext(), "Error carga curso" + " " + response, Toast.LENGTH_LONG).show();
+                    progressBarP.setVisibility(View.GONE);
+                    cardEvent.setVisibility(View.GONE);
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+
+
+            }
+        }, this);
+
+        jsonArrayRequestProximo.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS*2, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        VoleySingleton.getIntanciaV(getContext()).addToRequestQueue(jsonArrayRequestProximo);
+
+
+    }
 
     private void cargarWebServiceCurso() {
         progressBarI.setVisibility(View.VISIBLE);
