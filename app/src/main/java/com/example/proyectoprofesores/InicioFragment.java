@@ -282,7 +282,7 @@ public class InicioFragment extends Fragment  implements  Response.ErrorListener
     }
     private void cargarWebServiceProximo(){
         progressBarP.setVisibility(View.VISIBLE);
-        String ip = "https://proyectoprofesores.000webhostapp.com";
+        String ip = getString(R.string.ip);
         String idDocenteURL ="?id_docente=" + idDocente;
         String url = ip + "/obtenerCursoProximo.php" + idDocenteURL; //cambiar
         jsonArrayRequestProximo = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {

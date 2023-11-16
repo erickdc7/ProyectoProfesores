@@ -31,6 +31,7 @@ public class AdapterCurso extends RecyclerView.Adapter<AdapterCurso.ViewHolderDa
     @Override
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
         holder.asignarDatos(listCursos.get(position).curso);
+
     }
 
     @Override
