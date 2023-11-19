@@ -4,12 +4,14 @@ package com.example.proyectoprofesores;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class AdapterJustificacion extends RecyclerView.Adapter<AdapterJustificacion.ViewHolderDatos>{
 
@@ -17,6 +19,13 @@ public class AdapterJustificacion extends RecyclerView.Adapter<AdapterJustificac
 
     public AdapterJustificacion(ArrayList<Justificacion> listDatos) {
         this.listDatos = listDatos;
+    }
+
+    private String obtenerColorAleatorio() {
+        String[] fondoColor = {"azul", "marron", "rojo", "verde"};
+        Random random = new Random();
+        int indiceColor = random.nextInt(fondoColor.length);
+        return fondoColor[indiceColor];
     }
 
     @NonNull
@@ -28,6 +37,23 @@ public class AdapterJustificacion extends RecyclerView.Adapter<AdapterJustificac
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
+
+        String colorFondo = obtenerColorAleatorio();
+        switch (colorFondo){
+            case "azul":
+                holder.fondo.setBackgroundResource(R.drawable.justificacion_inicio_azul);
+
+                break;
+            case "marron":
+                holder.fondo.setBackgroundResource(R.drawable.justificacion_inicio_marron);
+                break;
+            case "rojo":
+                holder.fondo.setBackgroundResource(R.drawable.justificacion_inicio_rojo);
+                break;
+            case "verde":
+                holder.fondo.setBackgroundResource(R.drawable.justificacion_inicio_verde);
+                break;
+        }
         holder.asignarDatos(listDatos.get(position));
     }
 
@@ -40,12 +66,14 @@ public class AdapterJustificacion extends RecyclerView.Adapter<AdapterJustificac
         TextView nombre;
         TextView aula;
         TextView fecha;
+        ImageView fondo;
 
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
             nombre = itemView.findViewById(R.id.justificacion_nombre);
             aula = itemView.findViewById(R.id.justificacion_aula);
             fecha= itemView.findViewById(R.id.justificacion_especificacion);
+            fondo = itemView.findViewById(R.id.fondoJustificacion);
         }
 
         public void asignarDatos(Justificacion dato) {
