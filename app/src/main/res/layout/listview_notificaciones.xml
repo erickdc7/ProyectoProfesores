@@ -16,7 +16,7 @@
         android:layout_height="32dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="31dp"
-        app:srcCompat="@drawable/icon_branded_frame_32" />
+        app:srcCompat="@drawable/emoji" />
 
     <FrameLayout
         android:layout_width="278dp"

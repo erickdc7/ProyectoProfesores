@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -30,7 +31,7 @@ public class DirectorioFragment extends Fragment implements Response.Listener<JS
     private static final String ARG_PARAM3 = "param3";
     private static final String ARG_PARAM4 = "param4";
 
-
+    private SearchView searchView;
     private String mParam3;
     private String mParam4;
     private RecyclerView recyDir;
@@ -81,6 +82,21 @@ public class DirectorioFragment extends Fragment implements Response.Listener<JS
 
         cargarWebService();
 
+        searchView = vista.findViewById(R.id.busqueda_directorio);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Filtrar la lista cuando el texto del SearchView cambie
+                ((AdapterDirectorio) recyDir.getAdapter()).filter(newText);
+                return false;
+            }
+        });
+
         return vista;
     }
 
@@ -113,6 +129,7 @@ public class DirectorioFragment extends Fragment implements Response.Listener<JS
                         .withNombreAlumno(jsonObject.optString("nombre"))
                         .withNombrePariente(jsonObject.optString("parentesco"))
                         .withNumeroPariente(jsonObject.optString("telefono"))
+                        .withSexo(jsonObject.optString("sexo"))
                         .build();
                 listDirectorio.add(directorio);
             }
