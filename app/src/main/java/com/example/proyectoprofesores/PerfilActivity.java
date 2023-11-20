@@ -24,7 +24,6 @@
     import com.android.volley.toolbox.StringRequest;
     import com.android.volley.toolbox.Volley;
     import com.android.volley.DefaultRetryPolicy;
-    import com.android.volley.RequestQueue;
     import com.android.volley.toolbox.JsonArrayRequest;
     import com.example.proyectoprofesores.VoleySingleton;
     
@@ -36,7 +35,7 @@
     import java.util.Map;
     
     public class PerfilActivity extends AppCompatActivity {
-        ImageView back;
+        ImageView back,profile;
         Button actualizar,logout;
         EditText edTutor,edCorreo,edID;
         TextView edNombre,tNombre,tCorreo,edApellido,edCurso;
@@ -49,12 +48,15 @@
         String tutor;
         String curso;
         String user;
+
+        int prueba;
     
         @Override
         protected void onCreate(@Nullable Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_perfil);
             back = findViewById(R.id.backB);
+            profile = findViewById(R.id.imageView6);
             logout = findViewById(R.id.button_cerrar_sesion);
             actualizar =findViewById(R.id.button_actualilzar);
             edNombre=findViewById(R.id.editTextNombre);
@@ -77,7 +79,7 @@
                 //aulaTuto = bundle.getString("aulaTuto");
     
                 mostrarDatosFaltantes();
-    
+                profile.setImageResource(R.drawable.logo_hombre);
                 // Usa los valores según sea necesario
                 edNombre.setText(nombre);
                 edApellido.setText(apellido);
@@ -94,22 +96,16 @@
                 }
             });
     
-    //        actualizar.setOnClickListener(new View.OnClickListener() {
-    //            @Override
-    //            public void onClick(View view) {
-    //                //Toast.makeText(getApplicationContext(), R.string.completar_espacio, Toast.LENGTH_SHORT).show();
-    //                actualizar();
-    //            }
-    //        });
-    
             logout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     cerrar_sesion();
                 }
             });
+
+            recuperarDatosDeSharedPreferences();
         }
-    
+
         public void mostrarDatosFaltantes(){
             String ip = getString(R.string.ip);
             String url = ip + "/actualizar_perfil.php?user=" + idDocente;
@@ -122,7 +118,7 @@
                         try {
                             // Supongo que la respuesta del servidor es un solo objeto JSON, ajusta según tu respuesta
                             JSONObject jsonObject = response.getJSONObject(0);
-    
+
                             // Obtén los datos del perfil y guárdalos en las variables
                             tutor = jsonObject.optString("nombre_aula");
                             curso = jsonObject.optString("nombre_curso");
@@ -131,15 +127,7 @@
                             edCurso.setText(curso);
                             edTutor.setText(tutor);
                             edID.setText(user);
-                            // Actualiza las vistas con los nuevos datos
-    //                        edNombre.setText(nombre);
-    //                        edApellido.setText(apellido);
-    //                        edCurso.setText(idDocente);
-    //                        edTutor.setText(aulaTuto);
-    //                        edCorreo.setText(correo);
-    //                        tNombre.setText(nombre);
-    //                        tCorreo.setText(correo);
-    
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(getApplicationContext(), "Error al obtener datos del perfil", Toast.LENGTH_SHORT).show();
@@ -163,8 +151,6 @@
         }
     
         public void actualizar(View view){
-            String Nombre = edNombre.getText().toString().trim();
-            String Apellido = edApellido.getText().toString().trim();
             String Correo = edCorreo.getText().toString().trim();
             String Curso = edCurso.getText().toString().trim();
             String Id = edID.getText().toString().trim();
@@ -178,9 +164,19 @@
             StringRequest request = new StringRequest(Request.Method.POST, "https://fzac2311.000webhostapp.com/actualizar_perfil.php",
                     response -> {
                         Toast.makeText(getApplicationContext(), "Actualizado con éxito", Toast.LENGTH_SHORT).show();
-    //                    startActivity(new Intent(getApplicationContext(), PerfilActivity.class));
-    //                    finish();
+
+                        tutor = Tutor;
+                        curso = Curso;
+                        user = Id;
+
+                        edCurso.setText(curso);
+                        edTutor.setText(tutor);
+                        edID.setText(user);
+
+                        guardarDatosEnSharedPreferences();
+
                         progressDialog.dismiss();
+                        mostrarDatosFaltantes();
                     },
                     error -> {
                         Log.e("Error", "Error al actualizar", error);
@@ -192,13 +188,9 @@
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<>();
                     params.put("id",idDocente);
-                    //params.put("nombre", Nombre);
-                    //params.put("apellido", Apellido);
                     params.put("correo", Correo);
-                    //params.put("curso", Curso);
                     params.put("tutor", Tutor);
                     params.put("usuario", Id);
-                    // Otros campos que deseas actualizar
                     return params;
                 }
             };
@@ -206,7 +198,8 @@
             RequestQueue requestQueue = Volley.newRequestQueue(PerfilActivity.this);
             requestQueue.add(request);
         }
-    
+
+
         private void cerrar_sesion(){
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
             SharedPreferences.Editor editor = preferences.edit();
@@ -224,4 +217,26 @@
             // Inicia IntroActivity
             startActivity(intent);
         }
+
+        private void guardarDatosEnSharedPreferences() {
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("tutor", tutor);
+            editor.putString("curso", curso);
+            editor.putString("usuario", user);
+            editor.apply();
+        }
+
+        private void recuperarDatosDeSharedPreferences() {
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+            tutor = preferences.getString("tutor", "");
+            curso = preferences.getString("curso", "");
+            user = preferences.getString("usuario", "");
+
+            // Actualizar campos con los datos recuperados
+            edCurso.setText(curso);
+            edTutor.setText(tutor);
+            edID.setText(user);
+        }
     }
+

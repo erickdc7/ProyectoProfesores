@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class adapterCursos extends RecyclerView.Adapter<adapterCursos.ViewHolderDatos> {
     Context context;
@@ -49,7 +50,12 @@ public class adapterCursos extends RecyclerView.Adapter<adapterCursos.ViewHolder
         holder.icon.setImageResource(listCursos.get(position).getIcon());
         LinearLayoutManager layoutManager = new LinearLayoutManager(holder.itemView.getContext(), LinearLayoutManager.HORIZONTAL, false);
         holder.recyDias.setLayoutManager(layoutManager);
-        ArrayList<String> dias = listCursos.get(position).getDias();
+        //ArrayList<String> dias = listCursos.get(position).getDias();
+        HashMap<String, ArrayList<String>> diasPorCurso = listCursos.get(position).getDiasPorCurso();
+        ArrayList<String> dias = new ArrayList<>();
+        if (diasPorCurso.containsKey(listCursos.get(position).getNombre())) {
+            dias = diasPorCurso.get(listCursos.get(position).getNombre());
+        }
         adapterDias adapterDias = new adapterDias(dias);
         holder.recyDias.setAdapter(adapterDias);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
