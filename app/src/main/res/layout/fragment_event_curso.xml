@@ -38,6 +38,7 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="34dp"/>
             <TextView
+                android:id="@+id/nameCurso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Biología"
@@ -96,6 +97,7 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/location_curso_icon"/>
                 <TextView
+                    android:id="@+id/salontxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Salon 5A"
@@ -117,6 +119,7 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/bookmark_icon"/>
                 <TextView
+                    android:id="@+id/txtmensjae"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pagina 4, etc"

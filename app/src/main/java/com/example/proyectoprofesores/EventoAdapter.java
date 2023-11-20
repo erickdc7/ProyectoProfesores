@@ -17,28 +17,26 @@ import java.util.ArrayList;
 public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolderDatos> {
     ArrayList<Evento> listDatos;
     Context context;
+    OnCursoClickListener listener;
+
+    public void setOnAgendaClickListener(OnCursoClickListener listener) {
+        this.listener = listener;
+    }
     public EventoAdapter(ArrayList<Evento> listDatos, Context context) {
         this.listDatos = listDatos;
         this.context = context;
     }
-    OnAgendaClickListener listener;
 
-    public void setOnAgendaClickListener(OnAgendaClickListener listener) {
+    public EventoAdapter(ArrayList<Evento> listDatos, Context context, OnCursoClickListener listener) {
+        this.listDatos = listDatos;
+        this.context = context;
         this.listener = listener;
-    }
-
-    public ArrayList<Evento> getListDatos() {
-        return listDatos;
-    }
-
-    public OnAgendaClickListener getListener() {
-        return listener;
     }
 
     @NonNull
     @Override
     public EventoAdapter.ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_evento,null,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_evento,parent,false);
         return new ViewHolderDatos(view);
     }
 
@@ -56,6 +54,13 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder
             holder.cursoTema.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.white));
             holder.cursoNombre.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.white));
             holder.lugar.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.white));
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int adapterPosition = holder.getAdapterPosition();
+                    listener.onCursoClick(adapterPosition);
+                }
+            });
         } else {
             // Restablecer el fondo para otros elementos
             holder.containerLayout.setBackgroundResource(R.drawable.curso_agenda);
@@ -66,14 +71,15 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder
             holder.cursoTema.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
             holder.cursoNombre.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
             holder.lugar.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int adapterPosition = holder.getAdapterPosition();
+                    listener.onCursoClick(adapterPosition);
+                }
+            });
         }
-        holder.containerLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int adapterPosition = holder.getAdapterPosition();
-                listener.onAgendaClick(adapterPosition);
-            }
-        });
+
     }
 
     @Override

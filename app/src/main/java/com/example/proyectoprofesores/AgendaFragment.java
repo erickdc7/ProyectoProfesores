@@ -38,7 +38,7 @@ import java.util.List;
  * Use the {@link AgendaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AgendaFragment extends Fragment implements OnAgendaClickListener, Response.Listener<JSONArray>, Response.ErrorListener{
+public class AgendaFragment extends Fragment implements OnCursoClickListener, Response.Listener<JSONArray>, Response.ErrorListener{
     String idDocente;
     RelativeLayout directorio;
     private RelativeLayout noevento;
@@ -62,6 +62,13 @@ public class AgendaFragment extends Fragment implements OnAgendaClickListener, R
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String id_horario;
+    private String curso;
+    private String aula;
+    private String dia;
+    private String nivel;
+    private String horaInicio;
+    private String horaFin;
 
     public AgendaFragment() {
         // Required empty public constructor
@@ -98,15 +105,8 @@ public class AgendaFragment extends Fragment implements OnAgendaClickListener, R
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_agenda, container, false);
-        // ... (código existente)
 
-
-
-
-
-        return view;
+        return inflater.inflate(R.layout.fragment_agenda, container, false);
     }
 
     @Override
@@ -129,7 +129,9 @@ public class AgendaFragment extends Fragment implements OnAgendaClickListener, R
         recyclerEvento.setHasFixedSize(true);
 
         cargarWebServiceEventos();
-
+        EventoAdapter adapter =  new EventoAdapter(listaEventos, getContext());
+        adapter.setOnAgendaClickListener(this);
+        recyclerEvento.setAdapter(adapter);
 
         //recycle calendar
         recyclerView = view.findViewById(R.id.recyclerViewCalendar);
@@ -204,9 +206,17 @@ public class AgendaFragment extends Fragment implements OnAgendaClickListener, R
 
 
 
-    public void onAgendaClick(int position) {
+    public void onCursoClick(int position) {
         EventCursoFragment fragment = new EventCursoFragment();
-
+        Bundle bundle = new Bundle();
+        bundle.putString("idHorario", id_horario);
+        bundle.putString("cursos", curso);
+        bundle.putString("aula", aula);
+        bundle.putString("dia", dia);
+        bundle.putString("nivel", nivel);
+        bundle.putString("horaInicio", horaInicio);
+        bundle.putString("horaFin", horaFin);
+        fragment.setArguments(bundle);
         getParentFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment)
                 .addToBackStack(null)
@@ -251,6 +261,13 @@ public class AgendaFragment extends Fragment implements OnAgendaClickListener, R
                 JSONObject jsonObject = response.getJSONObject(i);
                 Evento evento = new Evento(Integer.valueOf(jsonObject.optString("id_horario")), jsonObject.optString("curso"), jsonObject.optString("aula"), jsonObject.optString("nivel"),
                         jsonObject.optString("dia"), Time.valueOf(jsonObject.optString("horainicio")), Time.valueOf(jsonObject.optString("horafin")));
+        id_horario = jsonObject.optString("id_horario");
+                curso = jsonObject.optString("curso");
+                aula =jsonObject.optString("aula");
+                dia = jsonObject.optString("dia");
+                nivel = jsonObject.optString("nivel");
+                horaInicio = jsonObject.optString("horainicio");
+                horaFin = jsonObject.optString("horafin");
 
                 listaEventos.add(evento);
             }

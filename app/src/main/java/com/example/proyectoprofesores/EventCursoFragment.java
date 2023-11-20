@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +27,13 @@ public class EventCursoFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String id_horario;
+    private String curso;
+    private String aula;
+    private String dia;
+    private String nivel;
+    private String horaInicio;
+    private String horaFin;
 
     public EventCursoFragment() {
         // Required empty public constructor
@@ -76,5 +84,27 @@ public class EventCursoFragment extends Fragment {
                 getParentFragmentManager().popBackStack();
             }
         });
+        Bundle args = getArguments();
+        id_horario = args.getString("idHorario", "");
+        curso = args.getString("cursos", "");
+        aula = args.getString("aula", "");
+        dia = args.getString("dia", "");
+        nivel = args.getString("nivel", "");
+        horaInicio = args.getString("horaInicio", "");
+        horaFin = args.getString("horaFin", "");
+        TextView textCurso = view.findViewById(R.id.nameCurso);
+        textCurso.setText(curso);
+        TextView textFecha = view.findViewById(R.id.fecha_curso_detail_id);
+        textFecha.setText(dia);
+        TextView textHora = view.findViewById(R.id.fecha_hora_detail_id);
+        String hr=horaInicio + " - "+horaFin;
+        textHora.setText(hr);
+        TextView txtSalon = view.findViewById(R.id.salontxt);
+        String sal= "Salon "+aula;
+        txtSalon.setText(sal);
+        TextView txtMensaje = view.findViewById(R.id.txtmensjae);
+        String mensaje= "¡Recuerde marcar su entrada con el QR del salón y salir a tiempo!";
+        txtMensaje.setText(mensaje);
+
     }
 }
