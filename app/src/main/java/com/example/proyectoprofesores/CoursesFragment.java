@@ -160,7 +160,7 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener, R
                 String nivel = jsonObject.getString("nivel");
                 String aula = jsonObject.getString("nombre_aula");
                 String dia = jsonObject.getString("dia");
-
+                int idCurso = Integer.parseInt(jsonObject.getString("id_cursos"));
                 cursodt existingCurso = findCursoByName(nombreCurso);
 
                 if (existingCurso != null) {
@@ -173,7 +173,7 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener, R
 
                     ArrayList<String> listDias = new ArrayList<>();
                     listDias.add(dia);
-                    listCursos.add(new cursodt(fondoResource, logoResource, nombreCurso, nivel, aula, "22", listDias));
+                    listCursos.add(new cursodt(idCurso, fondoResource, logoResource, nombreCurso, nivel, aula, "22", listDias));
                 }
 
                 // Crear un nuevo objeto cursodt y agregarlo a listCursos
@@ -219,7 +219,7 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener, R
         String textoCurso = listCursos.get(position).getNombre();
         String textoAula = listCursos.get(position).getAula();
         String textoNivel = listCursos.get(position).getNivel();
-
+        String textoid  = String.valueOf(listCursos.get(position).getId());
 
         CourseDescpFragment fragment = new CourseDescpFragment();
         Bundle bundle = new Bundle();
@@ -228,6 +228,7 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener, R
         bundle.putString("nivel", textoNivel);
         bundle.putString("idUsuario", idUsuario);
         bundle.putString("idDocente", idDocente);
+        bundle.putString("idCurso", textoid);
         fragment.setArguments(bundle);
 
         getParentFragmentManager().beginTransaction()

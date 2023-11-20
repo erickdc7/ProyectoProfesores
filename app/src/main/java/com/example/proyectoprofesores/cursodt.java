@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class cursodt {
+    private  int id;
     private int fondo;
     private int icon;
     private String nombre;
@@ -19,7 +20,8 @@ public class cursodt {
 
     }
 
-    public cursodt(int fondo, int icon, String nombre, String nivel, String aula, String cantAlum, ArrayList<String> dias) {
+    public cursodt(int id, int fondo, int icon, String nombre, String nivel, String aula, String cantAlum, ArrayList<String> dias) {
+        this.id = id;
         this.fondo = fondo;
         this.icon = icon;
         this.nombre = nombre;
@@ -29,6 +31,14 @@ public class cursodt {
         //this.dias = dias;
         this.diasPorCurso = new HashMap<>();
         this.diasPorCurso.put(nombre, dias);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getFondo() {

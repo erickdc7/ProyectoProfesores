@@ -29,236 +29,247 @@
             android:layout_height="match_parent"
             android:background="@drawable/rectangle307"/>
     </LinearLayout>
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="90dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp">
-        <TextView
-            android:id="@+id/titleC"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Comunicacion"
-            android:textStyle="bold"
-            android:textSize="36sp"
-            android:textColor="@color/back1"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Especificaciones"
-            android:textStyle="normal"
-            android:textSize="20sp"
-            android:textColor="@color/back1"/>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/rectanglenn">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="15dp"
-                android:orientation="horizontal">
-
-                <RelativeLayout
-                    android:id="@+id/timefondo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:background="@drawable/group12383">
-
-                    <TextView
-                        android:id="@+id/timetxt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:text="En proceso"
-                        android:textColor="@color/back1" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/asistfondo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/group12382">
-
-                    <TextView
-                        android:id="@+id/asistxt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:text="Temprano"
-                        android:textColor="@color/back1" />
-                </RelativeLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="55dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nivel:"
-                    android:textStyle="bold"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/back1"/>
-                <TextView
-                    android:id="@+id/txtNivel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Primaria"
-                    android:layout_marginStart="10dp"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/back1"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Aula:"
-                    android:textStyle="bold"
-                    android:layout_marginStart="105dp"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/back1"/>
-                <TextView
-                    android:id="@+id/txtAula"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="5B"
-                    android:layout_marginStart="10dp"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/back1"/>
-
-
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="N° Estudiantes:"
-                    android:textStyle="bold"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/back1"/>
-                <TextView
-                    android:id="@+id/txtNest"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="18"
-                    android:layout_marginStart="10dp"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/back1"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sesion:"
-                    android:textStyle="bold"
-                    android:layout_marginStart="80dp"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/back1"/>
-                <TextView
-                    android:id="@+id/txtSes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="6"
-                    android:layout_marginStart="10dp"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/back1"/>
-
-
-
-            </LinearLayout>
-        </RelativeLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Especificaciones"
-            android:textStyle="normal"
-            android:textSize="20sp"
-            android:textColor="@color/back1"/>
-        <org.eazegraph.lib.charts.ValueLineChart
-            android:id="@+id/cubiclinechart"
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:egUseCubic="true"
-            app:egUseOverlapFill="true"
-            app:egCurveSmoothness="0.4"
-            app:egIndicatorLineColor="#1D518F"
-            app:egLegendHeight="40dp"
-            app:egShowStandardValue="true"/>
-
-        <com.db.williamchart.view.BarChartView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            app:chart_axis="x"
-            app:chart_barsColor="#DDE2E9"
-            app:chart_barsRadius="4dp"
-            app:chart_labelsColor="#000000"
-            app:chart_labelsSize="10sp"
-            app:chart_spacing="15dp"
-            android:id="@+id/barChartVert"/>
-
-
+        android:layout_marginBottom="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:gravity="center_vertical">
+            android:orientation="vertical"
+
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp">
+            <TextView
+                android:id="@+id/titleC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comunicacion"
+                android:textStyle="bold"
+                android:textSize="36sp"
+                android:textColor="@color/back1"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Anotaciones"
+                android:layout_marginTop="20dp"
+                android:text="Especificaciones"
                 android:textStyle="normal"
                 android:textSize="20sp"
                 android:textColor="@color/back1"/>
-
-            <Button
-                android:id="@+id/botonInsertarNotas"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="15dp"
-                android:background="@drawable/masss__1_"
-                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recy_note"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                tools:listitem="@layout/note_item"/>
+                android:layout_marginTop="15dp"
+                android:background="@drawable/rectanglenn">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/timefondo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:background="@drawable/group12383">
+
+                        <TextView
+                            android:id="@+id/timetxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:text="En proceso"
+                            android:textColor="@color/back1" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/asistfondo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/group12382">
+
+                        <TextView
+                            android:id="@+id/asistxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:text="Temprano"
+                            android:textColor="@color/back1" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="55dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel:"
+                        android:textStyle="bold"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/back1"/>
+                    <TextView
+                        android:id="@+id/txtNivel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Primaria"
+                        android:layout_marginStart="10dp"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/back1"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Aula:"
+                        android:textStyle="bold"
+                        android:layout_marginStart="105dp"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/back1"/>
+                    <TextView
+                        android:id="@+id/txtAula"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5B"
+                        android:layout_marginStart="10dp"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/back1"/>
+
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="N° Estudiantes:"
+                        android:textStyle="bold"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/back1"/>
+                    <TextView
+                        android:id="@+id/txtNest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="18"
+                        android:layout_marginStart="10dp"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/back1"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sesion:"
+                        android:textStyle="bold"
+                        android:layout_marginStart="80dp"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/back1"/>
+                    <TextView
+                        android:id="@+id/txtSes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="6"
+                        android:layout_marginStart="10dp"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/back1"/>
+
+
+
+                </LinearLayout>
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Asistencia"
+                android:textStyle="normal"
+                android:textSize="20sp"
+                android:textColor="@color/back1"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+                android:background="@drawable/rectanglenn"
+                android:padding="15dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Numero de asistencias a tiempo "
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/back1"/>
+                <org.eazegraph.lib.charts.ValueLineChart
+                    android:id="@+id/cubiclinechart"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    app:egUseCubic="true"
+                    app:egUseOverlapFill="true"
+                    app:egIndicatorTextColor="#1D518F"
+                    app:egCurveSmoothness="0.4"
+                    app:egIndicatorLineColor="#1D518F"
+                    app:egLegendHeight="40dp"
+                    app:egShowStandardValue="true"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Anotaciones"
+                    android:textStyle="normal"
+                    android:textSize="20sp"
+                    android:textColor="@color/back1"/>
+
+                <Button
+                    android:id="@+id/botonInsertarNotas"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="15dp"
+                    android:background="@drawable/masss__1_"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recy_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    tools:listitem="@layout/note_item"/>
+            </LinearLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
+
 
 
 

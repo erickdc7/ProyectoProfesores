@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,7 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class adapterCursos extends RecyclerView.Adapter<adapterCursos.ViewHolderDatos> {
     Context context;
@@ -46,15 +51,29 @@ public class adapterCursos extends RecyclerView.Adapter<adapterCursos.ViewHolder
         holder.nivel.setText(listCursos.get(position).getNivel());
         holder.aula.setText(listCursos.get(position).getAula());
         holder.cantAlum.setText(listCursos.get(position).getCantAlum());
-        holder.fondo.setImageResource(listCursos.get(position).getFondo());
+        holder.fondo.setBackgroundResource(listCursos.get(position).getFondo());
         holder.icon.setImageResource(listCursos.get(position).getIcon());
         LinearLayoutManager layoutManager = new LinearLayoutManager(holder.itemView.getContext(), LinearLayoutManager.HORIZONTAL, false);
         holder.recyDias.setLayoutManager(layoutManager);
         //ArrayList<String> dias = listCursos.get(position).getDias();
+        Map<String, Integer> diasOrdenados = new HashMap<>();
+        diasOrdenados.put("Lunes", 1);
+        diasOrdenados.put("Martes", 2);
+        diasOrdenados.put("Miercoles", 3);
+        diasOrdenados.put("Jueves", 4);
+        diasOrdenados.put("Viernes", 5);
         HashMap<String, ArrayList<String>> diasPorCurso = listCursos.get(position).getDiasPorCurso();
         ArrayList<String> dias = new ArrayList<>();
         if (diasPorCurso.containsKey(listCursos.get(position).getNombre())) {
-            dias = diasPorCurso.get(listCursos.get(position).getNombre());
+            // Obtiene el conjunto de días asociados al nombre del curso
+            Set<String> diasSet = new HashSet<>(diasPorCurso.get(listCursos.get(position).getNombre()));
+
+            // Limpia la lista existente para evitar duplicados
+            dias.clear();
+
+            // Agrega los elementos del conjunto de días al ArrayList
+            dias.addAll(diasSet);
+            dias.sort(Comparator.comparingInt(dia -> diasOrdenados.getOrDefault(dia, Integer.MAX_VALUE)));
         }
         adapterDias adapterDias = new adapterDias(dias);
         holder.recyDias.setAdapter(adapterDias);
@@ -74,7 +93,8 @@ public class adapterCursos extends RecyclerView.Adapter<adapterCursos.ViewHolder
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
         TextView nombre, nivel, aula, sesion, cantAlum;
-        ImageView fondo, icon;
+        RelativeLayout fondo;
+        ImageView icon;
         RecyclerView recyDias;
         adapterDias adapterDias;
         public ViewHolderDatos(@NonNull View itemView) {
@@ -83,7 +103,6 @@ public class adapterCursos extends RecyclerView.Adapter<adapterCursos.ViewHolder
             nivel = itemView.findViewById(R.id.nivelCurso);
             cantAlum = itemView.findViewById(R.id.cantAlumCurso);
             aula = itemView.findViewById(R.id.aulCurso);
-            sesion = itemView.findViewById(R.id.sesCurso);
 
             fondo = itemView.findViewById(R.id.fondoCurso);
             icon = itemView.findViewById(R.id.iconCurso);
