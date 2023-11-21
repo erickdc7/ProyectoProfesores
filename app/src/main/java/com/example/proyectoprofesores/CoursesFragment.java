@@ -160,12 +160,14 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener, R
                 String nivel = jsonObject.getString("nivel");
                 String aula = jsonObject.getString("nombre_aula");
                 String dia = jsonObject.getString("dia");
+                String cant_alumnos = String.valueOf(jsonObject.getInt("cantidad_alumnos"));
                 int idCurso = Integer.parseInt(jsonObject.getString("id_cursos"));
-                cursodt existingCurso = findCursoByName(nombreCurso);
+                cursodt existingCurso = findCursoByAula(aula);
+//
 
                 if (existingCurso != null) {
                     // Si existe, agregar el día al curso existente
-                    existingCurso.getDiasPorCurso().get(nombreCurso).add(dia);
+                    existingCurso.getDiasPorCurso().get(aula).add(dia);
                 } else {
                     // Si no existe, crear un nuevo curso
                     int fondoResource = getFondoResourceByCurso(nombreCurso);
@@ -173,11 +175,9 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener, R
 
                     ArrayList<String> listDias = new ArrayList<>();
                     listDias.add(dia);
-                    listCursos.add(new cursodt(idCurso, fondoResource, logoResource, nombreCurso, nivel, aula, "22", listDias));
+                    listCursos.add(new cursodt(idCurso, fondoResource, logoResource, nombreCurso, nivel, aula, cant_alumnos, listDias));
                 }
 
-                // Crear un nuevo objeto cursodt y agregarlo a listCursos
-                //listCursos.add(new cursodt(R.drawable.fondo_curso1, R.drawable.logo_math, nombreCurso, nivel, aula, "22", listDias));
             }
             selectedFilter = "todos";
             searchView.setQuery("", false);
@@ -317,9 +317,9 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener, R
 
     }
 
-    private cursodt findCursoByName(String nombreCurso) {
+    private cursodt findCursoByAula(String aula) {
         for (cursodt curso : listCursos) {
-            if (curso.getDiasPorCurso().containsKey(nombreCurso)) {
+            if (curso.getDiasPorCurso().containsKey(aula)) {
                 return curso;
             }
         }
