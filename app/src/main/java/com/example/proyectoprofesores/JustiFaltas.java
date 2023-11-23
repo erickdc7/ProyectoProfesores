@@ -1,6 +1,8 @@
 package com.example.proyectoprofesores;
 
 
+import java.sql.Date;
+
 public class JustiFaltas {
     String nomAlumno;
     String aula;
@@ -9,6 +11,7 @@ public class JustiFaltas {
     String fInicioFalta;
     String fFinFalta;
     String descripcion;
+    private Date fecha;
 
     public static class Builder {
         private JustiFaltas justiFaltas;
@@ -44,6 +47,11 @@ public class JustiFaltas {
 
         public Builder withFFinFalta(String fFinFalta) {
             justiFaltas.fFinFalta = fFinFalta;
+            return this;
+        }
+
+        public Builder withFecha(String fecha) {
+            justiFaltas.fecha = Date.valueOf(fecha);
             return this;
         }
 

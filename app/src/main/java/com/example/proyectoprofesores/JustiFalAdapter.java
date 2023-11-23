@@ -32,6 +32,7 @@ public class JustiFalAdapter extends RecyclerView.Adapter<JustiFalAdapter.ViewHo
         holder.nombre.setText(listaFaltas.get(position).nomAlumno);
         holder.aula.setText(listaFaltas.get(position).aula);
         holder.anotacion.setText(listaFaltas.get(position).descripcion);
+        //holder.fecha.setText(convertirFechaAString(listaFaltas.get(position)));
     }
 
     @Override
@@ -40,12 +41,13 @@ public class JustiFalAdapter extends RecyclerView.Adapter<JustiFalAdapter.ViewHo
     }
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder{
-        TextView nombre, aula, anotacion;
+        TextView nombre, aula, anotacion, fecha;
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
             nombre= itemView.findViewById(R.id.textView9);
             aula = itemView.findViewById(R.id.textView12);
             anotacion = itemView.findViewById(R.id.textView10);
+            fecha = itemView.findViewById(R.id.textfecha);
         }
     }
 }

@@ -31,7 +31,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/textfecha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -40,76 +40,83 @@
 
         </LinearLayout>
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/nombretx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginStart="15dp"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:text="Nombre:" />
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginStart="7dp"
+                    android:text="RODRIGUEZ SAE                                      NZ ASTRID MICHELLE"
+                    android:textSize="14sp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            </LinearLayout>
+
             <TextView
-                android:id="@+id/textView8"
+                android:layout_below="@id/nombretx"
+                android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="45dp"
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="30dp"
                 android:textStyle="bold"
                 android:textSize="14sp"
-                android:text="Nombre:" />
+                android:text="Anotaciones:" />
+            <LinearLayout
+                android:id="@+id/desptxt"
+                android:layout_below="@+id/nombretx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="25dp"
+                android:gravity="end">
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:text="Aula:" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textSize="14sp"
+                    android:text="3A" />
+            </LinearLayout>
             <TextView
-                android:id="@+id/textView9"
+                android:layout_below="@id/desptxt"
+                android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="45dp"
-                android:layout_marginStart="7dp"
-                android:text="RODRIGUEZ SAENZ ASTRID MICHELLE"
-                android:textSize="14sp"/>
-
-        </LinearLayout>
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="30dp"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            android:text="Anotaciones:" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="25dp"
-            android:gravity="end">
-
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="70dp"
-                android:textStyle="bold"
+                android:maxWidth="195dp"
+                android:layout_marginStart="15dp"
                 android:textSize="14sp"
-                android:text="Aula:" />
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
-                android:textSize="14sp"
-                android:text="3A" />
-        </LinearLayout>
+                android:text="Tomar Examen Bimestral" />
+        </RelativeLayout>
 
 
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="92dp"
-            android:maxWidth="195dp"
-            android:layout_marginStart="15dp"
-            android:textSize="14sp"
-            android:text="Tomar Examen Bimestral" />
 
 
 
