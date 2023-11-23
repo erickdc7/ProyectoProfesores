@@ -138,7 +138,6 @@ public class CourseDescpFragment extends Fragment implements OnNoteClickListener
         idDocente = args.getString("idDocente", "");
         idCurso = args.getString("idCurso", "");
         idAula = args.getString("idAula", "");
-        Log.d("CourseDescpFragment", "id_aula" +idAula);
         aula = args.getString("aula", "");
         nivel = args.getString("nivel", "");
         nEst = args.getString("nEst", "");

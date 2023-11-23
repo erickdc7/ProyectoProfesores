@@ -53,6 +53,8 @@ public class JustifyFragment extends Fragment implements Response.Listener<JSONA
 
     ProgressBar progressBar;
     ImageView backp;
+    String idUsuario;
+    String idDocente;
     public JustifyFragment() {
         // Required empty public constructor
     }
@@ -88,7 +90,9 @@ public class JustifyFragment extends Fragment implements Response.Listener<JSONA
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_justify, container, false);
         listFaltas= new ArrayList<>();
-
+        Bundle args = getArguments();
+        idUsuario = args.getString("idUsuario", "");
+        idDocente = args.getString("idDocente", "");
         recyFal = vista.findViewById(R.id.recy_justi);
         progressBar = vista.findViewById(R.id.progress_bar);
         recyFal.setLayoutManager(new LinearLayoutManager(this.getContext()));
@@ -104,6 +108,8 @@ public class JustifyFragment extends Fragment implements Response.Listener<JSONA
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Log.d("id:", idDocente);
         backp = view.findViewById(R.id.imageatras);
         backp.setOnClickListener(v -> getParentFragmentManager().popBackStack());
     }
@@ -111,7 +117,9 @@ public class JustifyFragment extends Fragment implements Response.Listener<JSONA
     private void cargarWebService() {
         progressBar.setVisibility(View.VISIBLE);
         String ip = getString(R.string.ip);
-        String url = ip + "/obtener_justificaciones.php";
+        String url = ip + "/obtener_justificaciones.php?id_docente="+idDocente;
+
+        Log.d("Ip:",url);
 
         jsonArrayRequest= new JsonArrayRequest(Request.Method.GET, url, null, this, this );
         //request.add(jsonArrayRequest);
@@ -122,7 +130,7 @@ public class JustifyFragment extends Fragment implements Response.Listener<JSONA
     @Override
     public void onErrorResponse(VolleyError error) {
         Toast.makeText(getContext(), "No se puede conectar" + error.toString(), Toast.LENGTH_LONG).show();
-        System.out.println();
+
         Log.d("ERROR:", error.toString());
         progressBar.setVisibility(View.GONE);
     }
