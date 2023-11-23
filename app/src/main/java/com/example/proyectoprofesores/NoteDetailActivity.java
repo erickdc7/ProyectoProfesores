@@ -40,6 +40,7 @@ public class NoteDetailActivity extends AppCompatActivity implements Response.Li
 
     private OnNoteSavedListener listener;
     boolean isEditMode = false;
+    private String idAula;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,8 @@ public class NoteDetailActivity extends AppCompatActivity implements Response.Li
         idDocente= getIntent().getStringExtra("idDocente");
         textoCurso= getIntent().getStringExtra("curso");
         idCurso = getIntent().getStringExtra("idCurso");
+        idAula = getIntent().getStringExtra("idAula");
+        Log.d("CourseDescpFragment", "id_aula=" +idAula);
         title = getIntent().getStringExtra("title");
         content = getIntent().getStringExtra("content");
         id = getIntent().getStringExtra("id");
@@ -91,7 +94,7 @@ public class NoteDetailActivity extends AppCompatActivity implements Response.Li
 
 
         }else{
-            url = ip + "/registrar_anotacion.php?titulo="+noteTitle+"&contenido="+noteContent+"&id_usuario="+idUsuario+"&id_cursos="+idCurso;
+            url = ip + "/registrar_anotacion.php?titulo="+noteTitle+"&contenido="+noteContent+"&id_usuario="+idUsuario+"&id_cursos="+idCurso+"&id_aula="+idAula;
             url=url.replace(" ", "%20");
             jsonObjectRequest= new JsonObjectRequest(Request.Method.GET, url, null, this, this );
             //request.add(jsonArrayRequest);
@@ -132,10 +135,10 @@ public class NoteDetailActivity extends AppCompatActivity implements Response.Li
     @Override
     public void onErrorResponse(VolleyError error) {
         if (isEditMode){
-            Toast.makeText(this, "No se pudo editar"+error.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No se pudo editar", Toast.LENGTH_SHORT).show();
             Log.i("ERROR: ", error.toString() );
         }else {
-            Toast.makeText(this, "No se pudo registrar"+error.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No se pudo registrar", Toast.LENGTH_SHORT).show();
             Log.i("ERROR: ", error.toString() );
         }
 

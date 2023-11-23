@@ -1,6 +1,8 @@
 package com.example.proyectoprofesores;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,22 +18,21 @@ import java.util.ArrayList;
 
 public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolderDatos> {
     ArrayList<Evento> listDatos;
-    Context context;
-    OnCursoClickListener listener;
 
-    public void setOnAgendaClickListener(OnCursoClickListener listener) {
-        this.listener = listener;
+    Context context;
+    private String pressedDay;
+    private String pressedMes;
+
+    public void setPressedDay(String day, String mes) {
+        this.pressedDay = day;
+        this.pressedMes = mes;
     }
     public EventoAdapter(ArrayList<Evento> listDatos, Context context) {
         this.listDatos = listDatos;
         this.context = context;
     }
 
-    public EventoAdapter(ArrayList<Evento> listDatos, Context context, OnCursoClickListener listener) {
-        this.listDatos = listDatos;
-        this.context = context;
-        this.listener = listener;
-    }
+
 
     @NonNull
     @Override
@@ -45,7 +46,6 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder
         holder.asignarDatos(listDatos.get(position));
 
         if (position == 0) {
-            // Cambiar el fondo del primer elemento
             holder.containerLayout.setBackgroundResource(R.drawable.curso_agenda_primero);
             holder.iconoubicacion.setImageResource(R.drawable.icon_location);
             holder.mas.setImageResource(R.drawable.icon_mas_light);
@@ -54,15 +54,8 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder
             holder.cursoTema.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.white));
             holder.cursoNombre.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.white));
             holder.lugar.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.white));
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int adapterPosition = holder.getAdapterPosition();
-                    listener.onCursoClick(adapterPosition);
-                }
-            });
+
         } else {
-            // Restablecer el fondo para otros elementos
             holder.containerLayout.setBackgroundResource(R.drawable.curso_agenda);
             holder.iconoubicacion.setImageResource(R.drawable.icon_location_dark);
             holder.mas.setImageResource(R.drawable.icon_mas_dark);
@@ -71,14 +64,19 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder
             holder.cursoTema.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
             holder.cursoNombre.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
             holder.lugar.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int adapterPosition = holder.getAdapterPosition();
-                    listener.onCursoClick(adapterPosition);
-                }
-            });
+
         }
+        holder.containerLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(context, EventoCursoActivity.class);
+            intent.putExtra("idHorario", String.valueOf(listDatos.get(position).getIdHorario()));
+            intent.putExtra("cursos", listDatos.get(position).getCurso());
+            intent.putExtra("aula", listDatos.get(position).getAula());
+            intent.putExtra("dia", listDatos.get(position).getDia());
+            intent.putExtra("nivel", listDatos.get(position).getNivel());
+            intent.putExtra("horaInicio", Evento.convertirTiempoAstring(listDatos.get(position).getHoraInicio()));
+            intent.putExtra("horaFin", Evento.convertirTiempoAstring(listDatos.get(position).getHoraFin()));
+            context.startActivity(intent);
+        });
 
     }
 
@@ -89,14 +87,13 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder
 
     public class ViewHolderDatos extends RecyclerView.ViewHolder {
         RelativeLayout containerLayout;
-        ImageView iconoubicacion;
-        ImageView mas;
-
+        ImageView iconoubicacion, mas;
         TextView horaInicio;
         TextView horaFin;
         TextView cursoNombre;
         TextView cursoTema;
         TextView lugar;
+
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
             containerLayout = itemView.findViewById(R.id.cuadro_horario);

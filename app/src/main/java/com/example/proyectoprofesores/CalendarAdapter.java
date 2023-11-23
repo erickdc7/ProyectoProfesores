@@ -27,8 +27,11 @@ public class CalendarAdapter extends RecyclerView.Adapter<com.example.proyectopr
     private int selectedItemPosition = -1;
     private boolean inicio = true;
     private Context context;
+
     RelativeLayout noevento;
     ImageView lineaE;
+
+
 
 
 
@@ -78,6 +81,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<com.example.proyectopr
 
         if (item.getDayNumber().equals(String.valueOf(todayDay)) && item.getMonth() == todayMonth && item.getYear() == todayYear && inicio) {
             // Establece el estado seleccionado si es el día actual
+
             item.setSelected(true);
             selectedItemPosition=position;
             holder.itemView.setBackgroundResource(R.drawable.rectangle_outline_blue);
@@ -113,6 +117,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<com.example.proyectopr
             @Override
             public void onClick(View v) {
                 int dayOfWeek = item.getDayOfWeekNumber();
+
 
                 //RESTAURAR VISTA
 
@@ -204,5 +209,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<com.example.proyectopr
 
 
 
+
     }
+
 }

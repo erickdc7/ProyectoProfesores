@@ -158,6 +158,7 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener, R
                 // Extraer datos del objeto JSON
                 String nombreCurso = jsonObject.getString("nombre_curso");
                 String nivel = jsonObject.getString("nivel");
+                int idAula = Integer.parseInt(jsonObject.getString("id_aula"));
                 String aula = jsonObject.getString("nombre_aula");
                 String dia = jsonObject.getString("dia");
                 String cant_alumnos = String.valueOf(jsonObject.getInt("cantidad_alumnos"));
@@ -175,7 +176,7 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener, R
 
                     ArrayList<String> listDias = new ArrayList<>();
                     listDias.add(dia);
-                    listCursos.add(new cursodt(idCurso, fondoResource, logoResource, nombreCurso, nivel, aula, cant_alumnos, listDias));
+                    listCursos.add(new cursodt(idCurso, fondoResource, logoResource, nombreCurso, nivel,idAula, aula, cant_alumnos, listDias));
                 }
 
             }
@@ -220,15 +221,18 @@ public class CoursesFragment extends Fragment implements OnCursoClickListener, R
         String textoAula = listCursos.get(position).getAula();
         String textoNivel = listCursos.get(position).getNivel();
         String textoid  = String.valueOf(listCursos.get(position).getId());
-
+        String textidAula = String.valueOf(listCursos.get(position).getId_aula());
+        String cantAlum = listCursos.get(position).getCantAlum();
         CourseDescpFragment fragment = new CourseDescpFragment();
         Bundle bundle = new Bundle();
+        bundle.putString("idAula", textidAula);
         bundle.putString("aula", textoAula);
         bundle.putString("curso", textoCurso);
         bundle.putString("nivel", textoNivel);
         bundle.putString("idUsuario", idUsuario);
         bundle.putString("idDocente", idDocente);
         bundle.putString("idCurso", textoid);
+        bundle.putString("nEst", cantAlum);
         fragment.setArguments(bundle);
 
         getParentFragmentManager().beginTransaction()

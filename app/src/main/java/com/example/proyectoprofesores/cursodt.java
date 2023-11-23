@@ -8,6 +8,7 @@ public class cursodt {
     private int icon;
     private String nombre;
     private String nivel;
+    private int id_aula;
     private String aula;
 
     private String cantAlum;
@@ -20,12 +21,13 @@ public class cursodt {
 
     }
 
-    public cursodt(int id, int fondo, int icon, String nombre, String nivel, String aula, String cantAlum, ArrayList<String> dias) {
+    public cursodt(int id, int fondo, int icon, String nombre, String nivel, int id_aula, String aula, String cantAlum, ArrayList<String> dias) {
         this.id = id;
         this.fondo = fondo;
         this.icon = icon;
         this.nombre = nombre;
         this.nivel = nivel;
+        this.id_aula = id_aula;
         this.aula = aula;
         this.cantAlum = cantAlum;
         //this.dias = dias;
@@ -83,6 +85,14 @@ public class cursodt {
 
     public String getCantAlum() {
         return cantAlum;
+    }
+
+    public int getId_aula() {
+        return id_aula;
+    }
+
+    public void setId_aula(int id_aula) {
+        this.id_aula = id_aula;
     }
 
     public void setCantAlum(String cantAlum) {

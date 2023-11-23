@@ -50,7 +50,7 @@ public class AdapterDirectorio extends RecyclerView.Adapter<AdapterDirectorio.Vi
     String alumno = "" + listDirectorio.get(position).nombreAlumno;
         holder.NombreAlumno.setText(alumno);
 
-        holder.NombrePariente.setText(listDirectorio.get(position).nombrePariente);
+        holder.NombrePariente.setText(listDirectorio.get(position).nombrePariente+":");
         holder.NumeroPariente.setText(listDirectorio.get(position).numeroPariente);
         int textColor=0;
         if (position % 2 == 0) {

@@ -77,6 +77,10 @@ public class CourseDescpFragment extends Fragment implements OnNoteClickListener
     String idCurso;
 
     JsonArrayRequest jsonArrayRequest;
+    private String idAula;
+    private String nivel;
+    private String nEst;
+    private String aula;
 
     /**
      * Use this factory method to create a new instance of
@@ -133,6 +137,11 @@ public class CourseDescpFragment extends Fragment implements OnNoteClickListener
         idUsuario = args.getString("idUsuario", "");
         idDocente = args.getString("idDocente", "");
         idCurso = args.getString("idCurso", "");
+        idAula = args.getString("idAula", "");
+        Log.d("CourseDescpFragment", "id_aula" +idAula);
+        aula = args.getString("aula", "");
+        nivel = args.getString("nivel", "");
+        nEst = args.getString("nEst", "");
         if(args!=null){
             textoCurso = args.getString("curso", "");
             TextView textCour = view.findViewById(R.id.titleC);
@@ -148,6 +157,7 @@ public class CourseDescpFragment extends Fragment implements OnNoteClickListener
             intent.putExtra("idUsuario", idUsuario);
             intent.putExtra("idDocenete", idDocente);
             intent.putExtra("idCurso", idCurso);
+            intent.putExtra("idAula", idAula);
             noteDetailLauncher.launch(intent);
         });
 
@@ -156,6 +166,17 @@ public class CourseDescpFragment extends Fragment implements OnNoteClickListener
         layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
+        TextView textNivel = view.findViewById(R.id.txtNivel);
+        if(nivel.equalsIgnoreCase("SEC")){
+            textNivel.setText("Secundaria");
+        }else{
+            textNivel.setText("Primaria");
+        }
+
+        TextView txtEst = view.findViewById(R.id.txtNest);
+        txtEst.setText(nEst);
+        TextView txtAula = view.findViewById(R.id.txtAula);
+        txtAula.setText(aula);
         noteList.clear();
         cargarWebService();
 
@@ -185,7 +206,7 @@ public class CourseDescpFragment extends Fragment implements OnNoteClickListener
 
     private void cargarWebService() {
         String ip = getString(R.string.ip);
-        String url = ip + "/obtener_notas.php?id_usuario="+idUsuario+"&id_cursos="+idCurso;
+        String url = ip + "/obtener_notas.php?id_usuario="+idUsuario+"&id_cursos="+idCurso + "&id_aula="+idAula;
 
         jsonArrayRequest= new JsonArrayRequest(Request.Method.GET, url, null, this, this );
         //request.add(jsonArrayRequest);
@@ -261,15 +282,14 @@ public class CourseDescpFragment extends Fragment implements OnNoteClickListener
 
         } catch (JSONException e) {
             e.printStackTrace();
-            Toast.makeText(getContext(), "No se han encontrado cursos", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "No se han encontrado notas", Toast.LENGTH_LONG).show();
 
         }
 
     }
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getContext(), "No se puede conectar: " + error.toString(), Toast.LENGTH_LONG).show();
-        System.out.println();
+        Toast.makeText(getContext(), "No se pudo conectar con notas", Toast.LENGTH_LONG).show();
         Log.d("ERROR:", error.toString());
 
     }

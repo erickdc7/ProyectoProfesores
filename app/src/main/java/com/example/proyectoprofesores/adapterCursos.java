@@ -20,8 +20,9 @@ import java.util.Map;
 import java.util.Set;
 
 public class adapterCursos extends RecyclerView.Adapter<adapterCursos.ViewHolderDatos> {
-    Context context;
+
     ArrayList<cursodt> listCursos;
+    Context context;
     OnCursoClickListener listener;
 
     public void setOnCursoClickListener(OnCursoClickListener listener){
@@ -33,7 +34,8 @@ public class adapterCursos extends RecyclerView.Adapter<adapterCursos.ViewHolder
         this.listCursos = listCursos;
     }
 
-    public adapterCursos(Context context, ArrayList<cursodt> listCursos, OnCursoClickListener listener) {        this.context = context;
+    public adapterCursos(Context context, ArrayList<cursodt> listCursos, OnCursoClickListener listener) {
+        this.context = context;
         this.listCursos = listCursos;
         this.listener = listener;
     }

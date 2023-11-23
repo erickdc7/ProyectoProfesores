@@ -21,4 +21,9 @@
         android:icon="@drawable/cursos"
         android:title="@string/course_text"
         />
+    <item
+        android:id="@+id/faltas"
+        android:icon="@drawable/document"
+        android:title="@string/falta_text"
+        />
 </menu>

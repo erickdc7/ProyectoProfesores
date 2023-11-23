@@ -21,6 +21,7 @@
     <string name="schedule_text">Agenda</string>
     <string name="direct_text">Directorio</string>
     <string name="course_text">Cursos</string>
+    <string name="falta_text">Faltas</string>
     <string name="mensaje_bienvenida">Bienvenido, Juan!</string>
     <string name="descripcion_campana">notificaciones</string>
     <string name="descripcion_usuario">perfil de usuario</string>

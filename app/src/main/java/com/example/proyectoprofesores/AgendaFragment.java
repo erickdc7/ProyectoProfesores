@@ -38,7 +38,7 @@ import java.util.List;
  * Use the {@link AgendaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AgendaFragment extends Fragment implements OnCursoClickListener, Response.Listener<JSONArray>, Response.ErrorListener{
+public class AgendaFragment extends Fragment implements Response.Listener<JSONArray>, Response.ErrorListener{
     String idDocente;
     RelativeLayout directorio;
     private RelativeLayout noevento;
@@ -46,6 +46,7 @@ public class AgendaFragment extends Fragment implements OnCursoClickListener, Re
     private RecyclerView recyclerView;
     private RecyclerView recyclerEvento;
     ArrayList<Evento> listaEventos;
+    private EventoAdapter adapter;
     JsonArrayRequest jsonArrayRequestEventos;
     ProgressBar progressBar;
 
@@ -62,13 +63,6 @@ public class AgendaFragment extends Fragment implements OnCursoClickListener, Re
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private String id_horario;
-    private String curso;
-    private String aula;
-    private String dia;
-    private String nivel;
-    private String horaInicio;
-    private String horaFin;
 
     public AgendaFragment() {
         // Required empty public constructor
@@ -129,10 +123,6 @@ public class AgendaFragment extends Fragment implements OnCursoClickListener, Re
         recyclerEvento.setHasFixedSize(true);
 
         cargarWebServiceEventos();
-        EventoAdapter adapter =  new EventoAdapter(listaEventos, getContext());
-        adapter.setOnAgendaClickListener(this);
-        recyclerEvento.setAdapter(adapter);
-
         //recycle calendar
         recyclerView = view.findViewById(R.id.recyclerViewCalendar);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -152,6 +142,7 @@ public class AgendaFragment extends Fragment implements OnCursoClickListener, Re
         weekDayName.setText(CalendarItem.getFullWeekName(obtenerNombreDiaSemana(calendar.get(Calendar.DAY_OF_WEEK))));
         monthName.setText(obtenerNombreMes(currentMonth));
         year.setText(String.valueOf(currentYear));
+
 
 
     }
@@ -206,22 +197,7 @@ public class AgendaFragment extends Fragment implements OnCursoClickListener, Re
 
 
 
-    public void onCursoClick(int position) {
-        EventCursoFragment fragment = new EventCursoFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString("idHorario", id_horario);
-        bundle.putString("cursos", curso);
-        bundle.putString("aula", aula);
-        bundle.putString("dia", dia);
-        bundle.putString("nivel", nivel);
-        bundle.putString("horaInicio", horaInicio);
-        bundle.putString("horaFin", horaFin);
-        fragment.setArguments(bundle);
-        getParentFragmentManager().beginTransaction()
-                .replace(R.id.container, fragment)
-                .addToBackStack(null)
-                .commit();
-    }
+
 
     public void posicionActual(RecyclerView recycleCalendar){
         Calendar calendar = Calendar.getInstance();
@@ -261,13 +237,7 @@ public class AgendaFragment extends Fragment implements OnCursoClickListener, Re
                 JSONObject jsonObject = response.getJSONObject(i);
                 Evento evento = new Evento(Integer.valueOf(jsonObject.optString("id_horario")), jsonObject.optString("curso"), jsonObject.optString("aula"), jsonObject.optString("nivel"),
                         jsonObject.optString("dia"), Time.valueOf(jsonObject.optString("horainicio")), Time.valueOf(jsonObject.optString("horafin")));
-        id_horario = jsonObject.optString("id_horario");
-                curso = jsonObject.optString("curso");
-                aula =jsonObject.optString("aula");
-                dia = jsonObject.optString("dia");
-                nivel = jsonObject.optString("nivel");
-                horaInicio = jsonObject.optString("horainicio");
-                horaFin = jsonObject.optString("horafin");
+
 
                 listaEventos.add(evento);
             }
@@ -279,13 +249,13 @@ public class AgendaFragment extends Fragment implements OnCursoClickListener, Re
             Evento.ordenarListaPorHoraInicio(listaEventos);
             //Evento.ordenarListaPorProximidad(listaEventos);
 
-            EventoAdapter adapter =  new EventoAdapter(listaEventos, getContext());
-            adapter.setOnAgendaClickListener(this);
+            adapter =  new EventoAdapter(listaEventos, getContext());
             recyclerEvento.setAdapter(adapter);
 
             //Adaptador Calendar
 
             adapterC = new CalendarAdapter(calendarItems, listaEventos, recyclerEvento, getContext(), noevento, lineaE);
+
             recyclerView.setAdapter(adapterC);
 
 
@@ -303,4 +273,6 @@ public class AgendaFragment extends Fragment implements OnCursoClickListener, Re
         }
 
     }
+
+
 }

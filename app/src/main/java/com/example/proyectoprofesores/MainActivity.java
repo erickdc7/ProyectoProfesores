@@ -91,6 +91,9 @@ public class MainActivity extends AppCompatActivity{
                 case R.id.course:
                     replaceFragment(new CoursesFragment(), bundle);
                     break;
+                case R.id.faltas:
+                    replaceFragment(new JustifyFragment(), bundle);
+                    break;
             }
             return true;
         });
@@ -131,7 +134,7 @@ public class MainActivity extends AppCompatActivity{
         fragmentTransaction.commit();
     }
 
-    private void actualizarPosicionLinea() {
+    public void actualizarPosicionLinea() {
         lineaSeleccion = findViewById(R.id.lineaSeleccion);
         itemSeleccionado = binding.bottomNavigationView.findViewById(selectedItem);
         if (lineaSeleccion != null && itemSeleccionado != null) {

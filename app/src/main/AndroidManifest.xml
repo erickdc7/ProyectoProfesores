@@ -3,17 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <uses-feature android:name="hardware.camera" />
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
 
-
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name=".MyApplication"
@@ -27,8 +27,14 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBar"
         tools:targetApi="31">
-        <receiver android:name=".AlarmNotification"
-            android:enabled="true"/>
+        <activity
+            android:name=".EventoCursoActivity"
+            android:exported="false" />
+
+        <receiver
+            android:name=".AlarmNotification"
+            android:enabled="true" />
+
         <activity
             android:name=".SplashActivity"
             android:exported="false" />
