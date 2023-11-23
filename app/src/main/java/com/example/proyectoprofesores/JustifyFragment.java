@@ -109,7 +109,6 @@ public class JustifyFragment extends Fragment implements Response.Listener<JSONA
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Log.d("id:", idDocente);
         backp = view.findViewById(R.id.imageatras);
         backp.setOnClickListener(v -> getParentFragmentManager().popBackStack());
     }
